@@ -5,20 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UiModule } from '../@ui/ui.module';
 import { CoreModule } from '../@core/core.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     UiModule,
-    CoreModule
+    CoreModule,
+    NgxsModule.forRoot([]),
+    NgxsLoggerPluginModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

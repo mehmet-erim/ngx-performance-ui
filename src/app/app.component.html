@@ -52,3 +52,35 @@
 </div>
 
 {{mm | json}}
+
+<toaster-container>
+
+<button (click)="onClickToastDispatch()">Dispatch Toast</button>
+
+<form [formGroup]="myForm">
+  <label>Name</label>
+  <input
+    type="text"
+    formControlName="name"
+  >
+  <div invalidmessage="name">
+    <p *invalidType="'required'">Please provide name</p>
+  </div>
+  <label>Lastname</label>
+  <input
+    type="text"
+    formControlName="lastname"
+  >
+  <div invalidmessage="lastname">
+    <p *invalidType="'required'">Please provide lastname</p>
+  </div>
+  <label>Email</label>
+  <input
+    type="text"
+    formControlName="email"
+  >
+  <div invalidmessage="email">
+    <p *invalidType="'required'">Please provide email</p>
+    <p *invalidType="'email'">Please provide valid email</p>
+  </div>
+</form>
