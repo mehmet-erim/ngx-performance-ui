@@ -11,17 +11,17 @@ export const COMPONENT_NAME_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'mn-radio',
   template: `
-    <label [attr.for]="id" class="pure-radio {{ classes }}">
+    <div class="custom-control custom-radio custom-control-inline {{ classes }}">
       <input
         [attr.id]="id"
         [attr.name]="name"
         [attr.value]="radioValue"
         [attr.checked]="value && value === radioValue"
         [disabled]="disabled"
-        type="radio"
+        class="custom-control-input"
       />
-      <ng-content></ng-content>
-    </label>
+      <label class="custom-control-label" [attr.for]="id"><ng-content></ng-content></label>
+    </div>
   `,
   providers: [COMPONENT_NAME_VALUE_ACCESSOR],
   changeDetection: ChangeDetectionStrategy.Default,
