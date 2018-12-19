@@ -14,8 +14,8 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "@core/*": ["src/@core/*"],
-      "@ui/*": ["src/@ui/*"]
+      "@core/*": ["src/app/@core/*"],
+      "@ui/*": ["src/app/@ui/*"]
     }
   }
 }
