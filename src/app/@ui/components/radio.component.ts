@@ -18,6 +18,7 @@ export const COMPONENT_NAME_VALUE_ACCESSOR: any = {
         [attr.value]="radioValue"
         [attr.checked]="value && value === radioValue"
         [disabled]="disabled"
+        type="radio"
         class="custom-control-input"
       />
       <label class="custom-control-label" [attr.for]="id"><ng-content></ng-content></label>
