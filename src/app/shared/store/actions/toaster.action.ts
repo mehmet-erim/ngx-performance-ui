@@ -1,4 +1,4 @@
-import { Toaster } from '../models/toaster.model';
+import { Toaster } from '../models/toaster';
 
 export class ToasterShow {
   static readonly type = '[Toaster] Show]';

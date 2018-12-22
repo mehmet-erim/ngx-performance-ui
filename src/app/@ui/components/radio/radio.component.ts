@@ -1,10 +1,10 @@
 import { Component, Input, forwardRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { uuid } from '../../@core/utils';
+import { uuid } from '../../../@core/utils';
 
 export const COMPONENT_NAME_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => RadioComponent),
+  useExisting: forwardRef(() => MnRadioComponent),
   multi: true,
 };
 
@@ -28,7 +28,7 @@ export const COMPONENT_NAME_VALUE_ACCESSOR: any = {
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
 })
-export class RadioComponent implements ControlValueAccessor {
+export class MnRadioComponent implements ControlValueAccessor {
   @Input()
   classes: string;
 

@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RadioComponent } from './components/radio.component';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LayoutPrimaryComponent } from './components/layouts';
+import * as _components from './components';
 
 @NgModule({
   imports: [FormsModule],
-  declarations: [RadioComponent, LayoutPrimaryComponent],
-  exports: [RadioComponent, LayoutPrimaryComponent],
+  declarations: [_components.MnRadioComponent, _components.MnToasterComponent, _components.MnToasterContainerComponent],
+  exports: [_components.MnRadioComponent, _components.MnToasterComponent, _components.MnToasterContainerComponent],
 })
 export class UiModule {}

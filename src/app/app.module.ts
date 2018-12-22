@@ -8,9 +8,11 @@ import { CoreModule } from '@core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import * as _states from './shared/store';
+import { LayoutPrimaryComponent } from './layouts';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LayoutPrimaryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,7 +20,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
     ReactiveFormsModule,
     UiModule,
     CoreModule,
-    NgxsModule.forRoot([]),
+    NgxsModule.forRoot([_states.ToasterState]),
     NgxsLoggerPluginModule.forRoot(),
   ],
   providers: [],
