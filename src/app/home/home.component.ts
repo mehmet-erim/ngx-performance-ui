@@ -13,6 +13,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   showToaster() {
-    this.store.dispatch(new ToasterShow({ type: 'success' }));
+    this.store.dispatch(
+      new ToasterShow({
+        type: 'success',
+        header: 'Success!',
+        body: 'Lorem ipsum dolor sit amet!! <hr> Yeah!!',
+        closeOnClick: true,
+        timeout: 20000000,
+      }),
+    );
   }
 }
