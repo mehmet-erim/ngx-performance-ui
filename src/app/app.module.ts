@@ -10,18 +10,20 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import * as _states from './shared/store';
 import { LayoutPrimaryComponent } from './layouts';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, LayoutPrimaryComponent],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    UiModule,
+    BrowserModule,
     CoreModule,
+    FormsModule,
     NgxsModule.forRoot([_states.ToasterState]),
     NgxsLoggerPluginModule.forRoot(),
+    ReactiveFormsModule,
+    SharedModule.forRoot(),
+    UiModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

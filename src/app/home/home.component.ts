@@ -1,13 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { ToasterShow } from '../shared/store';
+import { ToasterShow, Toaster } from '../shared/store';
 
 @Component({
   selector: 'mn-home',
   templateUrl: './home.component.html',
-  styles: [],
+  styles: [
+    `
+      input:not([type='checkbox']) {
+        width: 90%;
+      }
+    `,
+  ],
 })
 export class HomeComponent implements OnInit {
+  toaster = { closeOnClick: false, type: 'primary' } as Toaster.State;
+
   constructor(private store: Store) {}
 
   ngOnInit() {}
@@ -15,11 +23,11 @@ export class HomeComponent implements OnInit {
   showToaster() {
     this.store.dispatch(
       new ToasterShow({
-        type: 'success',
-        header: 'Success!',
-        body: 'Lorem ipsum dolor sit amet!! <hr> Yeah!!',
-        closeOnClick: true,
-        timeout: 20000000,
+        type: this.toaster.type,
+        header: this.toaster.header || 'Okay!',
+        body: this.toaster.body || '<i>Hello World!</i> <b>Hi!!</b>',
+        closeOnClick: this.toaster.closeOnClick,
+        timeout: this.toaster.timeout,
       }),
     );
   }

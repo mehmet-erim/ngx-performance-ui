@@ -8,21 +8,20 @@
 
   .toaster {
     opacity: 1;
-    animation: toastIn .5s ease-in-out;
+    animation: toastIn 0.5s ease-in-out;
 
     .header {
       width: 100%;
-      border-bottom: solid 1px #d3d3d3;
+      border-bottom: solid 1px $color-grey-light-1;
+      font-size: 1.25rem;
 
       .icon {
         display: inline-block;
         width: 30px;
         height: 30px;
-        text-align: center;
       }
 
-      span {
-        font-size: 1.25rem;
+      .alert-heading {
         font-weight: 600;
         word-break: break-word;
       }

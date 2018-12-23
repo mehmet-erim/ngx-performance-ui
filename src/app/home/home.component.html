@@ -1,5 +1,82 @@
-<p>
-  home works!
-</p>
-
-<button (click)="showToaster()">Dispatch toaster</button>
+<div class="container">
+  <h2>Showcase
+    <hr>
+  </h2>
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          Toaster
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="toaster.header"
+                  placeholder="Header"
+                >
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="toaster.body"
+                  placeholder="Body"
+                >
+              </div>
+            </div>
+            <div class="col">
+              <input
+                class="form-control"
+                type="number"
+                [(ngModel)]="toaster.timeout"
+                placeholder="Timeout"
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <select
+                style="width: 100%"
+                [(ngModel)]="toaster.type"
+              >
+                <option value="primary">primary</option>
+                <option value="secondary">secondary</option>
+                <option value="success">success</option>
+                <option value="warning">warning</option>
+                <option value="error">error</option>
+                <option value="info">info</option>
+                <option value="light">light</option>
+                <option value="dark">dark</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  [(ngModel)]="toaster.closeOnClick"
+                  id="close-on-click"
+                >
+                <label
+                  class="form-check-label"
+                  for="close-on-click"
+                >Close On Click</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="mt-1 ml-1 btn btn-info"
+          (click)="showToaster()"
+        >Dispatch toaster</button>
+      </div>
+    </div>
+  </div>
+</div>
