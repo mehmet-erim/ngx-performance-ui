@@ -4,8 +4,8 @@ import { Toaster } from '../models/toaster';
 @State<Toaster.State>({
   name: 'ToasterState',
   defaults: {
-    timeout: 3000,
-    type: 'success',
+    timeout: 30000,
+    type: 'primary',
   },
 })
 export class ToasterState {}
