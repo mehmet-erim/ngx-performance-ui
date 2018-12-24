@@ -22,7 +22,7 @@ import { ComponentRef } from '@angular/core/src/render3';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MnToasterContainerComponent implements OnInit {
+export class ToasterContainerComponent implements OnInit {
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
 
   constructor(

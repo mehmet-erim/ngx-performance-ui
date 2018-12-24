@@ -2,12 +2,6 @@ import { Component, Input, forwardRef, ChangeDetectionStrategy, ViewEncapsulatio
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { uuid } from '../../../@core/utils';
 
-export const COMPONENT_NAME_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => MnRadioComponent),
-  multi: true,
-};
-
 @Component({
   selector: 'mn-radio',
   template: `
@@ -24,11 +18,17 @@ export const COMPONENT_NAME_VALUE_ACCESSOR: any = {
       <label class="custom-control-label" [attr.for]="id"><ng-content></ng-content></label>
     </div>
   `,
-  providers: [COMPONENT_NAME_VALUE_ACCESSOR],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RadioComponent),
+      multi: true,
+    },
+  ],
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
 })
-export class MnRadioComponent implements ControlValueAccessor {
+export class RadioComponent implements ControlValueAccessor {
   @Input()
   classes: string;
 

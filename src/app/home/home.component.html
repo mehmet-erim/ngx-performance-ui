@@ -3,7 +3,7 @@
     <hr>
   </h2>
   <div class="row">
-    <div class="col-6">
+    <div class="col-12">
       <div class="card">
         <div class="card-header">
           Toaster
@@ -31,31 +31,24 @@
               </div>
             </div>
             <div class="col">
-              <input
-                class="form-control"
-                type="number"
-                [(ngModel)]="toaster.timeout"
-                placeholder="Timeout"
-              >
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="toaster.timeout"
+                  placeholder="Timeout"
+                >
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-4">
-              <select
-                style="width: 100%"
-                [(ngModel)]="toaster.type"
-              >
-                <option value="primary">primary</option>
-                <option value="secondary">secondary</option>
-                <option value="success">success</option>
-                <option value="warning">warning</option>
-                <option value="error">error</option>
-                <option value="info">info</option>
-                <option value="light">light</option>
-                <option value="dark">dark</option>
-              </select>
+            <div class="col">
+              <div class="form-group">
+                <mn-select
+                  [options]="['primary', 'secondary', 'success', 'warning', 'error', 'info', 'light', 'dark']"
+                  [(ngModel)]="toaster.type"
+                ></mn-select>
+              </div>
             </div>
-            <div class="col-4">
+            <div class="col">
               <div class="form-check">
                 <input
                   type="checkbox"
@@ -76,6 +69,30 @@
           class="mt-1 ml-1 btn btn-info"
           (click)="showToaster()"
         >Dispatch toaster</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          Select
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <mn-select
+                  placeholder="Select an option"
+                  [options]="['Lorem', 205, {label: 'Lorem ipsum', value: 'lorem_ipsum'}]"
+                  (select)="log($event)"
+                  [(ngModel)]="selectValue"
+                ></mn-select>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

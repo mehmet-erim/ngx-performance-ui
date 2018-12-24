@@ -16,6 +16,8 @@ import { ToasterShow, Toaster } from '../shared/store';
 export class HomeComponent implements OnInit {
   toaster = { closeOnClick: false, type: 'primary' } as Toaster.State;
 
+  selectValue;
+
   constructor(private store: Store) {}
 
   ngOnInit() {}
@@ -30,5 +32,9 @@ export class HomeComponent implements OnInit {
         timeout: this.toaster.timeout,
       }),
     );
+  }
+
+  log(val) {
+    console.warn(val);
   }
 }
