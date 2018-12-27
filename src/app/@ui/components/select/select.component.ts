@@ -16,6 +16,8 @@ export interface SelectOption {
   value: any;
 }
 
+export type SelectListOption = SelectOption | string | number;
+
 @Component({
   selector: 'mn-select',
   template: `
@@ -25,11 +27,11 @@ export interface SelectOption {
       [(ngModel)]="value"
       [attr.id]="selectId"
       [compareWith]="compareFn"
-      (change)="onSelect()"
+      (ngModelChange)="onSelect($event)"
     >
       <option [ngValue]="undefined" *ngIf="placeholder">{{ placeholder }}</option>
-      <option *ngFor="let option of options; trackBy: trackByFn" [ngValue]="option.value || option"
-        >{{ option.label || option.value || option }}
+      <option *ngFor="let option of options; trackBy: trackByFn" [ngValue]="getOptionValue()"
+        >{{ getOptionLabel(option) }}
       </option>
     </select>
   `,
@@ -45,7 +47,7 @@ export interface SelectOption {
 })
 export class SelectComponent extends AbstractNgModelComponent {
   @Input()
-  options: Array<SelectOption | string> = [];
+  options: SelectListOption[] = [];
 
   @Input()
   selectId: string;
@@ -65,11 +67,30 @@ export class SelectComponent extends AbstractNgModelComponent {
   @Output()
   select = new EventEmitter<any>();
 
-  onSelect() {
-    this.select.emit(this.value);
+  onSelect(value) {
+    this.select.emit(value);
   }
 
-  trackByFn(_, option) {
-    return option.label || option.value || option;
+  getOptionLabel(option: SelectListOption): string {
+    const { label, value } = option as SelectOption;
+
+    return label || (typeof value === 'string' || typeof value === 'number' ? String(value) : String(option));
+  }
+
+  trackByFn(_, option: SelectListOption) {
+    const { label, value } = option as SelectOption;
+    if (value === undefined || value instanceof Object) {
+      return label || option;
+    }
+
+    return value;
+  }
+
+  getOptionValue(option: SelectListOption): any {
+    const { value } = option as SelectOption;
+
+    if (value === undefined) return option;
+
+    return value;
   }
 }
