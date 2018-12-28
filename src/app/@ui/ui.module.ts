@@ -5,6 +5,7 @@ import * as _components from './components';
 @NgModule({
   imports: [SharedModule],
   declarations: [
+    _components.CarouselComponent,
     _components.RadioComponent,
     _components.SelectComponent,
     _components.ToasterComponent,
@@ -14,6 +15,7 @@ import * as _components from './components';
   ],
   entryComponents: [_components.ToasterComponent],
   exports: [
+    _components.CarouselComponent,
     _components.RadioComponent,
     _components.SelectComponent,
     _components.ToasterComponent,
