@@ -5,18 +5,13 @@ import { ToasterShow, Toaster } from '../store';
 @Component({
   selector: 'mn-home',
   templateUrl: './home.component.html',
-  styles: [
-    `
-      input:not([type='checkbox']) {
-        width: 90%;
-      }
-    `,
-  ],
 })
 export class HomeComponent implements OnInit {
   toaster = { closeOnClick: false, type: 'primary' } as Toaster.State;
 
   selectValue;
+
+  isModalShow;
 
   constructor(private store: Store) {}
 

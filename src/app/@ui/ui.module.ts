@@ -6,6 +6,7 @@ import * as _components from './components';
   imports: [SharedModule],
   declarations: [
     _components.CarouselComponent,
+    _components.ModalComponent,
     _components.RadioComponent,
     _components.SelectComponent,
     _components.ToasterComponent,
@@ -16,6 +17,7 @@ import * as _components from './components';
   entryComponents: [_components.ToasterComponent],
   exports: [
     _components.CarouselComponent,
+    _components.ModalComponent,
     _components.RadioComponent,
     _components.SelectComponent,
     _components.ToasterComponent,

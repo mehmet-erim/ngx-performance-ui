@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Input } from '@angular/core';
+import { AfterContentInit, Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { LazyLoadingScriptService } from '@core/services/lazy-load-script.service';
 import { map, filter, take, switchMap } from 'rxjs/operators';
 import { Carousel } from '../../models';
@@ -41,7 +41,8 @@ const SLICK_DEFAULTS = {
 @Component({
   selector: 'mn-carousel',
   templateUrl: './carousel.component.html',
-  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class CarouselComponent implements AfterContentInit {
   @Input() config: Carousel.Config;

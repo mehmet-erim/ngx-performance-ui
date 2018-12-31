@@ -19,11 +19,13 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     CoreModule,
     FormsModule,
-    NgxsModule.forRoot([_states.ToasterState]),
-    NgxsLoggerPluginModule.forRoot(),
     ReactiveFormsModule,
     SharedModule.forRoot(),
     UiModule,
+
+    // Third party
+    NgxsModule.forRoot([_states.ToasterState]),
+    NgxsLoggerPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
