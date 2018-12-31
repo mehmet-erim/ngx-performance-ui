@@ -1,3 +1,4 @@
+import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,24 +9,28 @@ import { CoreModule } from '@core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import * as _states from './store';
+import * as _states from './store/states';
 import { LayoutPrimaryComponent } from './layouts';
 import { SharedModule } from './shared/shared.module';
+import { ngxsLogExcept } from '@core/utils';
 
 @NgModule({
   declarations: [AppComponent, LayoutPrimaryComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    CoreModule,
+    CoreModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     SharedModule.forRoot(),
     UiModule,
 
     // Third party
-    NgxsModule.forRoot([_states.ToasterState]),
-    NgxsLoggerPluginModule.forRoot(),
+    NgxsModule.forRoot([_states.ToasterState, _states.EventListenerState]),
+    NgxsLoggerPluginModule.forRoot({
+      disabled: environment.production,
+      logger: environment.production ? null : ngxsLogExcept(['Events', 'Router']),
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

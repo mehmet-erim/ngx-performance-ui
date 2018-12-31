@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChild,
+  ElementRef,
   EventEmitter,
   Injector,
   Input,
@@ -10,10 +11,13 @@ import {
   OnInit,
   Output,
   TemplateRef,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { Select } from '@ngxs/store';
+import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
+import { filter, skip, take, takeUntil } from 'rxjs/operators';
+import { EventListenerState } from '../../../store/states';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -33,14 +37,11 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.visibleChange.emit(val);
 
     if (val) {
-      fromEvent(document, 'keyup')
-        .pipe(
-          take(1),
-          takeUntil(this.destroy$),
-        )
-        .subscribe(_ => {
-          this.visible = false;
-        });
+      this.listen();
+    } else {
+      this.subscriptions.forEach(subscription => {
+        subscription.unsubscribe();
+      });
     }
   }
 
@@ -52,15 +53,22 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   @Output() visibleChange = new EventEmitter<boolean>();
 
+  @Select(EventListenerState.getClick)
+  click$: Observable<MouseEvent>;
+
   @ContentChild('mnHeader') mnHeader: TemplateRef<any>;
 
   @ContentChild('mnBody') mnBody: TemplateRef<any>;
 
   @ContentChild('mnFooter') mnFooter: TemplateRef<any>;
 
+  @ViewChild('mnModalContent') modalContent: ElementRef;
+
   destroy$ = new Subject<boolean>();
 
   _visible: boolean = false;
+
+  subscriptions: Subscription[] = [];
 
   protected cdRef: ChangeDetectorRef;
 
@@ -73,5 +81,29 @@ export class ModalComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+  }
+
+  listen() {
+    this.subscriptions[0] = fromEvent(document, 'keyup')
+      .pipe(
+        filter((key: KeyboardEvent) => key.code === 'Escape'),
+        take(1),
+        takeUntil(this.destroy$),
+      )
+      .subscribe(_ => {
+        this.visible = false;
+      });
+
+    this.subscriptions[1] = this.click$
+      .pipe(
+        filter(event => !!event && !!event.type),
+        skip(1),
+        takeUntil(this.destroy$),
+      )
+      .subscribe(event => {
+        if (this.modalContent && !this.modalContent.nativeElement.contains(event.target)) {
+          this.visible = false;
+        }
+      });
   }
 }

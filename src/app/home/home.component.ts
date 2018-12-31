@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { ToasterShow, Toaster } from '../store';
+import { ToasterShow } from 'store/actions';
+import { Toaster } from 'store/models';
 
 @Component({
   selector: 'mn-home',
