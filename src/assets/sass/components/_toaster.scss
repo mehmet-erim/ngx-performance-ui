@@ -23,13 +23,17 @@
 
       .alert-heading {
         font-weight: 600;
-        word-break: break-word;
+        word-break: break-all;
       }
     }
 
     .body {
       padding: 10px;
     }
+  }
+
+  .alert-dismisable {
+    padding-right: 1rem;
   }
 }
 

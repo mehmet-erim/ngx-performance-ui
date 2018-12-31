@@ -8,7 +8,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { Actions, ofActionDispatched } from '@ngxs/store';
-import { Toaster, ToasterShow } from '../../../shared/store';
+import { Toaster, ToasterShow } from '../../../store';
 import { ToasterComponent } from './toaster.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { isNullOrUndefined } from 'util';

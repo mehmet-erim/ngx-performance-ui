@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white op-8">
+  <div class="container py-2">
+    <a
+      routerLink="/"
+      class="navbar-brand"
+    >NGX UI KIT</a>
+
+    <button
+      class="navbar-toggler"
+      data-toggle="collapse"
+      data-target="#navbar-collapse"
+      aria-controls="navbar-spotify"
+    >
+      <span class="navbar-togger-icon"></span>
+    </button>
+
+    <div
+      id="navbar-collapse"
+      class="collapse navbar-collapse"
+    >
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a
+            routerLink="/"
+            class="nav-link text-white"
+          >Getting Started</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5">
+  <router-outlet></router-outlet>
+</div>

@@ -30,7 +30,7 @@ export type SelectListOption = SelectOption | string | number;
       (ngModelChange)="onSelect($event)"
     >
       <option [ngValue]="undefined" *ngIf="placeholder">{{ placeholder }}</option>
-      <option *ngFor="let option of options; trackBy: trackByFn" [ngValue]="getOptionValue()"
+      <option *ngFor="let option of options; trackBy: trackByFn" [ngValue]="getOptionValue(option)"
         >{{ getOptionLabel(option) }}
       </option>
     </select>

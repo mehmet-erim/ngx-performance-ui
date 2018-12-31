@@ -1,8 +1,42 @@
-import { AfterContentInit, Component } from '@angular/core';
-import { LazyLoadingScriptService } from '../../../@core/services/lazy-load-script.service';
+import { AfterContentInit, Component, Input } from '@angular/core';
+import { LazyLoadingScriptService } from '@core/services/lazy-load-script.service';
 import { map, filter, take, switchMap } from 'rxjs/operators';
+import { Carousel } from '../../models';
 
 declare var $;
+
+const SLICK_DEFAULTS = {
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 
 @Component({
   selector: 'mn-carousel',
@@ -10,6 +44,7 @@ declare var $;
   styles: [],
 })
 export class CarouselComponent implements AfterContentInit {
+  @Input() config: Carousel.Config;
   constructor(private lazyLoadService: LazyLoadingScriptService) {}
 
   ngAfterContentInit() {
@@ -22,41 +57,7 @@ export class CarouselComponent implements AfterContentInit {
         switchMap(_ => this.lazyLoadService.loadScript('/assets/slick/slick.min.js')),
       )
       .subscribe(_ => {
-        $('.your-class').slick({
-          dots: true,
-          infinite: false,
-          speed: 300,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                infinite: true,
-                dots: true,
-              },
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-              },
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              },
-            },
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-          ],
-        });
+        $('.slick-container').slick(this.config || SLICK_DEFAULTS);
       });
   }
 }

@@ -8,7 +8,7 @@ import { CoreModule } from '@core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import * as _states from './shared/store';
+import * as _states from './store';
 import { LayoutPrimaryComponent } from './layouts';
 import { SharedModule } from './shared/shared.module';
 
