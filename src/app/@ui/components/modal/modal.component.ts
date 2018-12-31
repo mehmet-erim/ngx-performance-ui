@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
-import { filter, skip, take, takeUntil } from 'rxjs/operators';
+import { filter, skip, take, takeUntil, debounceTime } from 'rxjs/operators';
 import { EventListenerState } from '../../../store/states';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -87,6 +87,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.subscriptions[0] = fromEvent(document, 'keyup')
       .pipe(
         filter((key: KeyboardEvent) => key.code === 'Escape'),
+        debounceTime(300),
         take(1),
         takeUntil(this.destroy$),
       )
@@ -97,6 +98,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.subscriptions[1] = this.click$
       .pipe(
         filter(event => !!event && !!event.type),
+        debounceTime(350),
         skip(1),
         takeUntil(this.destroy$),
       )

@@ -20,7 +20,10 @@ export class EventHandler {
       if (this.subscriptions[event]) return;
 
       this.subscriptions[event] = fromEvent(event === 'resize' ? window : document, event)
-        .pipe(debounceTime(EventListener.debonceTimes[event]))
+        .pipe(
+          debounceTime(EventListener.debonceTimes[event]),
+          share(),
+        )
         .subscribe(event => this.store.dispatch(new EventListenerPublish(event)));
     });
 
