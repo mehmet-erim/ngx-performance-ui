@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
-import { filter, skip, take, takeUntil, debounceTime } from 'rxjs/operators';
+import { debounceTime, filter, take, takeUntil } from 'rxjs/operators';
 import { EventListenerState } from '../../../store/states';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -37,7 +37,9 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.visibleChange.emit(val);
 
     if (val) {
-      this.listen();
+      setTimeout(() => {
+        this.listen();
+      }, 0);
     } else {
       this.subscriptions.forEach(subscription => {
         subscription.unsubscribe();
@@ -52,9 +54,6 @@ export class ModalComponent implements OnInit, OnDestroy {
   @Input() size: ModalSize = 'md';
 
   @Output() visibleChange = new EventEmitter<boolean>();
-
-  @Select(EventListenerState.getClick)
-  click$: Observable<MouseEvent>;
 
   @ContentChild('mnHeader') mnHeader: TemplateRef<any>;
 
@@ -95,11 +94,10 @@ export class ModalComponent implements OnInit, OnDestroy {
         this.visible = false;
       });
 
-    this.subscriptions[1] = this.click$
+    this.subscriptions[1] = fromEvent(document, 'click')
       .pipe(
-        filter(event => !!event && !!event.type),
-        debounceTime(350),
-        skip(1),
+        filter((event: MouseEvent) => event.type === 'click'),
+        debounceTime(300),
         takeUntil(this.destroy$),
       )
       .subscribe(event => {
