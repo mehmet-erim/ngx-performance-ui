@@ -12,7 +12,7 @@ import { SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'mn-toaster',
   template: `
-    <div #toast class="toaster alert alert-{{ type }} alert-dismissible show">
+    <div #toast class="toaster alert alert-{{ type }} alert-dismissible show move-in-top">
       <div *ngIf="header" class="header">
         <div class="icon"><i class="fas fa-info-circle"></i></div>
         <span class="alert-heading">{{ header }}</span>
@@ -45,7 +45,7 @@ export class ToasterComponent {
   }
 
   close() {
-    this.renderer.setStyle(this.toast.nativeElement, 'animation', 'toastOut .5s');
+    this.renderer.setStyle(this.toast.nativeElement, 'animation', 'moveOutTop .5s');
     setTimeout(() => {
       this.destroy.emit();
     }, 500);

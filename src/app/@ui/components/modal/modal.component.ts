@@ -13,11 +13,11 @@ import {
   TemplateRef,
   ViewChild,
   ViewEncapsulation,
+  Renderer2,
 } from '@angular/core';
-import { Select } from '@ngxs/store';
-import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
+import { fromEvent, Subject, Subscription } from 'rxjs';
 import { debounceTime, filter, take, takeUntil } from 'rxjs/operators';
-import { EventListenerState } from '../../../store/states';
+import { takeUntilDestroy } from '@core/utils';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -27,23 +27,26 @@ export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ModalComponent implements OnInit, OnDestroy {
+export class ModalComponent implements OnDestroy {
   @Input()
   get visible(): boolean {
     return this._visible;
   }
-  set visible(val: boolean) {
-    this._visible = val;
-    this.visibleChange.emit(val);
-
-    if (val) {
+  set visible(value: boolean) {
+    if (value) {
+      this.setVisible(value);
       setTimeout(() => {
         this.listen();
       }, 0);
     } else {
-      this.subscriptions.forEach(subscription => {
-        subscription.unsubscribe();
-      });
+      this.renderer.addClass(this.modalContent.nativeElement, 'fade-out-top');
+      setTimeout(() => {
+        this.setVisible(value);
+        this.subscriptions.forEach(subscription => {
+          subscription.unsubscribe();
+        });
+        this.renderer.removeClass(this.modalContent.nativeElement, 'fade-out-top');
+      }, 450);
     }
   }
 
@@ -63,23 +66,21 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   @ViewChild('mnModalContent') modalContent: ElementRef;
 
-  destroy$ = new Subject<boolean>();
-
   _visible: boolean = false;
 
   subscriptions: Subscription[] = [];
 
   protected cdRef: ChangeDetectorRef;
 
-  constructor(public injector: Injector) {
+  constructor(public injector: Injector, private renderer: Renderer2) {
     this.cdRef = injector.get(ChangeDetectorRef);
   }
 
-  ngOnInit() {}
+  ngOnDestroy(): void {}
 
-  ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
+  setVisible(value: boolean) {
+    this._visible = value;
+    this.visibleChange.emit(value);
   }
 
   listen() {
@@ -88,7 +89,7 @@ export class ModalComponent implements OnInit, OnDestroy {
         filter((key: KeyboardEvent) => key.code === 'Escape'),
         debounceTime(300),
         take(1),
-        takeUntil(this.destroy$),
+        takeUntilDestroy(this),
       )
       .subscribe(_ => {
         this.visible = false;
@@ -98,7 +99,7 @@ export class ModalComponent implements OnInit, OnDestroy {
       .pipe(
         filter((event: MouseEvent) => event.type === 'click'),
         debounceTime(300),
-        takeUntil(this.destroy$),
+        takeUntilDestroy(this),
       )
       .subscribe(event => {
         if (this.modalContent && !this.modalContent.nativeElement.contains(event.target)) {

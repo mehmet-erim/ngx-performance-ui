@@ -2,7 +2,7 @@
 <div
   id="mn-modal"
   tabindex="-1"
-  class="modal fade {{modalClass}}"
+  class="modal {{modalClass}}"
   [class.show]="visible"
   [style.display]="visible ? 'block' : 'none'"
   [style.padding-right.px]="'15'"
@@ -14,11 +14,12 @@
     <div
       style="position: relative; max-width: 600px;"
       id="mn-modal-container"
-      class="modal-dialog modal-{{ size }}"
+      class="modal-dialog modal-{{ size }} fade-in-top"
       [class.modal-dialog-centered]="centered"
       #mnModalContent
     >
       <div
+        #content
         id="mn-modal-content"
         class="modal-content"
       >

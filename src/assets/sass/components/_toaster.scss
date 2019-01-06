@@ -8,7 +8,6 @@
 
   .toaster {
     opacity: 1;
-    animation: toastIn 0.5s ease-in-out;
 
     .header {
       width: 100%;
@@ -34,24 +33,5 @@
 
   .alert-dismisable {
     padding-right: 1rem;
-  }
-}
-
-@keyframes toastIn {
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(10px);
-    opacity: 1;
-  }
-}
-
-@keyframes toastOut {
-  to {
-    transform: translateY(-100px);
-    opacity: 0;
   }
 }
