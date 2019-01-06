@@ -8,16 +8,16 @@ import {
   Injector,
   Input,
   OnDestroy,
-  OnInit,
   Output,
+  Renderer2,
   TemplateRef,
   ViewChild,
   ViewEncapsulation,
-  Renderer2,
 } from '@angular/core';
-import { fromEvent, Subject, Subscription } from 'rxjs';
-import { debounceTime, filter, take, takeUntil } from 'rxjs/operators';
-import { takeUntilDestroy } from '@core/utils';
+import { Select } from '@ngxs/store';
+import { Observable, Subject, timer } from 'rxjs';
+import { filter, take, takeUntil } from 'rxjs/operators';
+import { EventListenerState } from 'store/states';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -35,18 +35,15 @@ export class ModalComponent implements OnDestroy {
   set visible(value: boolean) {
     if (value) {
       this.setVisible(value);
-      setTimeout(() => {
-        this.listen();
-      }, 0);
+      this.listen();
     } else {
+      this.closable = false;
       this.renderer.addClass(this.modalContent.nativeElement, 'fade-out-top');
       setTimeout(() => {
         this.setVisible(value);
-        this.subscriptions.forEach(subscription => {
-          subscription.unsubscribe();
-        });
         this.renderer.removeClass(this.modalContent.nativeElement, 'fade-out-top');
-      }, 450);
+        this.ngOnDestroy();
+      }, 400);
     }
   }
 
@@ -66,45 +63,58 @@ export class ModalComponent implements OnDestroy {
 
   @ViewChild('mnModalContent') modalContent: ElementRef;
 
+  @Select(EventListenerState.getOne('click'))
+  click$: Observable<Event>;
+
+  @Select(EventListenerState.getOne('keyup'))
+  keyup$: Observable<KeyboardEvent>;
+
   _visible: boolean = false;
 
-  subscriptions: Subscription[] = [];
+  closable: boolean = false;
 
   protected cdRef: ChangeDetectorRef;
+
+  destroy$ = new Subject<void>();
 
   constructor(public injector: Injector, private renderer: Renderer2) {
     this.cdRef = injector.get(ChangeDetectorRef);
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.destroy$.next();
+  }
 
   setVisible(value: boolean) {
     this._visible = value;
     this.visibleChange.emit(value);
+    value
+      ? timer(500)
+          .pipe(take(1))
+          .subscribe(_ => (this.closable = true))
+      : (this.closable = false);
   }
 
   listen() {
-    this.subscriptions[0] = fromEvent(document, 'keyup')
+    this.click$
       .pipe(
-        filter((key: KeyboardEvent) => key.code === 'Escape'),
-        debounceTime(300),
-        take(1),
-        takeUntilDestroy(this),
+        takeUntil(this.destroy$),
+        filter(
+          (event: MouseEvent) =>
+            event && this.closable && this.modalContent && !this.modalContent.nativeElement.contains(event.target),
+        ),
       )
       .subscribe(_ => {
         this.visible = false;
       });
 
-    this.subscriptions[1] = fromEvent(document, 'click')
+    this.keyup$
       .pipe(
-        filter((event: MouseEvent) => event.type === 'click'),
-        debounceTime(300),
-        takeUntilDestroy(this),
+        takeUntil(this.destroy$),
+        filter((key: KeyboardEvent) => key && key.code === 'Escape' && this.closable),
       )
-      .subscribe(event => {
-        if (this.modalContent && !this.modalContent.nativeElement.contains(event.target)) {
-          this.visible = false;
-        }
+      .subscribe(_ => {
+        this.visible = false;
       });
   }
 }

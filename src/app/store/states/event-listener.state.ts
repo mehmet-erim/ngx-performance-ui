@@ -1,33 +1,57 @@
-import { State, Selector, Action, StateContext } from '@ngxs/store';
+import { transformToArray } from '@core/utils';
+import { Action, Selector, State, StateContext, createSelector } from '@ngxs/store';
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime, share, tap } from 'rxjs/operators';
+import { EventListenerAdd, EventListenerRemove, EventListenerPublish } from '../actions';
 import { EventListener } from '../models';
-import { EventListenerPublish } from '../actions';
 
 @State<EventListener.State>({
   name: 'EventListenerState',
-  defaults: {
-    click: {} as MouseEvent,
-    mousemove: {} as MouseEvent,
-    resize: {} as Event,
-  },
+  defaults: {},
 })
 export class EventListenerState {
-  @Selector()
-  static getClick({ click }: EventListener.State) {
-    return click;
-  }
+  subscriptions: { [key: string]: Subscription } = {};
 
   @Selector()
-  static getMousemove({ click: mousemove }: EventListener.State) {
-    return mousemove;
+  static getAll(state: EventListener.State) {
+    return state;
   }
 
-  @Selector()
-  static getResize({ click: resize }: EventListener.State) {
-    return resize;
+  static getOne(key: string) {
+    return createSelector(
+      [EventListenerState],
+      function(state: EventListener.State) {
+        return state[key];
+      },
+    );
+  }
+
+  @Action(EventListenerAdd)
+  addEventListener({ dispatch }: StateContext<EventListener.State>, { payload }: EventListenerAdd) {
+    transformToArray(payload).forEach(key => {
+      if (this.subscriptions[key]) return;
+
+      this.subscriptions[key] = fromEvent(key === 'resize' ? window : document, key)
+        .pipe(
+          debounceTime(EventListener.debonceTimes[key] || 300),
+          share(),
+        )
+        .subscribe(event => dispatch(new EventListenerPublish(event)));
+    });
   }
 
   @Action(EventListenerPublish)
   publishEvent({ patchState }: StateContext<EventListener.State>, { payload }: EventListenerPublish) {
     patchState({ [payload.type]: payload });
+  }
+
+  @Action(EventListenerRemove)
+  removeEventListener(_, { payload }: EventListenerRemove) {
+    transformToArray(payload).forEach(key => {
+      if (this.subscriptions[key]) {
+        this.subscriptions[key].unsubscribe();
+        this.subscriptions[key] = null;
+      }
+    });
   }
 }

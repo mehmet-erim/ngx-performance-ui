@@ -1,6 +1,11 @@
 export class EventListenerPublish {
-  static readonly type = '[Events] Publish';
+  static readonly type = '[EventListener] Publish';
   constructor(public payload: Event) {}
+}
+
+export class EventListenerAdd {
+  static readonly type = '[EventListener] Add';
+  constructor(public payload: string[] | string) {}
 }
 
 export class EventListenerRemove {

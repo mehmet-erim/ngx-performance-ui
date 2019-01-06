@@ -1,13 +1,12 @@
 export namespace EventListener {
   export interface State {
-    click: MouseEvent;
-    mousemove: MouseEvent;
-    resize: Event;
+    [key: string]: Event;
   }
 
   export const debonceTimes = {
     click: 300,
     mousemove: 500,
     resize: 700,
+    keyup: 300,
   };
 }
