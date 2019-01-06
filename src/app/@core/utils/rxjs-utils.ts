@@ -1,5 +1,6 @@
 import { Observable, forkJoin, MonoTypeOperatorFunction, pipe, Subject } from 'rxjs';
 import { delay, filter, take, takeUntil, tap } from 'rxjs/operators';
+import { notNull } from './common-utils';
 
 export function fromFork(...streams: Array<Observable<any>>): Observable<any> {
   return forkJoin(...streams.map(stream => stream.pipe(take(1))));
