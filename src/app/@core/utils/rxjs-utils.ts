@@ -6,19 +6,10 @@ export function fromFork(...streams: Array<Observable<any>>): Observable<any> {
   return forkJoin(...streams.map(stream => stream.pipe(take(1))));
 }
 
-export function takeNotNilUntil<T>(destroy$): MonoTypeOperatorFunction<T> {
+export function takeNotNulllUntil<T>(destroy$): MonoTypeOperatorFunction<T> {
   return pipe(
     filter(notNull),
     takeUntil(destroy$),
-  );
-}
-
-export function takeUntilResponse<T>(): MonoTypeOperatorFunction<T> {
-  const destroy$ = new Subject<void>();
-
-  return pipe(
-    tap(({ ok }: any) => ok && destroy$.next()),
-    takeUntil(destroy$.pipe(delay(0))),
   );
 }
 
