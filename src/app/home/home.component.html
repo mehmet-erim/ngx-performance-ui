@@ -42,11 +42,11 @@
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <mn-select
+                <p-select
                   selectClass="form-control"
                   [options]="['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark']"
                   [(ngModel)]="toaster.type"
-                ></mn-select>
+                ></p-select>
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -82,12 +82,12 @@
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <mn-select
+                <p-select
                   placeholder="Select an option"
                   [options]="['Lorem', 205, {label: 'Lorem ipsum', value: 'lorem_ipsum'}]"
                   (select)="log($event)"
                   [(ngModel)]="selectValue"
-                ></mn-select>
+                ></p-select>
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <mn-carousel>
+              <p-carousel>
                 <img
                   src="https://source.unsplash.com/collection/1065412/200x201/"
                   class="img-thumbnail"
@@ -126,7 +126,7 @@
                   src="https://source.unsplash.com/collection/1065412/200x200/"
                   class="img-thumbnail"
                 >
-              </mn-carousel>
+              </p-carousel>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@
   </div>
 </div>
 
-<mn-modal
+<p-modal
   modalClass="w-100"
   size="lg"
   [(visible)]="isModalShow"
@@ -194,4 +194,4 @@
       class="btn btn-primary"
     >Save changes</button>
   </ng-template>
-</mn-modal>
+</p-modal>

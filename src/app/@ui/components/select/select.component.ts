@@ -19,7 +19,7 @@ export interface SelectOption {
 export type SelectListOption = SelectOption | string | number;
 
 @Component({
-  selector: 'mn-select',
+  selector: 'p-select',
   template: `
     <label [attr.for]="selectId">{{ label }}</label>
     <select

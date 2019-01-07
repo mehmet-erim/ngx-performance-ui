@@ -39,7 +39,7 @@ const SLICK_DEFAULTS = {
 };
 
 @Component({
-  selector: 'mn-carousel',
+  selector: 'p-carousel',
   templateUrl: './carousel.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

@@ -4,7 +4,7 @@ import { ToasterShow } from 'store/actions';
 import { Toaster } from 'store/models';
 
 @Component({
-  selector: 'mn-home',
+  selector: 'p-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {

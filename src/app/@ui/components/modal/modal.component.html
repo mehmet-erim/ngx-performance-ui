@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div
-  id="mn-modal"
+  id="p-modal"
   tabindex="-1"
   class="modal fade {{modalClass}}"
   [class.show]="visible"
@@ -13,25 +13,25 @@
   >
     <div
       style="position: relative; max-width: 600px;"
-      id="mn-modal-container"
+      id="p-modal-container"
       class="modal-dialog modal-{{ size }} fade-in-top"
       [class.modal-dialog-centered]="centered"
       #mnModalContent
     >
       <div
         #content
-        id="mn-modal-content"
+        id="p-modal-content"
         class="modal-content"
       >
         <div
-          id="mn-modal-header"
+          id="p-modal-header"
           class="modal-header"
         >
 
           <ng-container *ngTemplateOutlet="mnHeader"></ng-container>
 
           <button
-            id="mn-modal-close-button"
+            id="p-modal-close-button"
             type="button"
             class="close"
             (click)="visible = false"
@@ -40,14 +40,14 @@
           </button>
         </div>
         <div
-          id="mn-modal-body"
+          id="p-modal-body"
           class="modal-body"
         >
 
           <ng-container *ngTemplateOutlet="mnBody"></ng-container>
 
           <div
-            id="mn-modal-footer"
+            id="p-modal-footer"
             class="modal-footer"
           >
 

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'mn-root',
+  selector: 'p-root',
   template: `
     <router-outlet></router-outlet>
-    <mn-toaster-container></mn-toaster-container>
+    <p-toaster-container></p-toaster-container>
   `,
 })
 export class AppComponent {}

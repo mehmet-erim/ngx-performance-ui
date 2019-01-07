@@ -22,7 +22,7 @@ import { EventListenerState } from 'store/states';
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
 
 @Component({
-  selector: 'mn-modal',
+  selector: 'p-modal',
   templateUrl: './modal.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

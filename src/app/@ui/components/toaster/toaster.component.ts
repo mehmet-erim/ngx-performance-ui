@@ -10,7 +10,7 @@ import {
 import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
-  selector: 'mn-toaster',
+  selector: 'p-toaster',
   template: `
     <div #toast class="toaster alert alert-{{ type }} alert-dismissible show move-in-top">
       <div *ngIf="header" class="header">

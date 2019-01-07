@@ -17,7 +17,7 @@ import { take } from 'rxjs/operators';
 import { ComponentRef } from '@angular/core/src/render3';
 
 @Component({
-  selector: 'mn-toaster-container',
+  selector: 'p-toaster-container',
   template: `
     <div class="toast-container"><ng-container #container></ng-container></div>
   `,

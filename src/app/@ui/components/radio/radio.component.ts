@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { uuid } from '../../../@core/utils';
 
 @Component({
-  selector: 'mn-radio',
+  selector: 'p-radio',
   template: `
     <div class="custom-control custom-radio custom-control-inline {{ classes }}">
       <input
