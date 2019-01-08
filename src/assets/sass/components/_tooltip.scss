@@ -1,0 +1,16 @@
+.tooltip {
+  display: block;
+  pointer-events: none;
+}
+
+.bs-tooltip-top .arrow,
+.bs-tooltip-bottom .arrow {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bs-tooltip-left .arrow,
+.bs-tooltip-right .arrow {
+  top: 50%;
+  transform: translateY(-50%);
+}

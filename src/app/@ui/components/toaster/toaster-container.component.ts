@@ -14,7 +14,6 @@ import { ToasterComponent } from './toaster.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { isNullOrUndefined } from 'util';
 import { take } from 'rxjs/operators';
-import { ComponentRef } from '@angular/core/src/render3';
 
 @Component({
   selector: 'p-toaster-container',

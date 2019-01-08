@@ -8,7 +8,7 @@ import { EventListenerAdd } from 'store/actions/event-listener.action';
 export class EventHandler {
   constructor(private store: Store) {
     setTimeout(() => {
-      this.store.dispatch(new EventListenerAdd(['click', 'keyup']));
+      this.store.dispatch(new EventListenerAdd(['click', 'keyup', 'mousemove']));
     }, 0);
   }
 }
