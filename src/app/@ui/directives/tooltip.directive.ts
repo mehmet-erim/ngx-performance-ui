@@ -1,25 +1,27 @@
 import {
-  Directive,
-  ElementRef,
-  Input,
-  OnInit,
-  OnDestroy,
   ApplicationRef,
   ComponentFactoryResolver,
+  ComponentRef,
+  Directive,
+  ElementRef,
+  EmbeddedViewRef,
   Injector,
+  Input,
+  OnDestroy,
+  OnInit,
+  ReflectiveInjector,
+  Renderer2,
   TemplateRef,
   Type,
-  Renderer2,
   ViewContainerRef,
-  EmbeddedViewRef,
-  ComponentRef,
 } from '@angular/core';
+import { takeUntilDestroy } from '@core/utils';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { EventListenerState } from 'store/states';
-import { takeUntilDestroy } from '@core/utils';
 import { filter } from 'rxjs/operators';
+import { EventListenerState } from 'store/states';
 import { TooltipComponent } from '../components';
+import { Tooltip } from '../models';
 
 @Directive({
   selector: '[pTooltip]',
@@ -28,16 +30,19 @@ export class TooltipDirective implements OnInit, OnDestroy {
   @Input('pTooltip')
   content: string | TemplateRef<any> | Type<any>;
 
-  @Input('pTooltipTrigger')
-  trigger: 'mousemove' | 'click' = 'mousemove';
-
   @Input('pTooltipContext')
   context: any = {};
+
+  @Input('pTooltipPlacement')
+  placement: 'top' | 'left' | 'right' | 'bottom' = 'top';
+
+  @Input('pTooltipTrigger')
+  trigger: 'mousemove' | 'click' = 'mousemove';
 
   @Select(EventListenerState.getOne('mousemove'))
   mousemove$: Observable<MouseEvent>;
 
-  tooltip: ComponentRef<TooltipComponent>;
+  private tooltip: ComponentRef<TooltipComponent>;
 
   constructor(
     private appRef: ApplicationRef,
@@ -66,34 +71,24 @@ export class TooltipDirective implements OnInit, OnDestroy {
   ngOnDestroy() {}
 
   show() {
-    console.warn('show');
-    this.tooltip = this.resolver
-      .resolveComponentFactory(TooltipComponent)
-      .create(this.injector, [this.createNode(this.content)]);
+    const element = this.elRef.nativeElement as HTMLElement;
+    const injector = ReflectiveInjector.resolveAndCreate([
+      { provide: 'TOOLTIP_PROVIDER', useValue: { element, placement: this.placement } as Tooltip.Config },
+    ]);
+    const projectableNode = this.createNode(this.content);
 
-    this.tooltip.instance.style = {
-      top: this.elRef.nativeElement.offsetTop + 'px',
-      left: this.elRef.nativeElement.offsetWidth / 2 + 'px',
-    };
+    this.tooltip = this.resolver.resolveComponentFactory(TooltipComponent).create(injector, [projectableNode]);
 
     this.appRef.attachView(this.tooltip.hostView);
     this.renderer.appendChild(
       this.renderer.selectRootElement('p-root', true),
       (this.tooltip.hostView as EmbeddedViewRef<any>).rootNodes[0],
     );
-
-    // this.Modal = this.cfRes
-    //   .resolveComponentFactory(ModalComponent)
-    //   .create(injector, [projectedHeader, projectedBody, projectedFooter]);
-
-    // this.appRef.attachView(this.Modal.hostView);
-    // this.renderer.appendChild(host, (this.Modal.hostView as EmbeddedViewRef<any>).rootNodes[0]);
   }
 
   hide() {
-    console.warn('hide', this.elRef.nativeElement);
-    this.tooltip.destroy();
-    this.tooltip = null;
+    // this.tooltip.destroy();
+    // this.tooltip = null;
   }
 
   createNode(content: string | TemplateRef<any> | Type<any> = ''): Node[] {
