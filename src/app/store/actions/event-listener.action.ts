@@ -8,6 +8,12 @@ export class EventListenerAdd {
   constructor(public payload: string[] | string) {}
 }
 
+export class EventListenerScrollVertical {
+  static readonly type = '[EventListener] Scroll Vertical';
+
+  constructor(public payload: Event) {}
+}
+
 export class EventListenerRemove {
   static readonly type = '[EventListener] Remove';
   constructor(public payload: string | string[]) {}

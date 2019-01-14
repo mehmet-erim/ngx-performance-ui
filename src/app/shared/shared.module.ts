@@ -1,13 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AbstractNgModelComponent } from './abstracts/ng-model.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { AbstractNgModelComponent } from './abstracts/ng-model.component';
 
 @NgModule({
   declarations: [AbstractNgModelComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, PerfectScrollbarModule],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule, AbstractNgModelComponent, PerfectScrollbarModule],
+  imports: [PerfectScrollbarModule],
+  exports: [AbstractNgModelComponent, PerfectScrollbarModule],
   providers: [],
 })
 export class SharedModule {
