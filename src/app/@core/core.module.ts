@@ -1,14 +1,12 @@
-import { NgModule, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import * as handlers from './handlers';
 import * as directives from './directives';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import * as handlers from './handlers';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule],
+  imports: [SharedModule],
   declarations: [directives.ScrollListenerDirective],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule, directives.ScrollListenerDirective],
+  exports: [directives.ScrollListenerDirective],
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders {

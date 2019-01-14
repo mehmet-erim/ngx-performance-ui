@@ -16,12 +16,11 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { takeUntilDestroy, takeUntilNotNull } from '@core/utils';
-import { Select, Store } from '@ngxs/store';
+import { Select, Store, Actions, ofActionDispatched } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { EventListenerState } from 'store/states';
-import { LayoutPrimaryComponent } from '../../layouts';
-import { EventListenerAdd, EventListenerRemove } from '../../store/actions';
+import { EventListenerAdd, EventListenerRemove, EventListenerScrollVertical } from '../../store/actions';
 import { TooltipComponent } from '../components';
 import { Tooltip } from '../models';
 
@@ -55,6 +54,7 @@ export class TooltipDirective implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   constructor(
+    private actions: Actions,
     private appRef: ApplicationRef,
     private elRef: ElementRef,
     private injector: Injector,
@@ -134,6 +134,11 @@ export class TooltipDirective implements OnInit, OnDestroy {
       )
       .subscribe(_ => this.hide());
 
-    // this.pScrollBarRef.directiveRef.psScrollY.pipe(take(1)).subscribe(_ => this.hide());
+    this.actions
+      .pipe(
+        ofActionDispatched(EventListenerScrollVertical),
+        takeUntilNotNull(this.destroy$),
+      )
+      .subscribe(_ => this.hide());
   }
 }

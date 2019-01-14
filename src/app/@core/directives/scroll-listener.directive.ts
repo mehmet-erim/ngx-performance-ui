@@ -1,14 +1,29 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { publish } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { EventListenerScrollVertical } from 'store/actions';
+import { takeUntilDestroy } from '../utils';
 
 @Directive({ selector: 'perfect-scrollbar' })
-export class ScrollListenerDirective {
+export class ScrollListenerDirective implements OnInit, OnDestroy {
+  dispatch$ = new Subject<Event>();
+
   constructor(private store: Store) {}
 
-  @HostListener('psScrollY')
+  @HostListener('psScrollY', ['$event'])
   publish(event: Event) {
-    this.store.dispatch(new EventListenerScrollVertical(event));
+    this.dispatch$.next(event);
   }
+
+  ngOnInit() {
+    this.dispatch$
+      .pipe(
+        debounceTime(300),
+        takeUntilDestroy(this),
+      )
+      .subscribe(event => this.store.dispatch(new EventListenerScrollVertical(event)));
+  }
+
+  ngOnDestroy() {}
 }

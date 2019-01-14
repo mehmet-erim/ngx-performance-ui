@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import * as _components from './components';
 import * as _directives from './directives';
+import { CoreModule } from '@core/core.module';
 
 @NgModule({
-  imports: [SharedModule],
+  imports: [SharedModule, CoreModule],
   declarations: [
     _components.CarouselComponent,
     _components.ModalComponent,

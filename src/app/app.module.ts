@@ -29,7 +29,7 @@ import { ngxsLogExcept } from '@core/utils';
     NgxsModule.forRoot([_states.ToasterState, _states.EventListenerState]),
     NgxsLoggerPluginModule.forRoot({
       disabled: environment.production,
-      // logger: environment.production ? null : ngxsLogExcept(['EventListener']),
+      logger: environment.production ? null : ngxsLogExcept(['EventListener']),
     }),
   ],
   providers: [],
