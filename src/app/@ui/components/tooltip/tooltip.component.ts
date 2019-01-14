@@ -16,7 +16,7 @@ import { Tooltip } from '../../models';
     role: 'tooltip',
   },
   template: `
-    <div #container class="{{ classes }}" [ngStyle]="style">
+    <div #container style="position: fixed" class="{{ classes }}" [ngStyle]="style">
       <div class="tooltip-arrow arrow"></div>
       <div class="tooltip-inner"><ng-content></ng-content></div>
     </div>
@@ -43,10 +43,10 @@ export class TooltipComponent implements AfterViewInit {
   constructor(@Inject('TOOLTIP_PROVIDER') public tooltip: Tooltip.Config, private cdRef: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
-    this.setPosition();
-    console.warn(this.style);
-
-    this.cdRef.detectChanges();
+    setTimeout(() => {
+      this.setPosition();
+      this.cdRef.detectChanges();
+    }, 0);
   }
 
   setPosition() {
@@ -56,37 +56,37 @@ export class TooltipComponent implements AfterViewInit {
 
     switch (this.tooltip.placement) {
       case 'top':
-        if (top + hostHeight + 5 > innerHeight) this.tooltip.placement = 'bottom';
-        this.setY(left, top, bottom, width, hostHeight);
+        if (top - hostHeight - 5 < 0) this.tooltip.placement = 'bottom';
+        this.setY(left, top, bottom, width, hostHeight, hostWidth);
         break;
       case 'bottom':
         if (bottom + hostHeight + 5 > innerHeight) this.tooltip.placement = 'top';
-        this.setY(left, top, bottom, width, hostHeight);
+        this.setY(left, top, bottom, width, hostHeight, hostWidth);
         break;
       case 'left':
-        if (right + hostWidth + 5 > innerWidth) this.tooltip.placement = 'right';
-        this.setX(left, top, right, height, hostWidth);
+        if (left - hostWidth - 5 < 0) this.tooltip.placement = 'right';
+        this.setX(left, top, right, height, hostHeight, hostWidth);
         break;
       case 'right':
-        if (left + hostWidth + 5 > innerWidth) this.tooltip.placement = 'left';
-        this.setX(left, top, right, height, hostWidth);
+        if (right + hostWidth + 5 > innerWidth) this.tooltip.placement = 'left';
+        this.setX(left, top, right, height, hostHeight, hostWidth);
         break;
     }
   }
 
-  setY(left: number, top: number, bottom: number, width: number, hostHeight: number) {
-    this.style.left = left - width / 2 + 'px';
+  setY(left: number, top: number, bottom: number, width: number, hostHeight: number, hostWidth: number) {
+    this.style.left = left + (width - hostWidth) / 2 + 'px';
 
     this.tooltip.placement === 'top'
       ? (this.style.top = top - hostHeight - 5 + 'px')
-      : (this.style.top = bottom + hostHeight + 5 + 'px');
+      : (this.style.top = bottom + 5 + 'px');
   }
 
-  setX(left: number, top: number, right: number, height: number, hostWidth: number) {
-    this.style.top = top + height / 2 + 'px';
+  setX(left: number, top: number, right: number, height: number, hostHeight: number, hostWidth: number) {
+    this.style.top = top + (height - hostHeight) / 2 + 'px';
 
     this.tooltip.placement === 'left'
-      ? (this.style.left = right + hostWidth + 5 + 'px')
-      : (this.style.right = left + hostWidth + 5 + 'px');
+      ? (this.style.left = left - hostWidth - 5 + 'px')
+      : (this.style.left = right + 5 + 'px');
   }
 }

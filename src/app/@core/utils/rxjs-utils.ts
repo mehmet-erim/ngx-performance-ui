@@ -6,7 +6,7 @@ export function fromFork(...streams: Array<Observable<any>>): Observable<any> {
   return forkJoin(...streams.map(stream => stream.pipe(take(1))));
 }
 
-export function takeNotNulllUntil<T>(destroy$): MonoTypeOperatorFunction<T> {
+export function takeUntilNotNull<T>(destroy$): MonoTypeOperatorFunction<T> {
   return pipe(
     filter(notNull),
     takeUntil(destroy$),

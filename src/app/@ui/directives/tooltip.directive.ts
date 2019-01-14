@@ -15,11 +15,13 @@ import {
   Type,
   ViewContainerRef,
 } from '@angular/core';
-import { takeUntilDestroy } from '@core/utils';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { takeUntilDestroy, takeUntilNotNull } from '@core/utils';
+import { Select, Store } from '@ngxs/store';
+import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { EventListenerState } from 'store/states';
+import { LayoutPrimaryComponent } from '../../layouts';
+import { EventListenerAdd, EventListenerRemove } from '../../store/actions';
 import { TooltipComponent } from '../components';
 import { Tooltip } from '../models';
 
@@ -42,7 +44,15 @@ export class TooltipDirective implements OnInit, OnDestroy {
   @Select(EventListenerState.getOne('mousemove'))
   mousemove$: Observable<MouseEvent>;
 
+  @Select(EventListenerState.getOne('click'))
+  click$: Observable<MouseEvent>;
+
+  @Select(EventListenerState.getOne('resize'))
+  resize$: Observable<MouseEvent>;
+
   private tooltip: ComponentRef<TooltipComponent>;
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private appRef: ApplicationRef,
@@ -51,10 +61,11 @@ export class TooltipDirective implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private resolver: ComponentFactoryResolver,
     private vcRef: ViewContainerRef,
+    private store: Store,
   ) {}
 
   ngOnInit() {
-    this.mousemove$
+    (this.trigger === 'mousemove' ? this.mousemove$ : this.click$)
       .pipe(
         takeUntilDestroy(this),
         filter(event => !!event),
@@ -68,7 +79,9 @@ export class TooltipDirective implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.hide();
+  }
 
   show() {
     const element = this.elRef.nativeElement as HTMLElement;
@@ -84,11 +97,15 @@ export class TooltipDirective implements OnInit, OnDestroy {
       this.renderer.selectRootElement('p-root', true),
       (this.tooltip.hostView as EmbeddedViewRef<any>).rootNodes[0],
     );
+
+    this.subscribeTo();
   }
 
   hide() {
-    // this.tooltip.destroy();
-    // this.tooltip = null;
+    this.tooltip.destroy();
+    this.tooltip = null;
+    this.destroy$.next();
+    this.store.dispatch(new EventListenerRemove('resize'));
   }
 
   createNode(content: string | TemplateRef<any> | Type<any> = ''): Node[] {
@@ -105,5 +122,18 @@ export class TooltipDirective implements OnInit, OnDestroy {
       location: { nativeElement },
     } = factory.create(this.injector);
     return [nativeElement];
+  }
+
+  subscribeTo() {
+    this.store.dispatch(new EventListenerAdd('resize'));
+
+    this.resize$
+      .pipe(
+        filter(event => !!event),
+        takeUntilNotNull(this.destroy$),
+      )
+      .subscribe(_ => this.hide());
+
+    // this.pScrollBarRef.directiveRef.psScrollY.pipe(take(1)).subscribe(_ => this.hide());
   }
 }

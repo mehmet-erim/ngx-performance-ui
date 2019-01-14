@@ -46,11 +46,15 @@ export class EventListenerState {
   }
 
   @Action(EventListenerRemove)
-  removeEventListener(_, { payload }: EventListenerRemove) {
+  removeEventListener({ patchState }: StateContext<EventListener.State>, { payload }: EventListenerRemove) {
     transformToArray(payload).forEach(key => {
       if (this.subscriptions[key]) {
         this.subscriptions[key].unsubscribe();
-        this.subscriptions[key] = null;
+        delete this.subscriptions[key];
+
+        patchState({
+          [key]: null,
+        });
       }
     });
   }

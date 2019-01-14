@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white op-8">
+<nav
+  #header
+  class="navbar navbar-expand-lg navbar-dark bg-primary text-white op-8"
+>
   <div class="container py-2">
     <a
       routerLink="/"
@@ -30,6 +33,11 @@
   </div>
 </nav>
 
-<div class="container py-5">
-  <router-outlet></router-outlet>
-</div>
+<perfect-scrollbar
+  class="col xc-layout-primary-content"
+  [style.max-height]="contentMaxHeight"
+>
+  <div class="container py-5">
+    <router-outlet></router-outlet>
+  </div>
+</perfect-scrollbar>

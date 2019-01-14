@@ -10,5 +10,5 @@ export class EventListenerAdd {
 
 export class EventListenerRemove {
   static readonly type = '[EventListener] Remove';
-  constructor(public payload: string[]) {}
+  constructor(public payload: string | string[]) {}
 }
