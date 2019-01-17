@@ -1,2 +1,3 @@
-export * from './event-listener.action';
-export * from './toaster.action';
+export * from './event-listener.actions';
+export * from './layout.actions';
+export * from './toaster.actions';

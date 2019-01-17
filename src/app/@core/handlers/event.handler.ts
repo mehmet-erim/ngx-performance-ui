@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { EventListenerAdd } from 'store/actions/event-listener.action';
+import { EventListenerAdd } from 'store/actions/event-listener.actions';
 
 @Injectable({
   providedIn: 'root',

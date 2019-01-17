@@ -1,6 +1,7 @@
 import { Component, Input, forwardRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { uuid } from '../../../@core/utils';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { uuid } from '@core/utils';
+import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
 
 @Component({
   selector: 'p-radio',
@@ -9,9 +10,9 @@ import { uuid } from '../../../@core/utils';
       <input
         [attr.id]="id"
         [attr.name]="name"
-        [attr.value]="radioValue"
-        [attr.checked]="value && value === radioValue"
+        [value]="radioValue"
         [disabled]="disabled"
+        [(ngModel)]="value"
         type="radio"
         class="custom-control-input"
       />
@@ -28,7 +29,7 @@ import { uuid } from '../../../@core/utils';
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
 })
-export class RadioComponent implements ControlValueAccessor {
+export class RadioComponent extends AbstractNgModelComponent {
   @Input()
   classes: string;
 
@@ -40,49 +41,4 @@ export class RadioComponent implements ControlValueAccessor {
 
   @Input()
   radioValue: any;
-
-  disabled: boolean;
-
-  private _value: any;
-
-  set value(value: any) {
-    this._value = value;
-    this.notifyValueChange();
-  }
-
-  get value(): any {
-    return this._value;
-  }
-
-  onChange: (value) => {};
-  onTouched: () => {};
-
-  constructor() {}
-
-  notifyValueChange(): void {
-    if (this.onChange) {
-      this.onChange(this.value);
-    }
-  }
-
-  writeValue(obj: any): void {
-    this._value = obj;
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
-  onClick() {
-    console.log(this.value, this.radioValue);
-    this.value = this.radioValue;
-  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { ToasterShow } from 'store/actions';
+import { ToasterShow, LayoutScroll } from 'store/actions';
 import { Toaster } from 'store/models';
 
 @Component({
@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   selectValue;
 
   isModalShow;
+
+  radio: 'one' | 'two' = 'two';
 
   constructor(private store: Store) {}
 
@@ -32,5 +34,13 @@ export class HomeComponent implements OnInit {
 
   log(val) {
     console.warn(val);
+  }
+
+  scrollTo(location: 'top' | 'bottom') {
+    this.store.dispatch(new LayoutScroll(location));
+  }
+
+  onChangeRadio(value) {
+    console.log(value);
   }
 }

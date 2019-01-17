@@ -1,19 +1,26 @@
 import { ControlValueAccessor } from '@angular/forms';
 import { ChangeDetectorRef, Component, Injector, Input } from '@angular/core';
 
-// Not an abstract class on purpose. Do not change!
-
 @Component({ template: '' })
-export class AbstractNgModelComponent<T = any> implements ControlValueAccessor {
-  @Input()
-  disabled: boolean;
-
+export class AbstractNgModelComponent<T = any, U = T> implements ControlValueAccessor {
   protected _value: T;
 
   @Input()
+  disabled: boolean;
+
+  @Input()
+  valueFn: (value: U, previousValue?: T) => T = value => (value as any) as T;
+
+  @Input()
+  valueLimitFn: (value: T, previousValue?: T) => any = value => false;
+
+  @Input()
   set value(value: T) {
-    if (this.valueLimitFn(value) !== false) return;
-    this._value = this.valueFn(value);
+    value = this.valueFn((value as any) as U, this._value);
+
+    if (this.valueLimitFn(value, this._value) !== false) return;
+
+    this._value = value;
     this.notifyValueChange();
   }
 
@@ -25,11 +32,8 @@ export class AbstractNgModelComponent<T = any> implements ControlValueAccessor {
     return this._value;
   }
 
-  onChange: (value) => {};
+  onChange: (value: T) => {};
   onTouched: () => {};
-
-  valueFn: (value: any) => T = value => value;
-  valueLimitFn: (value: any) => any = value => false;
 
   protected cdRef: ChangeDetectorRef;
 
@@ -44,7 +48,7 @@ export class AbstractNgModelComponent<T = any> implements ControlValueAccessor {
   }
 
   writeValue(value: T): void {
-    this._value = this.valueLimitFn(value) || value;
+    this._value = this.valueLimitFn(value, this._value) || value;
     setTimeout(() => this.cdRef.detectChanges(), 0);
   }
 
