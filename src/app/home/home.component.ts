@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
 
   radio: 'one' | 'two' = 'two';
 
+  page = 0;
+
   constructor(private store: Store) {}
 
   ngOnInit() {}

@@ -261,7 +261,8 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <p-pagination></p-pagination>
+              <p-pagination [(ngModel)]="page"></p-pagination>
+              <pre>{{page}}</pre>
             </div>
           </div>
         </div>

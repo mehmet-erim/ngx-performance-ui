@@ -1,25 +1,22 @@
 <ul class="pagination">
-  <li class="page-item">
-    <a
-      class="page-link"
-      aria-label="Previous"
-    >
-      <span aria-hidden="true">&laquo;</span>
-      <span class="sr-only">Previous</span>
-    </a>
-  </li>
-
   <li
+    [class.disabled]="value === 1"
+    (click)="change(value - 1)"
     class="page-item"
-    *ngFor="let page of pageArray"
-  ><a class="page-link">{{page.label || page.value}}</a></li>
-  <li class="page-item">
-    <a
-      class="page-link"
-      aria-label="Next"
-    >
-      <span aria-hidden="true">&raquo;</span>
-      <span class="sr-only">Next</span>
-    </a>
+  >
+    <span class="page-link">{{ previousLabel }}</span>
+  </li>
+  <li
+    *ngFor="let page of pages"
+    [class.active]="page.value === value"
+    (click)="change(page.value)"
+    class="page-item"
+  ><span class="page-link">{{page.label || page.value}}</span></li>
+  <li
+    [class.disabled]="value === totalPages"
+    (click)="change(value + 1)"
+    class="page-item"
+  >
+    <span class="page-link">{{ nextLabel }}</span>
   </li>
 </ul>
