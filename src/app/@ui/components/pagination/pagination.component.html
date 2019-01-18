@@ -1,0 +1,25 @@
+<ul class="pagination">
+  <li class="page-item">
+    <a
+      class="page-link"
+      aria-label="Previous"
+    >
+      <span aria-hidden="true">&laquo;</span>
+      <span class="sr-only">Previous</span>
+    </a>
+  </li>
+
+  <li
+    class="page-item"
+    *ngFor="let page of pageArray"
+  ><a class="page-link">{{page.label || page.value}}</a></li>
+  <li class="page-item">
+    <a
+      class="page-link"
+      aria-label="Next"
+    >
+      <span aria-hidden="true">&raquo;</span>
+      <span class="sr-only">Next</span>
+    </a>
+  </li>
+</ul>

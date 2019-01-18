@@ -9,6 +9,7 @@ import { CoreModule } from '@core/core.module';
   declarations: [
     _components.CarouselComponent,
     _components.ModalComponent,
+    _components.PaginationComponent,
     _components.RadioComponent,
     _components.SelectComponent,
     _components.ToasterComponent,
@@ -22,6 +23,7 @@ import { CoreModule } from '@core/core.module';
   exports: [
     _components.CarouselComponent,
     _components.ModalComponent,
+    _components.PaginationComponent,
     _components.RadioComponent,
     _components.SelectComponent,
     _components.ToasterComponent,
