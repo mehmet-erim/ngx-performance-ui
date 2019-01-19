@@ -5,7 +5,7 @@ import { DOCUMENT } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
-export class LazyLoadingScriptService {
+export class LazyLoadScriptService {
   _loadedLibraries: { [url: string]: ReplaySubject<any> } = {};
 
   constructor(@Inject(DOCUMENT) private readonly document: Document) {}

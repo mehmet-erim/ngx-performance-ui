@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { LazyLoadingScriptService } from '@core/services/lazy-load-script.service';
+import { LazyLoadScriptService } from '@core/services/lazy-load-script.service';
 import { map, filter, take, switchMap } from 'rxjs/operators';
 import { Carousel } from '../../models';
 
@@ -46,7 +46,7 @@ const SLICK_DEFAULTS = {
 })
 export class CarouselComponent implements AfterContentInit {
   @Input() config: Carousel.Config;
-  constructor(private lazyLoadService: LazyLoadingScriptService) {}
+  constructor(private lazyLoadService: LazyLoadScriptService) {}
 
   ngAfterContentInit() {
     this.lazyLoadService
