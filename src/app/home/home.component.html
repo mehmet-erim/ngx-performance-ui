@@ -80,7 +80,7 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col">
+            <div class="col-12">
               <div class="form-group">
                 <p-select
                   placeholder="Select an option"
@@ -261,8 +261,77 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <p-pagination [(ngModel)]="page"></p-pagination>
-              <pre>{{page}}</pre>
+              <div class="form-group">
+                <p-select
+                  selectClass="form-control"
+                  placeholder="Pagination Range"
+                  [options]="[5, 7, 9, 11]"
+                  [(ngModel)]="page.paginationRange"
+                ></p-select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="page.totalPages"
+                  placeholder="Total Pages"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="page.previousLabel"
+                  placeholder="Previous Label"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="page.nextLabel"
+                  placeholder="Next Label"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <p-select
+                  selectClass="form-control"
+                  placeholder="Alignment"
+                  [options]="['start', 'center', 'end']"
+                  [(ngModel)]="page.alignment"
+                ></p-select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <p-select
+                  selectClass="form-control"
+                  placeholder="Size"
+                  [options]="['sm', 'md', 'lg']"
+                  [(ngModel)]="page.size"
+                ></p-select>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-1">
+            <div class="col-12">
+              <p-pagination
+                [paginationRange]="page.paginationRange"
+                [totalPages]="page.totalPages"
+                [previousLabel]="page.previousLabel"
+                [nextLabel]="page.nextLabel"
+                [alignment]="page.alignment"
+                [size]="page.size"
+                [(ngModel)]="page.value"
+              ></p-pagination>
             </div>
           </div>
         </div>

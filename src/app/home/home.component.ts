@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { ToasterShow, LayoutScroll } from 'store/actions';
 import { Toaster } from 'store/models';
+import { PaginationComponent } from '@ui/components';
 
 @Component({
   selector: 'p-home',
@@ -16,7 +17,12 @@ export class HomeComponent implements OnInit {
 
   radio: 'one' | 'two' = 'two';
 
-  page = 0;
+  page = {
+    totalPages: 15,
+    paginationRange: 7,
+    previousLabel: 'Previous',
+    nextLabel: 'Next',
+  } as PaginationComponent;
 
   constructor(private store: Store) {}
 

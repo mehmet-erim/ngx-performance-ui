@@ -17,7 +17,13 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class PaginationComponent extends AbstractNgModelComponent<number> {
   @Input()
-  paginationRange: number = 7;
+  alignment: 'start' | 'center' | 'end' = 'start';
+
+  @Input()
+  classes: string = '';
+
+  @Input()
+  paginationRange: 5 | 7 | 9 | 11 = 7;
 
   @Input()
   totalPages: number = 15;
@@ -27,6 +33,9 @@ export class PaginationComponent extends AbstractNgModelComponent<number> {
 
   @Input()
   nextLabel: string = 'Next';
+
+  @Input()
+  size: 'sm' | 'md' | 'lg' = 'sm';
 
   @Input()
   ngModel: number;
