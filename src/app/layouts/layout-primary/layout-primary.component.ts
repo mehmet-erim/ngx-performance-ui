@@ -7,6 +7,14 @@ import { LayoutScroll } from 'store/actions';
 @Component({
   selector: 'p-layout-primary',
   templateUrl: './layout-primary.component.html',
+  styles: [
+    `
+      html,
+      body {
+        overflow-y: hidden;
+      }
+    `,
+  ],
 })
 export class LayoutPrimaryComponent implements OnDestroy {
   @ViewChild(PerfectScrollbarComponent) public pScrollbarRef: PerfectScrollbarComponent;
