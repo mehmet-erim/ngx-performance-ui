@@ -1,11 +1,23 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { RouterModule, Routes } from '@angular/router';
+import { LayoutPrimaryComponent } from '../layouts';
+import { ChartsComponent } from './components/charts/charts.component';
+import { ShowcaseComponent } from './components/showcase/showcase.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: LayoutPrimaryComponent,
+    children: [
+      {
+        path: '',
+        component: ShowcaseComponent,
+      },
+      {
+        path: 'charts',
+        component: ChartsComponent,
+      },
+    ],
   },
 ];
 

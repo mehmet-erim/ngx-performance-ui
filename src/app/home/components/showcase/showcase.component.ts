@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { ToasterShow, LayoutScroll } from 'store/actions';
 import { Toaster } from 'store/models';
 import { PaginationComponent } from '@ui/components';
+import { Store } from '@ngxs/store';
+import { ToasterShow, LayoutScroll } from 'store/actions';
 
 @Component({
-  selector: 'p-home',
-  templateUrl: './home.component.html',
+  selector: 'p-showcase',
+  templateUrl: './showcase.component.html',
+  styles: [],
 })
-export class HomeComponent implements OnInit {
+export class ShowcaseComponent implements OnInit {
   toaster = { closeOnClick: false, type: 'primary' } as Toaster.State;
 
   selectValue;

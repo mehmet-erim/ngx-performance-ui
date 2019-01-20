@@ -8,6 +8,7 @@ import { CoreModule } from '@core/core.module';
   imports: [SharedModule, CoreModule],
   declarations: [
     _components.CarouselComponent,
+    _components.GoogleChartComponent,
     _components.ModalComponent,
     _components.PaginationComponent,
     _components.RadioComponent,
@@ -22,6 +23,7 @@ import { CoreModule } from '@core/core.module';
   entryComponents: [_components.ToasterComponent, _components.TooltipComponent],
   exports: [
     _components.CarouselComponent,
+    _components.GoogleChartComponent,
     _components.ModalComponent,
     _components.PaginationComponent,
     _components.RadioComponent,

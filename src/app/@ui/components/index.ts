@@ -1,4 +1,5 @@
 export * from './carousel/carousel.component';
+export * from './google-chart/google-chart.component';
 export * from './modal/modal.component';
 export * from './pagination/pagination.component';
 export * from './radio/radio.component';

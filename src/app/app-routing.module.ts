@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LayoutPrimaryComponent } from './layouts';
+import { RouterModule, Routes } from '@angular/router';
+import { RouterOutletComponent } from './@core/components';
 
 const routes: Routes = [
   {
     path: 'home',
-    pathMatch: 'full',
-    component: LayoutPrimaryComponent,
+    component: RouterOutletComponent,
     children: [
       {
         path: '',

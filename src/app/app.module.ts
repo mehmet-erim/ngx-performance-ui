@@ -1,21 +1,19 @@
-import { environment } from '../environments/environment';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from '@core/core.module';
+import { ngxsLogExcept } from '@core/utils';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsModule } from '@ngxs/store';
+import { UiModule } from '@ui/ui.module';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UiModule } from '@ui/ui.module';
-import { CoreModule } from '@core/core.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxsModule } from '@ngxs/store';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import * as _states from './store/states';
-import { LayoutPrimaryComponent } from './layouts';
 import { SharedModule } from './shared/shared.module';
-import { ngxsLogExcept } from '@core/utils';
+import * as _states from './store/states';
 
 @NgModule({
-  declarations: [AppComponent, LayoutPrimaryComponent],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,

@@ -103,8 +103,10 @@ export class TooltipDirective implements OnInit, OnDestroy {
   }
 
   hide() {
-    this.tooltip.destroy();
-    this.tooltip = null;
+    if (this.tooltip) {
+      this.tooltip.destroy();
+      this.tooltip = null;
+    }
     this.destroy$.next();
     this.store.dispatch(new EventListenerRemove('resize'));
   }
