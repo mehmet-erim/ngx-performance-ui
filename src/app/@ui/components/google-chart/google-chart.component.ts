@@ -1,37 +1,84 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { take } from 'rxjs/operators';
 import { LazyLoadScriptService } from '../../../@core/services/lazy-load-script.service';
+import { GoogleChart } from '../../models';
 
 declare var google;
 
+// https://developers.google.com/chart/interactive/docs/
 @Component({
   selector: 'p-google-chart',
   template: `
-    <div #chartContainer style="width: 100%; height: 500px;"></div>
+    <div #chartContainer class="{{ containerClasses }}" [ngStyle]="style"></div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class GoogleChartComponent implements AfterViewInit {
   @Input()
+  chartType: 'AnnotationChart' | 'AreaChart' = 'AreaChart';
+
+  @Input()
+  dataTable: any[];
+
+  @Input()
+  columns: GoogleChart.Column[];
+
+  @Input()
+  rows: Array<any[]>;
+
+  @Input()
+  options: GoogleChart.AnnotationOption;
+
+  @Input()
+  style: { [key: string]: string | number } = { width: '100%', height: 'auto' };
+
+  @Input()
+  containerClasses: string = '';
+
+  @Input()
   drawFn = _ => {
-    const data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses'],
-      ['2013', 1000, 400],
-      ['2014', 1170, 460],
-      ['2015', 660, 1120],
-      ['2016', 1030, 540],
-    ]);
+    if (this.dataTable && this.dataTable.length) {
+      this.data = google.visualization.arrayToDataTable(this.dataTable);
+    } else if (this.columns && this.columns.length && this.rows && this.rows.length) {
+      this.data = new google.visualization.DataTable();
+      this.columns.forEach(column => this.data.addColumn(column.type, column.label));
+      this.data.addRows(this.rows);
+    } else {
+      console.error('Must set datatable or columns and rows inputs');
+      return;
+    }
 
-    const options = {
-      title: 'Company Performance',
-      hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
-      vAxis: { minValue: 0 },
-    };
+    this.chart = new google.visualization[this.chartType](this.chartContainer.nativeElement);
+    this.chart.draw(this.data, this.options);
 
-    const chart = new google.visualization.AreaChart(this.chartContainer.nativeElement);
-    chart.draw(data, options);
+    this.ready.emit();
   };
 
+  @Output()
+  ready = new EventEmitter<void>();
+
   @ViewChild('chartContainer') chartContainer: ElementRef;
+
+  public chart: any;
+
+  public data: any;
+
+  get packages(): string[] {
+    if (this.chartType === 'AnnotationChart') return [this.chartType.toLowerCase()];
+
+    return ['corechart'];
+  }
 
   constructor(private lazyLoadScriptService: LazyLoadScriptService) {}
 
@@ -40,7 +87,7 @@ export class GoogleChartComponent implements AfterViewInit {
       .loadScript('https://www.gstatic.com/charts/loader.js')
       .pipe(take(1))
       .subscribe(_ => {
-        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.load('current', { packages: this.packages });
         google.charts.setOnLoadCallback(this.drawFn);
       });
   }

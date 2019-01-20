@@ -136,7 +136,10 @@
       <div class="card">
         <div class="card-header">
           Tooltip
-          <small (mouseover)="tooltipButton.hide();">Mouse over and hide click to trigger tooltip</small>
+          <small
+            class="float-right"
+            (mouseover)="tooltipButton.hide();"
+          >Mouse over and hide click to trigger tooltip</small>
         </div>
         <div class="card-body">
           <div class="row">
