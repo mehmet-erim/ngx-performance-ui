@@ -136,6 +136,7 @@
       <div class="card">
         <div class="card-header">
           Tooltip
+          <small (mouseover)="tooltipButton.hide();">Mouse over and hide click to trigger tooltip</small>
         </div>
         <div class="card-body">
           <div class="row">
@@ -167,6 +168,7 @@
                 class="btn btn-sm btn-secondary ml-1"
                 [pTooltip]="tooltipTemplate"
                 [pTooltipTrigger]="'click'"
+                #tooltipButton="pTooltip"
               >Click to trigger</button>
             </div>
           </div>

@@ -26,6 +26,7 @@ import { Tooltip } from '../models';
 
 @Directive({
   selector: '[pTooltip]',
+  exportAs: 'pTooltip',
 })
 export class TooltipDirective implements OnInit, OnDestroy {
   @Input('pTooltip')
