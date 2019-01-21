@@ -66,12 +66,12 @@ export class PaginationComponent extends AbstractNgModelComponent<number> {
 
       return {
         value:
-          halfWay > i
-            ? i
-            : this.paginationRange - halfWay < i
-            ? this.totalPages - (this.paginationRange - i)
-            : this.value - halfWay + i - 1,
-        label: halfWay === i || this.paginationRange - halfWay + 1 === i ? '...' : null,
+          i === 1
+            ? 1
+            : i === this.paginationRange
+            ? this.totalPages
+            : this.value + (halfWay - this.paginationRange + i),
+        label: 2 === i || this.paginationRange - 1 === i ? '...' : null,
       };
     });
   }
