@@ -9,6 +9,9 @@ export class AbstractNgModelComponent<T = any, U = T> implements ControlValueAcc
   disabled: boolean;
 
   @Input()
+  ngModel: number;
+
+  @Input()
   valueFn: (value: U, previousValue?: T) => T = value => (value as any) as T;
 
   @Input()

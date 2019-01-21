@@ -37,9 +37,6 @@ export class PaginationComponent extends AbstractNgModelComponent<number> {
   @Input()
   size: 'sm' | 'md' | 'lg' = 'sm';
 
-  @Input()
-  ngModel: number;
-
   get pages(): Array<{ value: number; label?: string }> {
     if (this.paginationRange >= this.totalPages) {
       return Array.apply(null, { length: this.totalPages }).map((_, index) => ({ value: index + 1 }));
