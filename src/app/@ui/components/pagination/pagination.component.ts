@@ -4,7 +4,24 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'p-pagination',
-  templateUrl: './pagination.component.html',
+  template: `
+    <ul class="pagination pagination-{{ size }} justify-content-{{ alignment }}">
+      <li [class.disabled]="value === 1" (click)="change(value - 1)" class="page-item">
+        <span class="page-link">{{ previousLabel }}</span>
+      </li>
+      <li
+        *ngFor="let page of pages"
+        [class.active]="page.value === value"
+        (click)="change(page.value)"
+        class="page-item"
+      >
+        <span class="page-link">{{ page.label || page.value }}</span>
+      </li>
+      <li [class.disabled]="value === totalPages" (click)="change(value + 1)" class="page-item">
+        <span class="page-link">{{ nextLabel }}</span>
+      </li>
+    </ul>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   providers: [

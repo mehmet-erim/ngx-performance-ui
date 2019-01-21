@@ -3,6 +3,8 @@ import { Toaster } from 'store/models';
 import { PaginationComponent } from '@ui/components';
 import { Store } from '@ngxs/store';
 import { ToasterShow, LayoutScroll } from 'store/actions';
+import { Mask } from '@core/models';
+import { transformByRegex } from '../../../@core/utils';
 
 @Component({
   selector: 'p-showcase',
@@ -13,6 +15,12 @@ export class ShowcaseComponent implements OnInit {
   toaster = { closeOnClick: false, type: 'primary' } as Toaster.State;
 
   selectValue;
+
+  inputValue = '';
+
+  textMask: Mask.Config = {
+    mask: ['+', '9', '0', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+  };
 
   isModalShow;
 
@@ -27,7 +35,9 @@ export class ShowcaseComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(transformByRegex(53088299121, this.textMask));
+  }
 
   showToaster() {
     this.store.dispatch(

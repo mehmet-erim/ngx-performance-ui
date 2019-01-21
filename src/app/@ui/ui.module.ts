@@ -9,6 +9,7 @@ import { CoreModule } from '@core/core.module';
   declarations: [
     _components.CarouselComponent,
     _components.GoogleChartComponent,
+    _components.InputComponent,
     _components.ModalComponent,
     _components.PaginationComponent,
     _components.RadioComponent,
@@ -24,6 +25,7 @@ import { CoreModule } from '@core/core.module';
   exports: [
     _components.CarouselComponent,
     _components.GoogleChartComponent,
+    _components.InputComponent,
     _components.ModalComponent,
     _components.PaginationComponent,
     _components.RadioComponent,

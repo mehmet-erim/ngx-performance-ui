@@ -9,6 +9,9 @@ export class AbstractNgModelComponent<T = any, U = T> implements ControlValueAcc
   disabled: boolean;
 
   @Input()
+  id: string;
+
+  @Input()
   ngModel: number;
 
   @Input()

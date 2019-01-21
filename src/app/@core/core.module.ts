@@ -4,11 +4,12 @@ import { SharedModule } from '../shared/shared.module';
 import * as components from './components';
 import * as directives from './directives';
 import * as handlers from './handlers';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
-  imports: [RouterModule, SharedModule],
+  imports: [RouterModule, SharedModule, TextMaskModule],
   declarations: [components.RouterOutletComponent, directives.ScrollListenerDirective],
-  exports: [components.RouterOutletComponent, directives.ScrollListenerDirective],
+  exports: [components.RouterOutletComponent, directives.ScrollListenerDirective, TextMaskModule],
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders {

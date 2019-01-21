@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-md-6  my-3">
+    <div class="col-12 col-md-6 my-3">
       <div class="card">
         <div class="card-header">
           Select
@@ -88,6 +88,33 @@
                   (select)="log($event)"
                   [(ngModel)]="selectValue"
                 ></p-select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">
+          Input
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <p-input
+                  [(ngModel)]="inputValue"
+                  [textMask]="textMask"
+                  placeholder="Enter phone number"
+                  type="text"
+                  labelText="Phone Number"
+                  helpText="Please enter Turkey phone format"
+                  id="phone-number"
+                ></p-input>
               </div>
             </div>
           </div>
