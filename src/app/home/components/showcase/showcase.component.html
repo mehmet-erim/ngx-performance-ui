@@ -109,6 +109,8 @@
                 <p-input
                   [(ngModel)]="inputValue"
                   [textMask]="textMask"
+                  [autofocus]="true"
+                  [autofocusDelay]="10000"
                   placeholder="Enter phone number"
                   type="text"
                   labelText="Phone Number"
@@ -116,6 +118,37 @@
                   id="phone-number"
                 ></p-input>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">
+          Radio
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+    
+              <p-radio
+                [radioValue]="'one'"
+                [(ngModel)]="radio"
+                (ngModelChange)="onChangeRadio($event)"
+              >One</p-radio>
+              <p-radio
+                [radioValue]="'two'"
+                [(ngModel)]="radio"
+                (ngModelChange)="onChangeRadio($event)"
+              >Two</p-radio>
+              <p-radio
+                [radioValue]="'three'"
+                [(ngModel)]="radio"
+                (ngModelChange)="onChangeRadio($event)"
+              >Three</p-radio>
+              {{'Value: ' + radio}}
             </div>
           </div>
         </div>
@@ -257,38 +290,7 @@
     <div class="col-12 col-md-6 my-3">
       <div class="card">
         <div class="card-header">
-          Radio
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-
-              <p-radio
-                [radioValue]="'one'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >One</p-radio>
-              <p-radio
-                [radioValue]="'two'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >Two</p-radio>
-              <p-radio
-                [radioValue]="'three'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >Three</p-radio>
-              {{'Value: ' + radio}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 my-3">
-      <div class="card">
-        <div class="card-header">
-          Radio
+          Pagination
         </div>
         <div class="card-body">
           <div class="row">

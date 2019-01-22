@@ -33,7 +33,8 @@ import { Mask } from '@core/models';
       [attr.autocorrect]="autocorrect"
       [attr.spellcheck]="spellcheck"
       [required]="required"
-      [pAutoFocus]="autofocus"
+      [autofocus]="autofocus"
+      [autofocusDelay]="autofocusDelay"
       (change)="onChange($event)"
       (keyup)="keyup.emit($event)"
       (focus)="focus.emit($event)"
@@ -63,6 +64,8 @@ export class InputComponent extends AbstractNgModelComponent {
     return this._textMask;
   }
   @Input() autofocus: boolean = false;
+
+  @Input() autofocusDelay: number = 0;
 
   @Input() classes: string;
 
