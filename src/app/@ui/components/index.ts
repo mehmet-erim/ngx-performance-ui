@@ -3,6 +3,7 @@ export * from './google-chart/google-chart.component';
 export * from './input/input.component';
 export * from './modal/modal.component';
 export * from './pagination/pagination.component';
+export * from './popover/popover.component';
 export * from './radio/radio.component';
 export * from './select/select.component';
 export * from './toaster/toaster.component';

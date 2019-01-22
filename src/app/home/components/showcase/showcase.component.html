@@ -1,43 +1,27 @@
 <div class="container">
-  <h2>Showcase
-    <hr>
+  <h2>
+    Showcase
+    <hr />
   </h2>
   <div class="row">
     <div class="col-12 col-md-6 my-3">
       <div class="card">
-        <div class="card-header">
-          Toaster
-        </div>
+        <div class="card-header">Toaster</div>
         <div class="card-body">
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  [(ngModel)]="toaster.header"
-                  placeholder="Header"
-                >
+                <input class="form-control" type="text" [(ngModel)]="toaster.header" placeholder="Header" />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  [(ngModel)]="toaster.body"
-                  placeholder="Body"
-                >
+                <input class="form-control" type="text" [(ngModel)]="toaster.body" placeholder="Body" />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="number"
-                  [(ngModel)]="toaster.timeout"
-                  placeholder="Timeout"
-                >
+                <input class="form-control" type="number" [(ngModel)]="toaster.timeout" placeholder="Timeout" />
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -56,35 +40,26 @@
                   class="form-check-input"
                   [(ngModel)]="toaster.closeOnClick"
                   id="close-on-click"
-                >
-                <label
-                  class="form-check-label"
-                  for="close-on-click"
-                >Close On Click</label>
+                />
+                <label class="form-check-label" for="close-on-click">Close On Click</label>
               </div>
             </div>
           </div>
         </div>
-        <button
-          type="button"
-          class="mt-1 ml-1 btn btn-info"
-          (click)="showToaster()"
-        >Dispatch toaster</button>
+        <button type="button" class="mt-1 ml-1 btn btn-info" (click)="showToaster()">Dispatch toaster</button>
       </div>
     </div>
 
     <div class="col-12 col-md-6 my-3">
       <div class="card">
-        <div class="card-header">
-          Select
-        </div>
+        <div class="card-header">Select</div>
         <div class="card-body">
           <div class="row">
             <div class="col-12">
               <div class="form-group">
                 <p-select
                   placeholder="Select an option"
-                  [options]="['Lorem', 205, {label: 'Lorem ipsum', value: 'lorem_ipsum'}]"
+                  [options]="['Lorem', 205, { label: 'Lorem ipsum', value: 'lorem_ipsum' }]"
                   (select)="log($event)"
                   [(ngModel)]="selectValue"
                 ></p-select>
@@ -99,9 +74,7 @@
   <div class="row">
     <div class="col-12 col-md-6 my-3">
       <div class="card">
-        <div class="card-header">
-          Input
-        </div>
+        <div class="card-header">Input</div>
         <div class="card-body">
           <div class="row">
             <div class="col-12">
@@ -126,29 +99,16 @@
 
     <div class="col-12 col-md-6 my-3">
       <div class="card">
-        <div class="card-header">
-          Radio
-        </div>
+        <div class="card-header">Radio</div>
         <div class="card-body">
           <div class="row">
             <div class="col">
-    
-              <p-radio
-                [radioValue]="'one'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >One</p-radio>
-              <p-radio
-                [radioValue]="'two'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >Two</p-radio>
-              <p-radio
-                [radioValue]="'three'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >Three</p-radio>
-              {{'Value: ' + radio}}
+              <p-radio [radioValue]="'one'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)">One</p-radio>
+              <p-radio [radioValue]="'two'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)">Two</p-radio>
+              <p-radio [radioValue]="'three'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)"
+                >Three</p-radio
+              >
+              {{ 'Value: ' + radio }}
             </div>
           </div>
         </div>
@@ -157,101 +117,35 @@
   </div>
 
   <div class="row mt-3">
-    <div class="col-12 col-md-6  my-3">
-      <div class="card">
-        <div class="card-header">
-          Carousel
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <p-carousel>
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x201/"
-                  class="img-thumbnail"
-                >
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x202/"
-                  class="img-thumbnail"
-                >
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x203/"
-                  class="img-thumbnail"
-                >
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x204/"
-                  class="img-thumbnail"
-                >
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x200/"
-                  class="img-thumbnail"
-                >
-              </p-carousel>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="col-12 col-md-6 my-3">
       <div class="card">
         <div class="card-header">
           Tooltip
-          <small
-            class="float-right"
-            (mouseover)="tooltipButton.hide();"
-          >Mouse over and hide click to trigger tooltip</small>
+          <small class="float-right" (mouseover)="tooltipButton.hide()"
+            >Mouse over and hide click to trigger tooltip</small
+          >
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <button
-                class="btn btn-sm btn-secondary"
-                pTooltip="tooltip on top"
-              >Top</button>
-              <button
-                class="btn btn-sm btn-secondary ml-1"
-                pTooltip="tooltip on bottom"
-                pTooltipPlacement="bottom"
-              >Bottom</button>
-              <button
-                class="btn btn-sm btn-secondary ml-1"
-                pTooltip="tooltip on left"
-                pTooltipPlacement="left"
-              >Left</button>
-              <button
-                class="btn btn-sm btn-secondary ml-1"
-                pTooltip="tooltip on right"
-                pTooltipPlacement="right"
-              >Right</button>
-              <button
-                class="btn btn-sm btn-secondary ml-1"
-                [pTooltip]="tooltipTemplate"
-              >Template</button>
+              <button class="btn btn-sm btn-secondary" pTooltip="tooltip on top">Top</button>
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on bottom" pTooltipPlacement="bottom">
+                Bottom
+              </button>
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on left" pTooltipPlacement="left">
+                Left
+              </button>
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on right" pTooltipPlacement="right">
+                Right
+              </button>
+              <button class="btn btn-sm btn-secondary ml-1" [pTooltip]="tooltipTemplate">Template</button>
               <button
                 class="btn btn-sm btn-secondary ml-1"
                 [pTooltip]="tooltipTemplate"
                 [pTooltipTrigger]="'click'"
                 #tooltipButton="pTooltip"
-              >Click to trigger</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6  my-3">
-      <div class="card">
-        <div class="card-header">
-          Modal
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="isModalShow = true"
               >
-                Launch demo modal
+                Click to trigger
               </button>
             </div>
           </div>
@@ -262,23 +156,49 @@
     <div class="col-12 col-md-6 my-3">
       <div class="card">
         <div class="card-header">
-          Layout Scroll
+          Popover
+          <!-- <small class="float-right" (mouseover)="tooltipButton.hide()"
+            >Mouse over and hide click to trigger tooltip</small
+          > -->
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col">
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="scrollTo('top')"
-              >
-                Scroll to top
+            <!-- <div class="col">
+              <button class="btn btn-sm btn-secondary" pTooltip="tooltip on top">Top</button>
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on bottom" pTooltipPlacement="bottom">
+                Bottom
               </button>
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on left" pTooltipPlacement="left">
+                Left
+              </button>
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on right" pTooltipPlacement="right">
+                Right
+              </button>
+              <button class="btn btn-sm btn-secondary ml-1" [pTooltip]="tooltipTemplate">Template</button>
               <button
-                type="button"
-                class="btn btn-secondary ml-1"
-                (click)="scrollTo('bottom')"
+                class="btn btn-sm btn-secondary ml-1"
+                [pTooltip]="tooltipTemplate"
+                [pTooltipTrigger]="'click'"
+                #tooltipButton="pTooltip"
               >
+                Click to trigger
+              </button>
+            </div> -->
+
+            <p-popover></p-popover>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Layout Scroll</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-primary" (click)="scrollTo('top')">Scroll to top</button>
+              <button type="button" class="btn btn-secondary ml-1" (click)="scrollTo('bottom')">
                 Scroll to bottom
               </button>
             </div>
@@ -289,9 +209,7 @@
 
     <div class="col-12 col-md-6 my-3">
       <div class="card">
-        <div class="card-header">
-          Pagination
-        </div>
+        <div class="card-header">Pagination</div>
         <div class="card-body">
           <div class="row">
             <div class="col">
@@ -306,32 +224,17 @@
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="number"
-                  [(ngModel)]="page.totalPages"
-                  placeholder="Total Pages"
-                >
+                <input class="form-control" type="number" [(ngModel)]="page.totalPages" placeholder="Total Pages" />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  [(ngModel)]="page.previousLabel"
-                  placeholder="Previous Label"
-                >
+                <input class="form-control" type="text" [(ngModel)]="page.previousLabel" placeholder="Previous Label" />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  [(ngModel)]="page.nextLabel"
-                  placeholder="Next Label"
-                >
+                <input class="form-control" type="text" [(ngModel)]="page.nextLabel" placeholder="Next Label" />
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -372,67 +275,99 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6  my-3">
+      <div class="card">
+        <div class="card-header">Modal</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-primary" (click)="isModalShow = true">Launch demo modal</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6  my-3">
+      <div class="card">
+        <div class="card-header">Carousel</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p-carousel>
+                <img src="https://source.unsplash.com/collection/1065412/200x201/" class="img-thumbnail" />
+                <img src="https://source.unsplash.com/collection/1065412/200x202/" class="img-thumbnail" />
+                <img src="https://source.unsplash.com/collection/1065412/200x203/" class="img-thumbnail" />
+                <img src="https://source.unsplash.com/collection/1065412/200x204/" class="img-thumbnail" />
+                <img src="https://source.unsplash.com/collection/1065412/200x200/" class="img-thumbnail" />
+              </p-carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<p-modal
-  modalClass="w-100"
-  size="lg"
-  [(visible)]="isModalShow"
-  [centered]="true"
->
-  <ng-template #mnHeader>
-    <h3>Modal Title</h3>
-  </ng-template>
+<p-modal modalClass="w-100" size="lg" [(visible)]="isModalShow" [centered]="true">
+  <ng-template #mnHeader> <h3>Modal Title</h3> </ng-template>
 
   <ng-template #mnBody>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
-      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam
-      minima.</p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
+      dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
+    </p>
   </ng-template>
 
   <ng-template #mnFooter>
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="isModalShow = false"
-    >Close</button>
-    <button
-      type="button"
-      class="btn btn-primary"
-    >Save changes</button>
+    <button type="button" class="btn btn-secondary" (click)="isModalShow = false">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
   </ng-template>
 </p-modal>
 
