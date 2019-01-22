@@ -19,6 +19,7 @@ import { CoreModule } from '@core/core.module';
     _components.TooltipComponent,
 
     // Directives
+    _directives.AutoFocusDirective,
     _directives.TooltipDirective,
   ],
   entryComponents: [_components.ToasterComponent, _components.TooltipComponent],
@@ -35,6 +36,7 @@ import { CoreModule } from '@core/core.module';
     _components.TooltipComponent,
 
     // Directives
+    _directives.AutoFocusDirective,
     _directives.TooltipDirective,
   ],
 })

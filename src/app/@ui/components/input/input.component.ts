@@ -32,12 +32,13 @@ import { Mask } from '@core/models';
       [attr.autocomplete]="autocomplete"
       [attr.autocorrect]="autocorrect"
       [attr.spellcheck]="spellcheck"
+      [required]="required"
+      [pAutoFocus]="autofocus"
       (change)="onChange($event)"
       (keyup)="keyup.emit($event)"
       (focus)="focus.emit($event)"
       (blur)="blur.emit($event)"
       (click)="click.emit($event)"
-      [required]="required"
     />
     <small class="form-text text-muted {{ helpTextClasses }}" [innerHTML]="helpText"></small>
   `,
@@ -61,6 +62,7 @@ export class InputComponent extends AbstractNgModelComponent {
   get textMask(): Mask.Config {
     return this._textMask;
   }
+  @Input() autofocus: boolean = false;
 
   @Input() classes: string;
 
