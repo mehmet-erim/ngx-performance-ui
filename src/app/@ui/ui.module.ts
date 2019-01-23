@@ -21,9 +21,10 @@ import { CoreModule } from '@core/core.module';
 
     // Directives
     _directives.AutoFocusDirective,
+    _directives.PopoverDirective,
     _directives.TooltipDirective,
   ],
-  entryComponents: [_components.ToasterComponent, _components.TooltipComponent],
+  entryComponents: [_components.ToasterComponent, _components.PopoverComponent, _components.TooltipComponent],
   exports: [
     _components.CarouselComponent,
     _components.GoogleChartComponent,
@@ -39,6 +40,7 @@ import { CoreModule } from '@core/core.module';
 
     // Directives
     _directives.AutoFocusDirective,
+    _directives.PopoverDirective,
     _directives.TooltipDirective,
   ],
 })

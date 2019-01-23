@@ -16,7 +16,7 @@ import { Tooltip } from '../../models';
     role: 'tooltip',
   },
   template: `
-    <div #container style="position: fixed" class="{{ classes }}" [ngStyle]="style">
+    <div #container class="{{ classes }}" [ngStyle]="style">
       <div class="tooltip-arrow arrow"></div>
       <div class="tooltip-inner"><ng-content></ng-content></div>
     </div>
@@ -26,25 +26,20 @@ import { Tooltip } from '../../models';
 })
 export class TooltipComponent implements AfterViewInit {
   get classes(): string {
-    return (
-      'tooltip in tooltip-' +
-      this.tooltip.placement +
-      ' bs-tooltip-' +
-      this.tooltip.placement +
-      ' ' +
-      this.tooltip.placement +
-      ' show'
-    );
+    return `tooltip bs-tooltip-${this.tooltip.placement} show`;
   }
-  style: { [key: string]: string | number } = {};
+  style: { [key: string]: string | number } = { position: 'fixed', visibility: 'hidden' };
 
   @ViewChild('container') container: ElementRef;
 
-  constructor(@Inject('TOOLTIP_PROVIDER') public tooltip: Tooltip.Config, private cdRef: ChangeDetectorRef) {}
+  arrowPart: number = 5;
+
+  constructor(@Inject('TOOLTIP_PROVIDER') public tooltip: Tooltip.Config, protected cdRef: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
     setTimeout(() => {
       this.setPosition();
+      this.style = { ...this.style, visibility: 'visible' };
       this.cdRef.detectChanges();
     }, 0);
   }
@@ -56,19 +51,19 @@ export class TooltipComponent implements AfterViewInit {
 
     switch (this.tooltip.placement) {
       case 'top':
-        if (top - hostHeight - 5 < 0) this.tooltip.placement = 'bottom';
+        if (top - hostHeight - this.arrowPart < 0) this.tooltip.placement = 'bottom';
         this.setY(left, top, bottom, width, hostHeight, hostWidth);
         break;
       case 'bottom':
-        if (bottom + hostHeight + 5 > innerHeight) this.tooltip.placement = 'top';
+        if (bottom + hostHeight + this.arrowPart > innerHeight) this.tooltip.placement = 'top';
         this.setY(left, top, bottom, width, hostHeight, hostWidth);
         break;
       case 'left':
-        if (left - hostWidth - 5 < 0) this.tooltip.placement = 'right';
+        if (left - hostWidth - this.arrowPart < 0) this.tooltip.placement = 'right';
         this.setX(left, top, right, height, hostHeight, hostWidth);
         break;
       case 'right':
-        if (right + hostWidth + 5 > innerWidth) this.tooltip.placement = 'left';
+        if (right + hostWidth + this.arrowPart > innerWidth) this.tooltip.placement = 'left';
         this.setX(left, top, right, height, hostHeight, hostWidth);
         break;
     }
@@ -78,15 +73,15 @@ export class TooltipComponent implements AfterViewInit {
     this.style.left = left + (width - hostWidth) / 2 + 'px';
 
     this.tooltip.placement === 'top'
-      ? (this.style.top = top - hostHeight - 5 + 'px')
-      : (this.style.top = bottom + 5 + 'px');
+      ? (this.style.top = top - hostHeight - this.arrowPart + 'px')
+      : (this.style.top = bottom + this.arrowPart + 'px');
   }
 
   setX(left: number, top: number, right: number, height: number, hostHeight: number, hostWidth: number) {
     this.style.top = top + (height - hostHeight) / 2 + 'px';
 
     this.tooltip.placement === 'left'
-      ? (this.style.left = left - hostWidth - 5 + 'px')
-      : (this.style.left = right + 5 + 'px');
+      ? (this.style.left = left - hostWidth - this.arrowPart + 'px')
+      : (this.style.left = right + this.arrowPart + 'px');
   }
 }
