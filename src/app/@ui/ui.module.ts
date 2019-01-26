@@ -7,6 +7,10 @@ import { CoreModule } from '@core/core.module';
 @NgModule({
   imports: [SharedModule, CoreModule],
   declarations: [
+    // charts
+    _components.AnnotationChartComponent,
+
+    // components
     _components.CarouselComponent,
     _components.GoogleChartComponent,
     _components.InputComponent,
@@ -26,6 +30,10 @@ import { CoreModule } from '@core/core.module';
   ],
   entryComponents: [_components.ToasterComponent, _components.PopoverComponent, _components.TooltipComponent],
   exports: [
+    // charts
+    _components.AnnotationChartComponent,
+
+    // components
     _components.CarouselComponent,
     _components.GoogleChartComponent,
     _components.InputComponent,
