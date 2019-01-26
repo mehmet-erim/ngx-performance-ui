@@ -23,6 +23,7 @@ import { EventListenerState } from 'store/states';
 import { EventListenerAdd, EventListenerRemove, EventListenerScrollVertical } from '../../store/actions';
 import { TooltipComponent } from '../components';
 import { Tooltip } from '../models';
+import { createProjectableNode } from '../utils';
 
 @Directive({
   selector: '[pTooltip]',
@@ -89,7 +90,7 @@ export class TooltipDirective implements OnInit, OnDestroy {
     const injector = ReflectiveInjector.resolveAndCreate([
       { provide: 'TOOLTIP_PROVIDER', useValue: { element, placement: this.placement } as Tooltip.Config },
     ]);
-    const projectableNode = this.createNode(this.content);
+    const projectableNode = createProjectableNode(this.content);
 
     this.tooltip = this.resolver.resolveComponentFactory(TooltipComponent).create(injector, [projectableNode]);
 
@@ -109,22 +110,6 @@ export class TooltipDirective implements OnInit, OnDestroy {
     }
     this.destroy$.next();
     this.store.dispatch(new EventListenerRemove('resize'));
-  }
-
-  createNode(content: string | TemplateRef<any> | Type<any> = ''): Node[] {
-    if (typeof content === 'string') {
-      return [this.renderer.createText(content)];
-    }
-
-    if (content instanceof TemplateRef) {
-      return this.vcRef.createEmbeddedView(content, this.context).rootNodes;
-    }
-
-    const factory = this.resolver.resolveComponentFactory(content);
-    const {
-      location: { nativeElement },
-    } = factory.create(this.injector);
-    return [nativeElement];
   }
 
   subscribeTo() {
