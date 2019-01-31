@@ -1913,6 +1913,11 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+date-fns@^1.29.0:
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
+  integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
+
 date-format@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/date-format/-/date-format-1.2.0.tgz#615e828e233dd1ab9bb9ae0950e0ceccfa6ecad8"
@@ -4657,6 +4662,14 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
+ng2-datepicker@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/ng2-datepicker/-/ng2-datepicker-3.1.1.tgz#d6cb4938c790983f05fcdbbc1aae902edfd77b95"
+  integrity sha512-mNIGDWSgGVkKG+AEKXlVIpFgBLqXvHJXRpRS4We42HQgoo/e3gNxwU2ACCH+i9qYmPuFoXGhJodJTLB4rc4tpg==
+  dependencies:
+    date-fns "^1.29.0"
+    ngx-slimscroll "^5.0.0"
+
 ngx-perfect-scrollbar@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/ngx-perfect-scrollbar/-/ngx-perfect-scrollbar-7.1.0.tgz#9233960512e6c20f39fc22e1f78d85d6884675bc"
@@ -4664,6 +4677,11 @@ ngx-perfect-scrollbar@^7.1.0:
   dependencies:
     perfect-scrollbar "^1.4.0"
     resize-observer-polyfill "^1.4.0"
+
+ngx-slimscroll@^5.0.0:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/ngx-slimscroll/-/ngx-slimscroll-5.2.2.tgz#5183d3037e31720ad34637a044f0f48a0f3391ae"
+  integrity sha512-1k7rGHY3VJoXjUIsmZlu2aIjLa5PmC3z1z7gZ6vU41U+ivaYyTxtyySSYLVZ/CNI2W01UrgEQEwZt8XP1bejKw==
 
 nice-try@^1.0.4:
   version "1.0.5"

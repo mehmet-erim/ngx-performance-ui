@@ -1,5 +1,6 @@
 export * from './carousel/carousel.component';
 export * from './charts';
+export * from './datepicker/datepicker.component';
 export * from './google-chart/google-chart.component';
 export * from './input/input.component';
 export * from './modal/modal.component';

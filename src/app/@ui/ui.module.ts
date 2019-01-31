@@ -3,9 +3,10 @@ import { SharedModule } from '../shared/shared.module';
 import * as _components from './components';
 import * as _directives from './directives';
 import { CoreModule } from '@core/core.module';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 @NgModule({
-  imports: [SharedModule, CoreModule],
+  imports: [SharedModule, CoreModule, NgDatepickerModule],
   declarations: [
     // charts
     _components.AnnotationChartComponent,
@@ -13,6 +14,7 @@ import { CoreModule } from '@core/core.module';
     // components
     _components.CarouselComponent,
     _components.GoogleChartComponent,
+    _components.DatePickerComponent,
     _components.InputComponent,
     _components.ModalComponent,
     _components.PaginationComponent,
@@ -30,12 +32,16 @@ import { CoreModule } from '@core/core.module';
   ],
   entryComponents: [_components.ToasterComponent, _components.PopoverComponent, _components.TooltipComponent],
   exports: [
+    // modules
+    NgDatepickerModule,
+
     // charts
     _components.AnnotationChartComponent,
 
     // components
     _components.CarouselComponent,
     _components.GoogleChartComponent,
+    _components.DatePickerComponent,
     _components.InputComponent,
     _components.ModalComponent,
     _components.PaginationComponent,
