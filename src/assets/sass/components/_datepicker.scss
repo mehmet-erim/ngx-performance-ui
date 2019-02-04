@@ -1,0 +1,11 @@
+.ngx-datepicker-calendar-container {
+  z-index: 2000;
+
+  &.ngx-datepicker-position-bottom-right {
+    top: 0 !important;
+  }
+
+  &.ngx-datepicker-position-bottom-left {
+    top: 0 !important;
+  }
+}

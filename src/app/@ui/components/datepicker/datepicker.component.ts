@@ -1,9 +1,21 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  ViewEncapsulation,
+  ViewChild,
+  ElementRef,
+  Injector,
+} from '@angular/core';
 import * as enLocale from 'date-fns/locale/en';
 import * as trLocale from 'date-fns/locale/tr';
-import { DatepickerOptions } from 'ng2-datepicker';
-import { uuid } from '../../../@core/utils';
+import { DatepickerOptions, NgDatepickerComponent } from 'ng2-datepicker';
+import { uuid } from '@core/utils';
 import { AbstractNgModelComponent } from '../../../shared/abstracts/ng-model.component';
+import { Select } from '@ngxs/store';
+import { EventListenerState } from '../../../store/states';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil, filter, skip } from 'rxjs/operators';
 
 @Component({
   selector: 'p-datepicker',
@@ -16,7 +28,7 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
 
   @Input() type: 'date' | 'string' | 'number' = 'date';
 
-  @Input() position: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right' = 'bottom-left';
+  @Input() position: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right' = 'bottom-right';
 
   @Input() barTitleIfEmpty: string = 'Click to select a date';
 
@@ -28,10 +40,25 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
 
   @Input() label: string = 'Start Date';
 
+  @Select(EventListenerState.getOne('click'))
+  click$: Observable<MouseEvent>;
+
+  @ViewChild('datePicker') datePicker: NgDatepickerComponent;
+
+  @ViewChild('container', { read: ElementRef }) container: ElementRef;
+
+  destroy$ = new Subject<void>();
+
+  closable: boolean = false;
+
+  constructor(public injector: Injector) {
+    super(injector);
+  }
+
   get options(): DatepickerOptions {
     return {
-      minYear: 1970,
-      maxYear: 2030,
+      minYear: 1890,
+      maxYear: 2040,
       displayFormat: this.displayFormat,
       barTitleFormat: 'MMMM YYYY',
       dayNamesFormat: 'dd',
@@ -40,7 +67,7 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
       barTitleIfEmpty: this.barTitleIfEmpty,
       placeholder: this.placeholder, // HTML input placeholder attribute (default: '')
       addClass: this.addClass, // Optional, value to pass on to [ngClass] on the input field
-      fieldId: `p-date-picker-${uuid()}`, // ID to assign to the input field. Defaults to datepicker-<counter>
+      fieldId: `p-date-picker-${uuid()}`, // ID to assign to the input field. Defaults to datepicker-<counter>,
     };
   }
 
@@ -50,5 +77,45 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
 
   get date(): Date {
     return this.value ? new Date(this.value) : null;
+  }
+
+  private subscribeToEvents() {
+    this.click$
+      .pipe(
+        takeUntil(this.destroy$),
+        filter(event => event && this.closable && !this.container.nativeElement.contains(event.target)),
+      )
+      .subscribe(() => this.toggle());
+  }
+
+  toggle() {
+    this.flip();
+
+    this.datePicker.toggle();
+
+    if (this.datePicker.isOpened) {
+      setTimeout(() => {
+        this.closable = true;
+      }, 500);
+      this.subscribeToEvents();
+    } else {
+      this.closable = false;
+      this.destroy$.next();
+    }
+
+    this.cdRef.detectChanges();
+  }
+
+  flip() {
+    const { bottom, top } = (this.container.nativeElement as HTMLElement).getBoundingClientRect();
+    const { innerHeight } = window;
+
+    if (bottom + 330 > innerHeight && this.position.indexOf('bottom') > -1) {
+      this.position = this.position.replace('bottom', 'top') as any;
+      this.cdRef.detectChanges();
+    } else if (top - 330 < 0 && this.position.indexOf('top') > -1) {
+      this.position = this.position.replace('top', 'bottom') as any;
+      this.cdRef.detectChanges();
+    }
   }
 }

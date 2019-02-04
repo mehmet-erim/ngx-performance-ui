@@ -1,28 +1,34 @@
-<label
-  class="{{labelClass}}"
-  [attr.for]="options.fieldId"
->{{label}}</label>
-<div class="input-group">
-  <input
-    type="text"
-    class="form-control bg-white"
-    [readonly]="true"
-    [placeholder]="placeholder"
-    [value]="date | date: displayFormat"
-    (click)="datePicker.toggle()"
-  >
-  <div class="input-group-prepend">
-    <span
-      class="input-group-text bg-white"
-      (click)="datePicker.toggle()"
-    ><i class="fas fa-calendar-day"></i></span>
-  </div>
-</div>
-<ng-datepicker
-  #datePicker
-  headless="false"
-  [options]="options"
-  [(ngModel)]="value"
+<div
+  #container
+  class="datepicker-container"
 >
-</ng-datepicker>
-{{ value }}
+  <label
+    class="{{labelClass}}"
+    [attr.for]="options.fieldId"
+  >{{label}}</label>
+  <div class="input-group">
+    <input
+      type="text"
+      class="form-control bg-white"
+      [readonly]="true"
+      [placeholder]="placeholder"
+      [value]="date | date: displayFormat"
+      (click)="toggle()"
+    >
+    <div class="input-group-prepend">
+      <span
+        class="input-group-text bg-white"
+        (click)="toggle()"
+      ><i class="fas fa-calendar-day"></i></span>
+    </div>
+  </div>
+  <ng-datepicker
+    #datePicker
+    [headless]="true"
+    [position]="position"
+    [options]="options"
+    [(ngModel)]="value"
+  >
+  </ng-datepicker>
+  {{ value }}
+</div>
