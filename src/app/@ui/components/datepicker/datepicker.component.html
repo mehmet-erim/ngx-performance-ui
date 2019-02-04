@@ -1,24 +1,24 @@
-<div
-  #container
-  class="datepicker-container"
->
+<div class="datepicker-container">
   <label
     class="{{labelClass}}"
     [attr.for]="options.fieldId"
   >{{label}}</label>
-  <div class="input-group">
+  <div
+    #group
+    class="input-group"
+  >
     <input
       type="text"
       class="form-control bg-white"
       [readonly]="true"
       [placeholder]="placeholder"
       [value]="date | date: displayFormat"
-      (click)="toggle()"
+      (click)="onClick()"
     >
     <div class="input-group-prepend">
       <span
         class="input-group-text bg-white"
-        (click)="toggle()"
+        (click)="onClick()"
       ><i class="fas fa-calendar-day"></i></span>
     </div>
   </div>
@@ -30,5 +30,4 @@
     [(ngModel)]="value"
   >
   </ng-datepicker>
-  {{ value }}
 </div>

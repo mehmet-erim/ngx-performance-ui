@@ -6,6 +6,7 @@ import {
   ViewChild,
   ElementRef,
   Injector,
+  forwardRef,
 } from '@angular/core';
 import * as enLocale from 'date-fns/locale/en';
 import * as trLocale from 'date-fns/locale/tr';
@@ -16,17 +17,23 @@ import { Select } from '@ngxs/store';
 import { EventListenerState } from '../../../store/states';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, filter, skip } from 'rxjs/operators';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'p-datepicker',
   templateUrl: './datepicker.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatePickerComponent),
+      multi: true,
+    },
+  ],
 })
 export class DatePickerComponent extends AbstractNgModelComponent<Date | string | number> {
   @Input() locale: 'tr' | 'en' = 'tr';
-
-  @Input() type: 'date' | 'string' | 'number' = 'date';
 
   @Input() position: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right' = 'bottom-right';
 
@@ -45,7 +52,7 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
 
   @ViewChild('datePicker') datePicker: NgDatepickerComponent;
 
-  @ViewChild('container', { read: ElementRef }) container: ElementRef;
+  @ViewChild('group', { read: ElementRef }) group: ElementRef;
 
   destroy$ = new Subject<void>();
 
@@ -83,9 +90,15 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
     this.click$
       .pipe(
         takeUntil(this.destroy$),
-        filter(event => event && this.closable && !this.container.nativeElement.contains(event.target)),
+        filter(event => event && this.closable && !this.group.nativeElement.contains(event.target)),
       )
       .subscribe(() => this.toggle());
+  }
+
+  onClick() {
+    if (this.datePicker.isOpened) return;
+
+    this.toggle();
   }
 
   toggle() {
@@ -107,7 +120,7 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
   }
 
   flip() {
-    const { bottom, top } = (this.container.nativeElement as HTMLElement).getBoundingClientRect();
+    const { bottom, top } = (this.group.nativeElement as HTMLElement).getBoundingClientRect();
     const { innerHeight } = window;
 
     if (bottom + 330 > innerHeight && this.position.indexOf('bottom') > -1) {

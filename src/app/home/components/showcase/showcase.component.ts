@@ -33,6 +33,8 @@ export class ShowcaseComponent implements OnInit {
     nextLabel: 'Next',
   } as PaginationComponent;
 
+  date = new Date();
+
   constructor(private store: Store) {}
 
   ngOnInit() {
