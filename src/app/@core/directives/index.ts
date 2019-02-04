@@ -1,3 +1,2 @@
-export * from './invalid-message.directive';
-export * from './invalid-type.directive';
+export * from './highlight.directive';
 export * from './scroll-listener.directive';

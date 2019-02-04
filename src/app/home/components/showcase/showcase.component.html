@@ -423,7 +423,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12 col-md-6  my-3">
+    <div class="col-12 col-md-6 my-3">
       <div class="card">
         <div class="card-header">Datepicker</div>
         <div class="card-body">
@@ -431,6 +431,25 @@
             <div class="col">
               <p-datepicker [(ngModel)]="date"></p-datepicker>
               <pre>{{ date }}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Autocomplete</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <input
+                type="text"
+                [(ngModel)]="text"
+              >
+              <div
+                [pHighlight]="text"
+                *ngFor="let item of ['lorem', 'ipsum', 'mehmet', 'test text text', 'test in herehe']"
+              > {{ item }} </div>
             </div>
           </div>
         </div>

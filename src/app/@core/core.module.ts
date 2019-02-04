@@ -8,8 +8,13 @@ import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   imports: [RouterModule, SharedModule, TextMaskModule],
-  declarations: [components.RouterOutletComponent, directives.ScrollListenerDirective],
-  exports: [components.RouterOutletComponent, directives.ScrollListenerDirective, TextMaskModule],
+  declarations: [components.RouterOutletComponent, directives.HighlightDirective, directives.ScrollListenerDirective],
+  exports: [
+    components.RouterOutletComponent,
+    directives.HighlightDirective,
+    directives.ScrollListenerDirective,
+    TextMaskModule,
+  ],
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders {
