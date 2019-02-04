@@ -94,8 +94,8 @@ export class PopoverDirective implements OnInit, OnDestroy {
       { provide: 'POPOVER_PROVIDER', useValue: { element, placement: this.placement } as Tooltip.Config },
     ]);
 
-    const hedaerNode = createProjectableNode(this.header);
-    const contentNode = createProjectableNode(this.content);
+    const hedaerNode = createProjectableNode.call(this, this.header);
+    const contentNode = createProjectableNode.call(this, this.content);
 
     this.popover = this.resolver.resolveComponentFactory(PopoverComponent).create(injector, [hedaerNode, contentNode]);
 

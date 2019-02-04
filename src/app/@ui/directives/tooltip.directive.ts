@@ -90,7 +90,7 @@ export class TooltipDirective implements OnInit, OnDestroy {
     const injector = ReflectiveInjector.resolveAndCreate([
       { provide: 'TOOLTIP_PROVIDER', useValue: { element, placement: this.placement } as Tooltip.Config },
     ]);
-    const projectableNode = createProjectableNode(this.content);
+    const projectableNode = createProjectableNode.call(this, this.content);
 
     this.tooltip = this.resolver.resolveComponentFactory(TooltipComponent).create(injector, [projectableNode]);
 
