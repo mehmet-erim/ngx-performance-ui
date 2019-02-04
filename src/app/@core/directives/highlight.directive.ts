@@ -41,12 +41,10 @@ export class HighlightDirective implements OnChanges {
 
     if (!found.length) return text;
 
-    console.warn(found);
-
     return splitText.reduce((acc, val, index) => {
       const { value } = found.find(data => data.index === index) || ({} as any);
       if (value) {
-        val = val.replace(value, `<span class="${this.class}">${value}</span>`);
+        val = val.replace(RegExp(value, 'mig'), `<span class="${this.class}">${value}</span>`);
       }
       return (acc += `${val} `);
     }, '');
