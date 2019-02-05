@@ -37,7 +37,6 @@ import { AbstractInputComponent } from '../../abstracts';
       [required]="required"
       [autofocus]="autofocus"
       [autofocusDelay]="autofocusDelay"
-      (change)="onChange($event)"
       (keyup)="keyup.emit($event)"
       (focus)="focus.emit($event)"
       (blur)="blur.emit($event)"
@@ -76,10 +75,6 @@ export class InputComponent extends AbstractInputComponent {
   @Input() helpText: string;
 
   @Input() helpTextClasses: string;
-
-  @Input() placeholder: string = 'Placeholder';
-
-  @Input() type: 'text' | 'number' | 'password' = 'text';
 
   @Input() min: number;
 

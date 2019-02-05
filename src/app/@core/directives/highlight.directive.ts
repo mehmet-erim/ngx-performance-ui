@@ -10,7 +10,7 @@ export class HighlightDirective implements OnChanges {
 
   @Input()
   set pHighlight(value: string) {
-    if (!value && value !== '') return;
+    if (!value && value !== '' && typeof value !== 'string') return;
 
     this.value = normalizeDiacritics(value.replace(/\s+/gm, ' '));
   }

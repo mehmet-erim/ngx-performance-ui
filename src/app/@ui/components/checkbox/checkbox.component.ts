@@ -9,23 +9,22 @@ import { AbstractInputComponent } from '../../abstracts';
       <input
         type="checkbox"
         [(ngModel)]="value"
-        [attr.id]="id"
+        [id]="id"
         [attr.name]="name"
         [hidden]="hidden"
         [disabled]="disabled"
         class="form-check-input {{ classes }}"
         [required]="required"
-        (change)="onChange($event)"
         (keyup)="keyup.emit($event)"
         (focus)="focus.emit($event)"
         (blur)="blur.emit($event)"
-        (click)="click.emit($event)"
       />
 
       <label
-        [htmlFor]="id + '-checkbox'"
-        tabindex="0"
+        [htmlFor]="id"
         (keyup.space)="onKeyup()"
+        (click)="onChangeValue($event)"
+        tabindex="0"
         class="form-check-label {{ labelClasses }}"
       >
         <p class="mb-0">{{ labelText }}</p>
@@ -43,10 +42,13 @@ import { AbstractInputComponent } from '../../abstracts';
   encapsulation: ViewEncapsulation.None,
 })
 export class CheckboxComponent extends AbstractInputComponent {
-  valueFn: (value: boolean, previousValue?: boolean) => boolean = value => (!value as any) as boolean;
-
   onKeyup() {
     this.value = !this.value;
+  }
+
+  onChangeValue(event) {
+    this.value = !this.value;
+    this.click.emit(event);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

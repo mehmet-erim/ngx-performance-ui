@@ -14,7 +14,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs';
 import { takeUntilDestroy } from '../../../@core/utils';
-import { InputComponent } from '../input/input.component';
+import { AbstractInputComponent } from '../../abstracts';
 
 export interface AutocompleteItem {
   text: string;
@@ -25,6 +25,24 @@ export interface AutocompleteItem {
   selector: 'p-autocomplete',
   template: `
     <div class="autocomplete-container">
+      <p-input
+        [(ngModel)]="inputValue"
+        class="w-100 {{ classes }}"
+        [id]="id"
+        [type]="type"
+        [placeholder]="placeholder"
+        [hidden]="hidden"
+        [name]="name"
+        [disabled]="disabled"
+        [attr.tabindex]="tabindex"
+        [required]="required"
+        [autofocus]="autofocus"
+        [autofocusDelay]="autofocusDelay"
+        autocomplete="nop"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        (click)="click.emit($event)"
+      ></p-input>
       <div *ngIf="showDropdown" class="list-group">
         <a
           [pHighlight]="inputValue"
@@ -49,7 +67,7 @@ export interface AutocompleteItem {
     },
   ],
 })
-export class AutocompleteComponent extends InputComponent {
+export class AutocompleteComponent extends AbstractInputComponent {
   @Input() items: AutocompleteItem[] = [];
 
   @Input() delay: number = 150;
@@ -62,6 +80,10 @@ export class AutocompleteComponent extends InputComponent {
 
   showDropdown: boolean = false;
 
+  inputValue: string = '';
+
+  placeholder: string = 'Type in here';
+
   valueFn: (
     value: string | AutocompleteItem,
     previousValue?: string | AutocompleteItem,
@@ -70,6 +92,7 @@ export class AutocompleteComponent extends InputComponent {
       return this.items.find(item => item.text === value) || value;
     }
 
+    this.inputValue = value.text;
     return value;
   };
 
@@ -80,11 +103,7 @@ export class AutocompleteComponent extends InputComponent {
     return false;
   };
 
-  trackByFn: TrackByFunction<AutocompleteItem> = (index, value) => value.text;
-
-  get inputValue(): string {
-    return (this.input.nativeElement as HTMLInputElement).value;
-  }
+  trackByFn: TrackByFunction<AutocompleteItem> = (_, value) => value.text;
 
   constructor(public injector: Injector) {
     super(injector);

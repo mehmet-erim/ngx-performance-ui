@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { EventEmitter, Input, Output, Component } from '@angular/core';
 import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
+import { uuid } from '../../@core/utils';
 
-@Component({ template: '' })
+@Component({
+  template: '',
+})
 export class AbstractInputComponent extends AbstractNgModelComponent {
   @Input() autofocus: boolean = false;
 
@@ -13,7 +16,7 @@ export class AbstractInputComponent extends AbstractNgModelComponent {
 
   @Input() labelClasses: string;
 
-  @Input() id: string;
+  @Input() id: string = uuid();
 
   @Input() name: string;
 
@@ -22,6 +25,10 @@ export class AbstractInputComponent extends AbstractNgModelComponent {
   @Input() required: boolean = false;
 
   @Input() hidden: boolean = false;
+
+  @Input() placeholder: string = '';
+
+  @Input() type: 'text' | 'number' | 'password' = 'text';
 
   @Output() change = new EventEmitter();
 
