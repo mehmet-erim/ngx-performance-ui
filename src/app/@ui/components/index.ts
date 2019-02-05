@@ -1,3 +1,4 @@
+export * from './autocomplete/autocomplete.component';
 export * from './carousel/carousel.component';
 export * from './charts';
 export * from './datepicker/datepicker.component';

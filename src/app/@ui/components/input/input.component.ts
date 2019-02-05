@@ -1,20 +1,22 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
+  Component,
+  EventEmitter,
+  forwardRef,
   Input,
   Output,
-  EventEmitter,
+  ViewEncapsulation,
 } from '@angular/core';
-import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Mask } from '@core/models';
+import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
 
 @Component({
   selector: 'p-input',
   template: `
     <label class="{{ labelClasses }}" [attr.for]="id" [innerHTML]="labelText"></label>
     <input
+      #input
       class="form-control {{ classes }}"
       [(ngModel)]="value"
       [id]="id"
@@ -41,10 +43,17 @@ import { Mask } from '@core/models';
       (blur)="blur.emit($event)"
       (click)="click.emit($event)"
     />
-    <small class="form-text text-muted {{ helpTextClasses }}" [innerHTML]="helpText"></small>
+    <small *ngIf="helpText" class="form-text text-muted {{ helpTextClasses }}" [innerHTML]="helpText"></small>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true,
+    },
+  ],
 })
 export class InputComponent extends AbstractNgModelComponent {
   protected _textMask: Mask.Config = {
@@ -99,7 +108,7 @@ export class InputComponent extends AbstractNgModelComponent {
 
   @Input() hidden: boolean = false;
 
-  @Input() autocomplete: boolean = false;
+  @Input() autocomplete: string = 'on';
 
   @Input() autocorrect: boolean = false;
 

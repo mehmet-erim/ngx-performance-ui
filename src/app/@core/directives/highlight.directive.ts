@@ -1,4 +1,4 @@
-import { Directive, Input, OnChanges, ElementRef } from '@angular/core';
+import { Directive, Input, OnChanges, ElementRef, Renderer2 } from '@angular/core';
 import { normalizeDiacritics } from '../utils';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -17,11 +17,13 @@ export class HighlightDirective implements OnChanges {
 
   @Input('pHighlightClass') class: string = 'text-primary';
 
-  @Input('pHighlightHideC') hide: boolean = false;
+  @Input('pHighlightHide') hide: boolean = false;
+
+  @Input('pHighlightHideWhenNull') hideWhenNull: boolean = false;
 
   @Input('pHighlightHideClass') hideClass: string = 'd-none';
 
-  constructor(private elRef: ElementRef) {}
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
 
   private setHighlight(text: string) {
     if (!this.value || this.value === '' || this.value === ' ') return text;
@@ -54,10 +56,14 @@ export class HighlightDirective implements OnChanges {
     setTimeout(() => {
       const element = this.elRef.nativeElement as HTMLElement;
       const text = element.textContent;
+      if (!text) return;
 
-      if (text) {
-        const matched = this.setHighlight(text);
-        if (matched) element.innerHTML = matched;
+      this.renderer.removeClass(element, this.hideClass);
+      const patchedText = this.setHighlight(text);
+      element.innerHTML = patchedText;
+
+      if (patchedText.indexOf('span') < 0 && this.hide && (this.hideWhenNull ? true : this.value)) {
+        this.renderer.addClass(element, this.hideClass);
       }
     }, 0);
   }

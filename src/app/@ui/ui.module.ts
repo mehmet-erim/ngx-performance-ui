@@ -12,6 +12,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     _components.AnnotationChartComponent,
 
     // components
+    _components.AutocompleteComponent,
     _components.CarouselComponent,
     _components.GoogleChartComponent,
     _components.DatePickerComponent,
@@ -39,6 +40,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     _components.AnnotationChartComponent,
 
     // components
+    _components.AutocompleteComponent,
     _components.CarouselComponent,
     _components.GoogleChartComponent,
     _components.DatePickerComponent,
