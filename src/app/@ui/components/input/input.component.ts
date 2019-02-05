@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Mask } from '@core/models';
-import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
+import { AbstractInputComponent } from '../../abstracts';
 
 @Component({
   selector: 'p-input',
@@ -55,7 +55,7 @@ import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
     },
   ],
 })
-export class InputComponent extends AbstractNgModelComponent {
+export class InputComponent extends AbstractInputComponent {
   protected _textMask: Mask.Config = {
     mask: false,
   };
@@ -72,29 +72,14 @@ export class InputComponent extends AbstractNgModelComponent {
   get textMask(): Mask.Config {
     return this._textMask;
   }
-  @Input() autofocus: boolean = false;
-
-  @Input() autofocusDelay: number = 0;
-
-  @Input() classes: string;
 
   @Input() helpText: string;
 
   @Input() helpTextClasses: string;
 
-  @Input() labelText: string;
-
-  @Input() labelClasses: string;
-
-  @Input() placeholder: string;
-
-  @Input() id: string;
-
-  @Input() name: string;
+  @Input() placeholder: string = 'Placeholder';
 
   @Input() type: 'text' | 'number' | 'password' = 'text';
-
-  @Input() tabindex: number;
 
   @Input() min: number;
 
@@ -103,10 +88,6 @@ export class InputComponent extends AbstractNgModelComponent {
   @Input() minlength: number;
 
   @Input() maxlength: number;
-
-  @Input() required: boolean = false;
-
-  @Input() hidden: boolean = false;
 
   @Input() autocomplete: string = 'on';
 

@@ -26,6 +26,8 @@ export class ShowcaseComponent implements OnInit {
 
   radio: 'one' | 'two' = 'two';
 
+  checkbox: boolean;
+
   page = {
     totalPages: 15,
     paginationRange: 7,

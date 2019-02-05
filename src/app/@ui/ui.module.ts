@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import * as _abstracts from './abstracts';
 import * as _components from './components';
 import * as _directives from './directives';
 import { CoreModule } from '@core/core.module';
@@ -8,12 +9,16 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 @NgModule({
   imports: [SharedModule, CoreModule, NgDatepickerModule],
   declarations: [
+    // abstracts
+    _abstracts.AbstractInputComponent,
+
     // charts
     _components.AnnotationChartComponent,
 
     // components
     _components.AutocompleteComponent,
     _components.CarouselComponent,
+    _components.CheckboxComponent,
     _components.GoogleChartComponent,
     _components.DatePickerComponent,
     _components.InputComponent,
@@ -42,6 +47,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     // components
     _components.AutocompleteComponent,
     _components.CarouselComponent,
+    _components.CheckboxComponent,
     _components.GoogleChartComponent,
     _components.DatePickerComponent,
     _components.InputComponent,

@@ -1,6 +1,7 @@
 export * from './autocomplete/autocomplete.component';
 export * from './carousel/carousel.component';
 export * from './charts';
+export * from './checkbox/checkbox.component';
 export * from './datepicker/datepicker.component';
 export * from './google-chart/google-chart.component';
 export * from './input/input.component';
