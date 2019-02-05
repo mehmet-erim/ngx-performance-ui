@@ -1,14 +1,6 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { Mask } from '@core/models';
+import { AbstractInputComponent } from '../../abstracts';
 
 @Component({
   selector: 'p-input',
@@ -46,7 +38,7 @@ import { Mask } from '@core/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class InputComponent extends AbstractNgModelComponent {
+export class InputComponent extends AbstractInputComponent {
   protected _textMask: Mask.Config = {
     mask: false,
   };
@@ -63,29 +55,14 @@ export class InputComponent extends AbstractNgModelComponent {
   get textMask(): Mask.Config {
     return this._textMask;
   }
-  @Input() autofocus: boolean = false;
-
-  @Input() autofocusDelay: number = 0;
-
-  @Input() classes: string;
 
   @Input() helpText: string;
 
   @Input() helpTextClasses: string;
 
-  @Input() labelText: string;
-
-  @Input() labelClasses: string;
-
-  @Input() placeholder: string;
-
-  @Input() id: string;
-
-  @Input() name: string;
+  @Input() placeholder: string = 'Placeholder';
 
   @Input() type: 'text' | 'number' | 'password' = 'text';
-
-  @Input() tabindex: number;
 
   @Input() min: number;
 
@@ -94,10 +71,6 @@ export class InputComponent extends AbstractNgModelComponent {
   @Input() minlength: number;
 
   @Input() maxlength: number;
-
-  @Input() required: boolean = false;
-
-  @Input() hidden: boolean = false;
 
   @Input() autocomplete: boolean = false;
 
