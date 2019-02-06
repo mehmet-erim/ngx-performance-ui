@@ -146,18 +146,37 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="row mt-3">
     <div class="col-12 col-md-6 my-3">
       <div class="card">
         <div class="card-header">Checkbox</div>
         <div class="card-body">
           <div class="row">
             <div class="col pl-5">
-              <xc-checkbox
+              <p-checkbox
                 [(ngModel)]="checkbox"
                 labelText="Check me out"
                 id="check-one"
-              >Checkbox</xc-checkbox>
-              {{ checkbox | json }}
+              >Check me out</p-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Textarea</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p-textarea
+                [labelText]="'Description'"
+                [helpText]="'Allowed Turkish characters'"
+                [(ngModel)]="textarea"
+              ></p-textarea>
             </div>
           </div>
         </div>

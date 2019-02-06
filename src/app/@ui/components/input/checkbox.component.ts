@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AbstractInputComponent } from '../../abstracts';
 
 @Component({
-  selector: 'xc-checkbox',
+  selector: 'p-checkbox',
   template: `
     <div class="form-group form-checkbox {{ classes }}">
       <input

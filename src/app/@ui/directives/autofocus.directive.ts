@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input, AfterViewInit } from '@angular/core';
 @Directive({
   selector: '[autofocus]',
 })
-export class AutoFocusDirective implements AfterViewInit {
+export class AutofocusDirective implements AfterViewInit {
   @Input('autofocus')
   enable: boolean = false;
 

@@ -27,12 +27,14 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     _components.PopoverComponent,
     _components.RadioComponent,
     _components.SelectComponent,
+    _components.TextAreaComponent,
     _components.ToasterComponent,
     _components.ToasterContainerComponent,
     _components.TooltipComponent,
 
     // Directives
-    _directives.AutoFocusDirective,
+    _directives.AutosizeDirective,
+    _directives.AutofocusDirective,
     _directives.PopoverDirective,
     _directives.TooltipDirective,
   ],
@@ -56,12 +58,14 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     _components.PopoverComponent,
     _components.RadioComponent,
     _components.SelectComponent,
+    _components.TextAreaComponent,
     _components.ToasterComponent,
     _components.ToasterContainerComponent,
     _components.TooltipComponent,
 
     // Directives
-    _directives.AutoFocusDirective,
+    _directives.AutosizeDirective,
+    _directives.AutofocusDirective,
     _directives.PopoverDirective,
     _directives.TooltipDirective,
   ],

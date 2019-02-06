@@ -28,6 +28,8 @@ export class ShowcaseComponent implements OnInit {
 
   checkbox: boolean;
 
+  textarea: string;
+
   page = {
     totalPages: 15,
     paginationRange: 7,
