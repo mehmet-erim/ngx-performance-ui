@@ -43,7 +43,7 @@ export interface AutocompleteItem {
         (blur)="onBlur()"
         (click)="click.emit($event)"
       ></p-input>
-      <div *ngIf="showDropdown" class="list-group">
+      <div *ngIf="showList" class="list-group">
         <a
           [pHighlight]="inputValue"
           [pHighlightHide]="true"
@@ -78,7 +78,7 @@ export class AutocompleteComponent extends AbstractInputComponent {
 
   autocomplete: string = 'nop';
 
-  showDropdown: boolean = false;
+  showList: boolean = false;
 
   inputValue: string = '';
 
@@ -115,7 +115,7 @@ export class AutocompleteComponent extends AbstractInputComponent {
     timer(this.delay)
       .pipe(takeUntilDestroy(this))
       .subscribe(() => {
-        this.showDropdown = false;
+        this.showList = false;
         this.cdRef.detectChanges();
       });
     this.blur.emit(event);
@@ -125,7 +125,7 @@ export class AutocompleteComponent extends AbstractInputComponent {
     timer(this.delay)
       .pipe(takeUntilDestroy(this))
       .subscribe(() => {
-        this.showDropdown = true;
+        this.showList = true;
         this.cdRef.detectChanges();
       });
     this.focus.emit(event);

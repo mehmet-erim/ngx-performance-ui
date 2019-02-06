@@ -37,7 +37,9 @@ export class HighlightDirective implements OnChanges {
     splitValue.forEach(value => {
       found = [
         ...found,
-        ...splitText.map((text, index) => ({ text, index, value })).filter(({ text }) => text.indexOf(value) > -1),
+        ...splitText
+          .map((text, index) => ({ text, index, value }))
+          .filter(({ text }) => text.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) > -1),
       ];
     });
 
@@ -46,7 +48,8 @@ export class HighlightDirective implements OnChanges {
     return splitText.reduce((acc, val, index) => {
       const { value } = found.find(data => data.index === index) || ({} as any);
       if (value) {
-        val = val.replace(RegExp(value, 'mig'), `<span class="${this.class}">${value}</span>`);
+        const text = val.substr(val.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()), value.length);
+        val = val.replace(RegExp(value, 'mig'), `<span class="${this.class}">${text}</span>`);
       }
       return (acc += `${val} `);
     }, '');
