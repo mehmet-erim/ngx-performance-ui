@@ -30,8 +30,6 @@ export class AbstractInputComponent extends AbstractNgModelComponent {
 
   @Input() type: 'text' | 'number' | 'password' = 'text';
 
-  @Output() change = new EventEmitter();
-
   @Output() blur = new EventEmitter();
 
   @Output() focus = new EventEmitter();

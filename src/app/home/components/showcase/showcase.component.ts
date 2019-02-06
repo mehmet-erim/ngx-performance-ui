@@ -30,6 +30,10 @@ export class ShowcaseComponent implements OnInit {
 
   textarea: string;
 
+  autocompleteValue;
+
+  spinner;
+
   page = {
     totalPages: 15,
     paginationRange: 7,
