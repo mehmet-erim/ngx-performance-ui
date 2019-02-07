@@ -95,6 +95,10 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
       .subscribe(() => this.toggle());
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+  }
+
   onClick() {
     if (this.datePicker.isOpened) return;
 
@@ -104,19 +108,27 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
   toggle() {
     this.flip();
 
-    this.datePicker.toggle();
-
     if (this.datePicker.isOpened) {
-      setTimeout(() => {
-        this.closable = true;
-      }, 500);
+      this.hide();
       this.subscribeToEvents();
     } else {
-      this.closable = false;
+      this.show();
       this.destroy$.next();
     }
 
-    this.cdRef.detectChanges();
+    setTimeout(() => this.cdRef.detectChanges(), 0);
+  }
+
+  show() {
+    this.closable = false;
+    this.datePicker.toggle();
+    setTimeout(() => {
+      this.closable = true;
+    }, 500);
+  }
+
+  hide() {
+    this.datePicker.toggle();
   }
 
   flip() {
