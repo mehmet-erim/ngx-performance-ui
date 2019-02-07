@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Toaster } from 'store/models';
 import { PaginationComponent } from '@ui/components';
-import { Store } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { ToasterShow, LayoutScroll } from 'store/actions';
 import { Mask } from '@core/models';
 import { transformByRegex } from '../../../@core/utils';
+import { LoaderState } from '../../../@core/states/loader.state';
+import { Observable } from 'rxjs';
+import { LoaderSetProgress } from '../../../@core/actions';
 
 @Component({
   selector: 'p-showcase',
@@ -33,6 +36,9 @@ export class ShowcaseComponent implements OnInit {
   autocompleteValue;
 
   spinner;
+
+  @Select(LoaderState.progress)
+  progress$: Observable<boolean>;
 
   page = {
     totalPages: 15,
@@ -71,5 +77,9 @@ export class ShowcaseComponent implements OnInit {
 
   onChangeRadio(value) {
     console.log(value);
+  }
+
+  setProgress(status: boolean) {
+    this.store.dispatch(new LoaderSetProgress(status));
   }
 }

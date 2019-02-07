@@ -511,6 +511,30 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Progress</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <button
+                *ngIf="!(progress$ | async)"
+                class="btn btn-success"
+                (click)="setProgress(true)"
+              >Show Progress</button>
+              <button
+                *ngIf="progress$ | async"
+                class="btn btn-danger"
+                (click)="setProgress(false)"
+              >Hide Progress</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <p-modal

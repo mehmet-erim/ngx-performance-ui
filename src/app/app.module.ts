@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import * as _states from './store/states';
+import { LoaderState } from './@core/states/loader.state';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,7 @@ import * as _states from './store/states';
     UiModule,
 
     // Third party
-    NgxsModule.forRoot([_states.ToasterState, _states.EventListenerState]),
+    NgxsModule.forRoot([_states.ToasterState, _states.EventListenerState, LoaderState]),
     NgxsLoggerPluginModule.forRoot({
       disabled: environment.production,
       logger: environment.production ? null : ngxsLogExcept(['EventListener']),
