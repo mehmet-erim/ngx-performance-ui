@@ -27,6 +27,7 @@ export interface AutocompleteItem {
     <div class="autocomplete-container">
       <p-input
         [(ngModel)]="inputValue"
+        (ngModelChange)="onChangeInputValue($event)"
         class="w-100 {{ classes }}"
         [id]="id"
         [type]="type"
@@ -84,19 +85,12 @@ export class AutocompleteComponent extends AbstractInputComponent {
 
   placeholder: string = 'Type in here';
 
-  valueFn: (
-    value: string | AutocompleteItem,
-    previousValue?: string | AutocompleteItem,
-  ) => string | AutocompleteItem = value => {
-    if (typeof value === 'string') {
-      return this.items.find(item => item.text === value) || value;
-    }
-
+  valueFn: (value: AutocompleteItem, previousValue?: AutocompleteItem) => AutocompleteItem = value => {
     this.inputValue = value.text;
     return value;
   };
 
-  valueLimitFn: (value: string | AutocompleteItem) => boolean = value => {
+  valueLimitFn: (value: AutocompleteItem) => boolean = value => {
     if (typeof value !== 'string') return false;
 
     if (this.items.find(item => item.text === value)) return true;
@@ -134,5 +128,13 @@ export class AutocompleteComponent extends AbstractInputComponent {
   onSelect(item: AutocompleteItem) {
     this.value = item;
     this.select.emit(item);
+  }
+
+  onChangeInputValue(value: string) {
+    const found = this.items.find(item => item.text.toLocaleLowerCase() === value.toLocaleLowerCase());
+    if (found) {
+      this.value = found;
+      this.inputValue = found.text;
+    }
   }
 }
