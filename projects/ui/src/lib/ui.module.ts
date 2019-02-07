@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
 import * as _abstracts from './abstracts';
 import * as _components from './components';
 import * as _directives from './directives';
-import { CoreModule } from '@core/core.module';
 import { NgDatepickerModule } from 'ng2-datepicker';
+import { CoreModule } from '../../../core/src/public_api';
 
 @NgModule({
-  imports: [SharedModule, CoreModule, NgDatepickerModule],
+  imports: [CoreModule, NgDatepickerModule],
   declarations: [
     // abstracts
     _abstracts.AbstractInputComponent,

@@ -1,6 +1,5 @@
 import { EventEmitter, Input, Output, Component } from '@angular/core';
-import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
-import { uuid } from '../../@core/utils';
+import { AbstractNgModelComponent } from './ng-model.component';
 
 @Component({
   template: '',
