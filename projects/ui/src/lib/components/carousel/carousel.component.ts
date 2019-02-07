@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { LazyLoadScriptService } from '@core/services/lazy-load-script.service';
 import { map, filter, take, switchMap } from 'rxjs/operators';
 import { Carousel } from '../../models';
+import { LazyLoadScriptService } from '../../../../../core/src/public_api';
 
 declare var $;
 

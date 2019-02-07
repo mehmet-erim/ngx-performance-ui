@@ -8,8 +8,8 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AbstractNgModelComponent } from '../../../shared/abstracts/ng-model.component';
 import compare from 'just-compare';
+import { AbstractNgModelComponent } from '../../../../../core/src/public_api';
 
 export interface SelectOption {
   label?: string;

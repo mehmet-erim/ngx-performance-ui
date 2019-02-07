@@ -14,7 +14,7 @@
     "@angular/router": "^7.1.2",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
-    "@ngxs/form-plugin": "^3.3.2",
+    "@ngxs/form-plugin": "^3.3.4",
     "@ngxs/router-plugin": "^3.3.2",
     "@ngxs/store": "^3.3.2"
   }

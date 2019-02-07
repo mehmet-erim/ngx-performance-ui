@@ -8,8 +8,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Mask } from '@core/models';
 import { AbstractInputComponent } from '../../abstracts';
+import { Mask } from '../../../../../core/src/lib/models';
 
 @Component({
   selector: 'p-input',

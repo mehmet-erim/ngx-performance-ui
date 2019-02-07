@@ -10,8 +10,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { LazyLoadScriptService } from '../../../@core/services/lazy-load-script.service';
 import { GoogleChart } from '../../models';
+import { LazyLoadScriptService } from '../../../../../core/src/public_api';
 
 declare var google;
 

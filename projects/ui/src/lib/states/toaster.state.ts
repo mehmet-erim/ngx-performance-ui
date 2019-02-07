@@ -1,5 +1,5 @@
 import { State } from '@ngxs/store';
-import { Toaster } from '../models/toaster';
+import { Toaster } from '../models';
 
 @State<Toaster.State>({
   name: 'ToasterState',

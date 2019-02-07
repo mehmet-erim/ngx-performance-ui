@@ -1,8 +1,8 @@
-import { transformToArray } from '@core/utils';
 import { Action, Selector, State, StateContext, createSelector } from '@ngxs/store';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, share, tap } from 'rxjs/operators';
-import { EventListenerAdd, EventListenerRemove, EventListenerPublish } from '../actions';
+import { EventListenerAdd, EventListenerPublish, EventListenerRemove } from '../actions';
+import { transformToArray } from '../utils';
 import { EventListener } from '../models';
 
 @State<EventListener.State>({

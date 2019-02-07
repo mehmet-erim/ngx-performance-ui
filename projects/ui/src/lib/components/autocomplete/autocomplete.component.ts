@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs';
-import { takeUntilDestroy } from '../../../@core/utils';
 import { AbstractInputComponent } from '../../abstracts';
+import { takeUntilDestroy } from '../../../../../core/src/lib/utils';
 
 export interface AutocompleteItem {
   text: string;

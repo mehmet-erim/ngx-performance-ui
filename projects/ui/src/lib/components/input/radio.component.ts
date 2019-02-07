@@ -1,7 +1,7 @@
 import { Component, Input, forwardRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { uuid } from '@core/utils';
-import { AbstractNgModelComponent } from 'shared/abstracts/ng-model.component';
+import { AbstractNgModelComponent } from '../../../../../core/src/public_api';
+import { uuid } from '../../../../../core/src/lib/utils';
 
 @Component({
   selector: 'p-radio',

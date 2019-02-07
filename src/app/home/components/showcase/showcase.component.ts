@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Toaster } from 'store/models';
-import { PaginationComponent } from '@ui/components';
 import { Store, Select } from '@ngxs/store';
-import { ToasterShow, LayoutScroll } from 'store/actions';
-import { Mask } from '@core/models';
-import { transformByRegex } from '../../../@core/utils';
-import { LoaderState } from '../../../@core/states/loader.state';
 import { Observable } from 'rxjs';
-import { LoaderSetProgress } from '../../../@core/actions';
+import { PaginationComponent, Toaster } from '../../../../../projects/ui/src/public_api';
+import { LoaderSetProgress, Mask, LoaderState, transformByRegex } from '../../../../../projects/core/src/public_api';
+import { ToasterShow, LayoutScroll } from '../../../../../projects/ui/src/lib/actions';
 
 @Component({
   selector: 'p-showcase',

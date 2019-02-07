@@ -17,7 +17,7 @@ import {
 import { Select } from '@ngxs/store';
 import { Observable, Subject, timer } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
-import { EventListenerState } from 'store/states';
+import { EventListenerState } from '../../../../../core/src/lib/states';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
 

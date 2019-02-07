@@ -328,6 +328,20 @@
     tree-kill "1.2.0"
     webpack-sources "1.2.0"
 
+"@ngx-translate/core@^11.0.1":
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-11.0.1.tgz#cecefad41f06368f5859dac48fec8fcc4485615f"
+  integrity sha512-nBCa1ZD9fAUY/3eskP3Lql2fNg8OMrYIej1/5GRsfcutx9tG/5fZLCv9m6UCw1aS+u4uK/vXjv1ctG/FdMvaWg==
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngxs/form-plugin@^3.3.4":
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/@ngxs/form-plugin/-/form-plugin-3.3.4.tgz#40511013aa04f114525a95b96fb676ee7e670b1c"
+  integrity sha512-mRE51CwjI/Eul/aPU803IVsz9oq8LwJtUGB7RStAoMwvpjG5Y1QEwjpBK7IXGx9iPTCBOkITdESaJNvNVzzv8w==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngxs/logger-plugin@^3.3.2":
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/@ngxs/logger-plugin/-/logger-plugin-3.3.2.tgz#f5e95cd299b974fbfd84a92d8354c52425f86092"

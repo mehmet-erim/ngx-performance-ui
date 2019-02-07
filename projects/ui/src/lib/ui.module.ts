@@ -4,9 +4,18 @@ import * as _components from './components';
 import * as _directives from './directives';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { CoreModule } from '../../../core/src/public_api';
+import { NgxsModule } from '@ngxs/store';
+import * as states from './states';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 @NgModule({
-  imports: [CoreModule, NgDatepickerModule],
+  imports: [
+    CoreModule,
+    NgDatepickerModule,
+    CoreModule,
+    NgxsModule.forFeature([states.ToasterState]),
+    PerfectScrollbarModule,
+  ],
   declarations: [
     // abstracts
     _abstracts.AbstractInputComponent,
@@ -43,6 +52,7 @@ import { CoreModule } from '../../../core/src/public_api';
   exports: [
     // modules
     NgDatepickerModule,
+    PerfectScrollbarModule,
 
     // charts
     _components.AnnotationChartComponent,

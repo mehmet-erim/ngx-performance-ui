@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, Input } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { LoaderState } from '@core/states/loader.state';
 import { Observable } from 'rxjs';
-import { takeUntilDestroy } from '../../../@core/utils';
+import { LoaderState } from '../../../../../core/src/lib/states';
+import { takeUntilDestroy } from '../../../../../core/src/lib/utils';
 
 @Component({
   selector: 'p-progress-bar',

@@ -6,9 +6,10 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import * as _states from './store/states';
 import { CoreModule, ngxsLogExcept } from '../../projects/core/src/public_api';
 import { LoaderState } from '../../projects/core/src/lib/states/loader.state';
+import { UiModule } from '../../projects/ui/src/public_api';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,11 +22,12 @@ import { LoaderState } from '../../projects/core/src/lib/states/loader.state';
     UiModule,
 
     // Third party
-    NgxsModule.forRoot([_states.ToasterState, _states.EventListenerState, LoaderState]),
+    NgxsModule.forRoot([]),
     NgxsLoggerPluginModule.forRoot({
       disabled: environment.production,
       logger: environment.production ? null : ngxsLogExcept(['EventListener']),
     }),
+    NgxsFormPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

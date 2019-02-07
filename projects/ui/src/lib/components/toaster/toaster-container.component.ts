@@ -8,12 +8,12 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { Actions, ofActionDispatched } from '@ngxs/store';
-import { ToasterShow } from 'store/actions';
-import { Toaster } from 'store/models';
 import { ToasterComponent } from './toaster.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { isNullOrUndefined } from 'util';
 import { take } from 'rxjs/operators';
+import { ToasterShow } from '../../actions';
+import { Toaster } from '../../models';
 
 @Component({
   selector: 'p-toaster-container',

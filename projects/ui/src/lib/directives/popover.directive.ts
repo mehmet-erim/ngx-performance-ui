@@ -15,15 +15,15 @@ import {
   Type,
   ViewContainerRef,
 } from '@angular/core';
-import { takeUntilDestroy, takeUntilNotNull } from '@core/utils';
 import { Actions, ofActionDispatched, Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { EventListenerState } from 'store/states';
-import { EventListenerAdd, EventListenerRemove, EventListenerScrollVertical } from '../../store/actions';
 import { PopoverComponent } from '../components';
 import { Tooltip } from '../models';
 import { createProjectableNode } from '../utils';
+import { EventListenerState } from '../../../../core/src/lib/states';
+import { takeUntilDestroy, takeUntilNotNull } from '../../../../core/src/lib/utils';
+import { EventListenerRemove, EventListenerAdd, EventListenerScrollVertical } from '../../../../core/src/public_api';
 
 @Directive({
   selector: '[pPopover]',

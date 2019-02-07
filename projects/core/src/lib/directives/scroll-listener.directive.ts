@@ -2,8 +2,8 @@ import { Directive, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { EventListenerScrollVertical } from 'store/actions';
 import { takeUntilDestroy } from '../utils';
+import { EventListenerScrollVertical } from '../actions';
 
 @Directive({ selector: 'perfect-scrollbar' })
 export class ScrollListenerDirective implements OnInit, OnDestroy {
