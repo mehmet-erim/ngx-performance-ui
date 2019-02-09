@@ -49,9 +49,9 @@ export class DropdownDirective {
       .subscribe(event => {
         if (this.elRef.nativeElement.contains(event.target)) {
           if (this.show) {
-            this.renderer.addClass(this.dropdownContainer, 'd-none');
-            this.show = false;
+            this.hide();
           } else {
+            this.renderer.removeClass(this.dropdownContainer, 'move-out-top');
             this.renderer.removeClass(this.dropdownContainer, 'd-none');
             this.show = true;
           }
@@ -59,8 +59,7 @@ export class DropdownDirective {
           !this.elRef.nativeElement.contains(event.target) &&
           !this.dropdownContainer.contains(event.target as Node)
         ) {
-          this.renderer.addClass(this.dropdownContainer, 'd-none');
-          this.show = false;
+          this.hide();
         }
       });
   }
@@ -89,19 +88,26 @@ export class DropdownDirective {
     this.renderer.addClass(this.dropdownContainer, 'card');
     this.renderer.setStyle(this.dropdownContainer, 'position', 'absolute');
     this.renderer.setStyle(this.dropdownContainer, 'min-width', `${elWidth}px`);
-
-    const dropdown = this.renderer.createElement('div');
-    this.renderer.addClass(dropdown, 'card-body');
+    this.renderer.setStyle(this.dropdownContainer, 'padding', `1.25rem`);
+    this.renderer.setStyle(this.dropdownContainer, 'z-index', `1000`);
 
     const dropdownContentNode = createProjectableNode.call(this, this.pDropdown);
     dropdownContentNode.forEach(node => {
-      this.renderer.appendChild(dropdown, node);
+      this.renderer.appendChild(this.dropdownContainer, node);
     });
-
-    this.renderer.appendChild(this.dropdownContainer, dropdown);
 
     this.renderer.appendChild(this.container, this.dropdownContainer);
     this.renderer.appendChild(parent, this.container);
+
+    this.renderer.addClass(this.dropdownContainer, 'move-in-top');
+  }
+
+  hide() {
+    this.renderer.addClass(this.dropdownContainer, 'move-out-top');
+    setTimeout(() => {
+      this.renderer.addClass(this.dropdownContainer, 'd-none');
+    }, 450);
+    this.show = false;
   }
 
   remove() {

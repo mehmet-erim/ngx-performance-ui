@@ -7,7 +7,15 @@
 }
 
 .move-in-top {
-  animation: moveInTop 0.5s ease-in-out;
+  animation: moveInTop 0.5s ease-in;
+}
+
+.move-out-top {
+  animation: moveOutTop 0.5s ease-out;
+}
+
+.expand-in-top {
+  animation: expandInTop 0.5s ease-out;
 }
 
 @keyframes moveInLeft {
@@ -89,5 +97,17 @@
   to {
     transform: translateY(-3rem);
     opacity: 0;
+  }
+}
+
+@keyframes expandInTop {
+  0% {
+    transform: translateY(-3rem);
+    height: 0px;
+  }
+
+  100% {
+    transform: translate(0);
+    height: 100%;
   }
 }
