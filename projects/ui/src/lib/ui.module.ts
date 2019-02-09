@@ -43,8 +43,6 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     _components.TooltipComponent,
 
     // Directives
-    _directives.AutosizeDirective,
-    _directives.AutofocusDirective,
     _directives.PopoverDirective,
     _directives.TooltipDirective,
   ],
@@ -77,8 +75,6 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     _components.TooltipComponent,
 
     // Directives
-    _directives.AutosizeDirective,
-    _directives.AutofocusDirective,
     _directives.PopoverDirective,
     _directives.TooltipDirective,
   ],

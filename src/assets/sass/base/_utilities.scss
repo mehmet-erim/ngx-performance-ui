@@ -1,4 +1,3 @@
-//#region Animation Utils
 .fade-in-top {
   animation: fadeInTop 0.5s ease-in-out;
 }
@@ -11,4 +10,9 @@
   animation: moveInTop 0.5s ease-in-out;
 }
 
-//#endregion
+.p-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}

@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { CoreModule, ngxsLogExcept } from '../../projects/core/src/public_api';
+import { UiModule } from '../../projects/ui/src/public_api';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule, ngxsLogExcept } from '../../projects/core/src/public_api';
-import { LoaderState } from '../../projects/core/src/lib/states/loader.state';
-import { UiModule } from '../../projects/ui/src/public_api';
-import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 @NgModule({
   declarations: [AppComponent],

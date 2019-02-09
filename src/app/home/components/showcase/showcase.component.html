@@ -104,7 +104,7 @@
                 <p-input
                   [(ngModel)]="inputValue"
                   [autofocus]="true"
-                  [autofocusDelay]="10000"
+                  [autofocusDelay]="1000"
                   placeholder="Enter phone number"
                   type="text"
                   labelText="Phone Number"
@@ -534,11 +534,30 @@
         </div>
       </div>
     </div>
+
+
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Ellipsis</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div pEllipsis>Cras malesuada nunc in ante scelerisque Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio neque sint officia explicabo tenetur voluptatum esse, doloremque repellendus magni
+                consequuntur
+                nisi perferendis distinctio voluptatem omnis voluptate voluptatibus architecto dolores adipisci. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, provident ea error soluta similique officia eveniet tenetur
+                velit corporis eum harum quibusdam vel laudantium facilis quas beatae, expedita maiores optio! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat incidunt distinctio magni at! A enim quae voluptate doloribus obcaecati
+                ducimus neque quis ad culpa, minus nulla, laudantium sequi maxime esse!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <p-modal
-  modalClass="w-100"
+  modalClass="
+                w-100"
   size="lg"
   [(visible)]="isModalShow"
   [centered]="true"

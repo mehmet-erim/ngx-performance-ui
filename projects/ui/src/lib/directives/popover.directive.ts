@@ -62,10 +62,8 @@ export class PopoverDirective implements OnInit, OnDestroy {
     private actions: Actions,
     private appRef: ApplicationRef,
     private elRef: ElementRef,
-    private injector: Injector,
     private renderer: Renderer2,
     private resolver: ComponentFactoryResolver,
-    private vcRef: ViewContainerRef,
     private store: Store,
   ) {}
 
