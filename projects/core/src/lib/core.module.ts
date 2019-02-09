@@ -27,6 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
   declarations: [
     abstracts.AbstractNgModelComponent,
     components.RouterOutletComponent,
+    directives.AutosizeDirective,
     directives.AutofocusDirective,
     directives.AutosizeDirective,
     directives.EllipsisDirective,
@@ -45,8 +46,8 @@ import { TranslateModule } from '@ngx-translate/core';
 
     abstracts.AbstractNgModelComponent,
     components.RouterOutletComponent,
-    directives.AutofocusDirective,
     directives.AutosizeDirective,
+    directives.AutofocusDirective,
     directives.EllipsisDirective,
     directives.HighlightDirective,
     directives.ScrollListenerDirective,

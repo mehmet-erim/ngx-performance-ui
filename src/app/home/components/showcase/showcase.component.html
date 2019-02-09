@@ -553,6 +553,44 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Dropdown</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <button
+                #dropdown="pDropdown"
+                [pDropdown]="secondaryContent ? content2 : content"
+                class="btn btn-warning ml-1"
+              >Click me and show dropdown! <i
+                  class="fas"
+                  [ngClass]="{'fa-angle-down': !dropdown.show, 'fa-angle-up': dropdown.show}"
+                ></i></button>
+              <ng-template #content>
+                <div>Cras malesuada nunc in ante scelerisque</div>
+                <div>Cras malesuada nunc in ante scelerisque</div>
+                <div>Cras malesuada nunc in ante scelerisque</div>
+                <div>Cras malesuada nunc in ante scelerisque</div>
+              </ng-template>
+              <ng-template #content2>
+                <div>Lorem ipsum dolor</div>
+                <div>Lorem ipsum dolor</div>
+                <div>Lorem ipsum dolor</div>
+              </ng-template>
+
+              <button
+                class="btn btn-info ml-1"
+                (click)="secondaryContent = !secondaryContent"
+              >Switch content</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <p-modal

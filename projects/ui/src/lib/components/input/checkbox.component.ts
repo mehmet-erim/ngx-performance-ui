@@ -50,8 +50,4 @@ export class CheckboxComponent extends AbstractInputComponent {
     this.value = !this.value;
     this.click.emit(event);
   }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.warn(changes.ngModel);
-  }
 }

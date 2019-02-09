@@ -45,6 +45,8 @@ export class ShowcaseComponent implements OnInit {
 
   date = new Date();
 
+  secondaryContent: boolean = false;
+
   constructor(private store: Store) {}
 
   ngOnInit() {
