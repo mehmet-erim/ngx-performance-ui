@@ -27,7 +27,7 @@ export class ProgressBarComponent implements OnInit {
 
   interval;
 
-  speed: number = 15;
+  speed: number = 30;
 
   height: string = '10px';
 
@@ -35,11 +35,14 @@ export class ProgressBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.show$.pipe(takeUntilDestroy(this)).subscribe(status => {
-      if (status) {
-        this.show = true;
-        this.cdRef.detectChanges();
-
-        this.setValue();
+      if (status === true) {
+        if (this.show) {
+          setTimeout(() => {
+            this.showFn();
+          }, 900);
+          return;
+        }
+        this.showFn();
         return;
       }
 
@@ -48,11 +51,18 @@ export class ProgressBarComponent implements OnInit {
 
       setTimeout(() => {
         clearInterval(this.interval);
-        this.value = 0;
         this.show = false;
         this.cdRef.detectChanges();
-      }, 1000);
+      }, 800);
     });
+  }
+
+  showFn() {
+    this.value = 0;
+    this.show = true;
+    this.cdRef.detectChanges();
+
+    this.setValue();
   }
 
   setValue() {
