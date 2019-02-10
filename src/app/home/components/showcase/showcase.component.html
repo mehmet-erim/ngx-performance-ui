@@ -590,6 +590,38 @@
         </div>
       </div>
     </div>
+
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">pFor Directive</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <ul>
+                <li *pFor="let person of persons; let index = index; trackBy: trackByFn">
+                  {{ index }}- {{ person }}
+                </li>
+              </ul>
+
+              <button
+                class="btn btn-info btn-sm"
+                (click)="addPerson()"
+              >Add person</button>
+              <button
+                class="btn btn-info btn-sm ml-1"
+                (click)="updatePerson()"
+              >Update person</button><button
+                class="btn btn-info btn-sm ml-1"
+                (click)="sortPerson()"
+              >Sort person</button><button
+                class="btn btn-info btn-sm ml-1"
+                (click)="removePerson()"
+              >Remove person</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

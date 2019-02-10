@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { PaginationComponent, Toaster } from '../../../../../projects/ui/src/public_api';
@@ -47,6 +47,12 @@ export class ShowcaseComponent implements OnInit {
 
   secondaryContent: boolean = false;
 
+  persons = ['Blue Jays', 'Yankees', 'Rays', 'Orioles', 'Red Sox', 'Royals'];
+
+  secondPersons = ['Twins', 'Tigers', 'Indians', 'White Sox', 'Astros', 'Rangers', 'Angels', 'Mariners', 'Athletics'];
+
+  trackByFn: TrackByFunction<string> = (_, item) => item;
+
   constructor(private store: Store) {}
 
   ngOnInit() {
@@ -79,5 +85,33 @@ export class ShowcaseComponent implements OnInit {
 
   setProgress(status: boolean) {
     this.store.dispatch(new LoaderSetProgress(status));
+  }
+
+  addPerson() {
+    this.persons = [...this.persons, this.secondPersons[Math.ceil(Math.random() * this.secondPersons.length - 1)]];
+  }
+
+  updatePerson() {
+    const randomIndex = Math.ceil(Math.random() * this.persons.length - 1);
+    this.persons = [
+      ...this.persons.slice(0, randomIndex),
+      this.secondPersons[Math.ceil(Math.random() * this.secondPersons.length - 1)],
+      ...this.persons.slice(randomIndex + 1),
+    ];
+  }
+
+  removePerson() {
+    const randomIndex = Math.ceil(Math.random() * this.persons.length - 1);
+    this.persons = [...this.persons.slice(0, randomIndex), ...this.persons.slice(randomIndex + 1)];
+  }
+
+  sortPerson() {
+    this.persons = [
+      ...this.persons.sort((a, b) => {
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+      }),
+    ];
   }
 }
