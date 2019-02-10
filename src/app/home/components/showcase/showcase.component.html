@@ -593,13 +593,31 @@
 
     <div class="col-12 col-md-6 my-3">
       <div class="card">
-        <div class="card-header">pFor Directive</div>
+        <div class="card-header">pFor Directive
+          <span
+            *ngIf="forFilterVal; else info"
+            (click)="forFilterVal = undefined"
+            class="float-right"
+          >Clear filter</span>
+          <ng-template #info>
+            <span class="float-right">
+              Click <code>li</code> item for filter
+            </span>
+          </ng-template>
+        </div>
         <div class="card-body">
           <div class="row">
             <div class="col">
               <ul>
-                <li *pFor="let person of persons; let index = index; trackBy: trackByFn">
-                  {{ index }}- {{ person }}
+                <li
+                  *pFor="let person of persons; let index = index let first = first; let last = last; let odd = odd; let even = even; trackBy: trackByFn; filter: {key: undefined, value: forFilterVal}"
+                  (click)="forFilterVal = person"
+                  style="cursor: pointer"
+                >
+                  {{ person }}
+                  <pre>
+{{ {fist: first, last: last, odd: odd, even: even, index: index} | json}}
+                  </pre>
                 </li>
               </ul>
 
