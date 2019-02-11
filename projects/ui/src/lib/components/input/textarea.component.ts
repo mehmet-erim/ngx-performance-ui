@@ -13,7 +13,7 @@ import { AbstractInputComponent } from '../../abstracts';
 @Component({
   selector: 'p-textarea',
   template: `
-    <label class="{{ labelClasses }}" [attr.for]="id" [innerHTML]="labelText"></label>
+    <label *ngIf="labelText" class="{{ labelClasses }}" [attr.for]="id" [innerHTML]="labelText"></label>
     <textarea
       class="form-control {{ classes }}"
       [(ngModel)]="value"

@@ -21,6 +21,7 @@ import { AbstractInputComponent } from '../../abstracts';
       />
 
       <label
+        *ngIf="labelText"
         [htmlFor]="id"
         (keyup.space)="onKeyup()"
         (click)="onChangeValue($event)"

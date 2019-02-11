@@ -14,7 +14,7 @@ import { Mask } from '../../../../../core/src/lib/models';
 @Component({
   selector: 'p-input',
   template: `
-    <label class="{{ labelClasses }}" [attr.for]="id" [innerHTML]="labelText"></label>
+    <label *ngIf="labelText" class="{{ labelClasses }}" [attr.for]="id" [innerHTML]="labelText"></label>
     <input
       #input
       class="form-control {{ classes }}"
