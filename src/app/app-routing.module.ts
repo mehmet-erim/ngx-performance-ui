@@ -4,7 +4,7 @@ import { RouterOutletComponent } from '../../projects/core/src/public_api';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: RouterOutletComponent,
     children: [
       {
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/home',
+    redirectTo: '/',
   },
 ];
 
