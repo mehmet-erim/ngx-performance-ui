@@ -18,12 +18,13 @@ export class EventListenerState {
   }
 
   static getOne(key: string) {
-    return createSelector(
+    const selector = createSelector(
       [EventListenerState],
       function(state: EventListener.State) {
         return state[key];
       },
     );
+    return selector;
   }
 
   @Action(EventListenerAdd)

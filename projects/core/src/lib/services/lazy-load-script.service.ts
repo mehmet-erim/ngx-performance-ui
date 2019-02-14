@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/common';
 export class LazyLoadScriptService {
   _loadedLibraries: { [url: string]: ReplaySubject<any> } = {};
 
-  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
+  constructor(@Inject(DOCUMENT) private readonly document: any) {}
 
   loadScript(url: string): Observable<any> {
     if (this._loadedLibraries[url]) {
@@ -31,7 +31,7 @@ export class LazyLoadScriptService {
   }
 }
 
-/* Usage 
+/* Usage
 this.lazyLoadService.loadScript('/assets/scripts/some-script.js').subscribe(() => {
   // code
 });

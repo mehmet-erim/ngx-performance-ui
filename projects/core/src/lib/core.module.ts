@@ -73,5 +73,6 @@ export class CoreModule {
 }
 
 export function noop() {
-  return function() {};
+  const noop = function() {};
+  return noop;
 }
