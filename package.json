@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:core": "ng-packagr -p projects/core/package.json",
+    "build:ui": "ng-packagr -p projects/ui/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "@ngx-performance-ui/core",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/animations": "^7.1.2",
