@@ -17,6 +17,28 @@ declare var google;
       [options]="annotationChartOptions"
       (ready)="rangeChangeHandler()"
     ></p-google-chart>
+
+    <div *ngIf="chart" class="row mt-2">
+      <div class="col-12">
+        <h4>Methods</h4>
+        <button (click)="clearChart()" class="btn btn-sm btn-secondary m-1">clearChart()</button>
+        <button (click)="hideDataColumns([1, 2, 3])" class="btn btn-sm btn-secondary m-1">
+          hideDataColumns(columnIndexes)
+        </button>
+        <button (click)="showDataColumns([1, 2, 3])" class="btn btn-sm btn-secondary m-1">
+          showDataColumns(columnIndexes)
+        </button>
+        <button (click)="getContainer()" class="btn btn-sm btn-secondary m-1">getContainer()</button>
+        <button (click)="getSelection()" class="btn btn-sm btn-secondary m-1">getSelection()</button>
+        <button (click)="getVisibleChartRange()" class="btn btn-sm btn-secondary m-1">getVisibleChartRange()</button>
+        <button
+          (click)="setVisibleChartRange(annotationChartRows[0][0], annotationChartRows[1][0])"
+          class="btn btn-sm btn-secondary m-1"
+        >
+          setVisibleChartRange(start, end)
+        </button>
+      </div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

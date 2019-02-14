@@ -24,7 +24,8 @@ export interface AutocompleteItem {
 @Component({
   selector: 'p-autocomplete',
   template: `
-    <div class="autocomplete-container">
+    <div class="autocomplete-container {{ containerClasses }}">
+      <label *ngIf="labelText" class="{{ labelClasses }}" [attr.for]="id" [innerHTML]="labelText"></label>
       <p-input
         [(ngModel)]="inputValue"
         (ngModelChange)="onChangeInputValue($event)"
@@ -40,8 +41,8 @@ export interface AutocompleteItem {
         [autofocus]="autofocus"
         [autofocusDelay]="autofocusDelay"
         autocomplete="nop"
-        (focus)="onFocus()"
-        (blur)="onBlur()"
+        (focus)="onFocus($event)"
+        (blur)="onBlur($event)"
         (click)="click.emit($event)"
       ></p-input>
       <div *ngIf="showList" class="list-group">
@@ -70,6 +71,8 @@ export interface AutocompleteItem {
 })
 export class AutocompleteComponent extends AbstractInputComponent {
   @Input() items: AutocompleteItem[] = [];
+
+  @Input() containerClasses: string = '';
 
   @Input() delay: number = 150;
 
