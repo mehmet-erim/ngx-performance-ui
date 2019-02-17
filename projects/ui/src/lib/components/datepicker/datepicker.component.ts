@@ -58,10 +58,6 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
 
   closable: boolean = false;
 
-  constructor(public injector: Injector) {
-    super(injector);
-  }
-
   get options(): DatepickerOptions {
     return {
       minYear: 1890,
@@ -84,6 +80,10 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
 
   get date(): Date {
     return this.value ? new Date(this.value) : null;
+  }
+
+  constructor(public injector: Injector) {
+    super(injector);
   }
 
   private subscribeToEvents() {
@@ -110,18 +110,18 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
 
     if (this.datePicker.isOpened) {
       this.hide();
-      this.subscribeToEvents();
     } else {
       this.show();
-      this.destroy$.next();
     }
 
     setTimeout(() => this.cdRef.detectChanges(), 0);
   }
 
   show() {
-    this.closable = false;
     this.datePicker.toggle();
+
+    this.closable = false;
+    this.subscribeToEvents();
     setTimeout(() => {
       this.closable = true;
     }, 500);
@@ -129,6 +129,7 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
 
   hide() {
     this.datePicker.toggle();
+    this.destroy$.next();
   }
 
   flip() {

@@ -65,6 +65,7 @@ export class PopoverDirective implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private resolver: ComponentFactoryResolver,
     private store: Store,
+    private vcRef: ViewContainerRef,
   ) {}
 
   ngOnInit() {

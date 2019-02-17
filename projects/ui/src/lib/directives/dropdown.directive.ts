@@ -51,7 +51,7 @@ export class DropdownDirective {
           if (this.show) {
             this.hide();
           } else {
-            this.renderer.removeClass(this.dropdownContainer, 'collapse-top');
+            // this.renderer.removeClass(this.dropdownContainer, 'collapse-top');
             this.renderer.removeClass(this.dropdownContainer, 'd-none');
             this.show = true;
           }
@@ -99,11 +99,11 @@ export class DropdownDirective {
     this.renderer.appendChild(this.container, this.dropdownContainer);
     this.renderer.appendChild(parent, this.container);
 
-    this.renderer.addClass(this.dropdownContainer, 'expand-top');
+    // this.renderer.addClass(this.dropdownContainer, 'expand-top');
   }
 
   hide() {
-    this.renderer.addClass(this.dropdownContainer, 'collapse-top');
+    // this.renderer.addClass(this.dropdownContainer, 'collapse-top');
     setTimeout(() => {
       this.renderer.addClass(this.dropdownContainer, 'd-none');
     }, 270);
