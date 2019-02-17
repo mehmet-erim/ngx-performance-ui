@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod=true --aot=true --buildOptimizer=true --vendorChunk=true --outputHashing=all",
     "build:core": "ng-packagr -p projects/core/package.json",
     "build:ui": "ng-packagr -p projects/ui/package.json",
     "test": "ng test",

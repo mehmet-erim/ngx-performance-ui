@@ -90,7 +90,13 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
     this.click$
       .pipe(
         takeUntil(this.destroy$),
-        filter(event => event && this.closable && !this.group.nativeElement.contains(event.target)),
+        filter(
+          event =>
+            event &&
+            this.closable &&
+            !this.group.nativeElement.contains(event.target) &&
+            !document.querySelector('#datepicker').contains(event.target as any),
+        ),
       )
       .subscribe(() => this.toggle());
   }
@@ -106,8 +112,6 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
   }
 
   toggle() {
-    this.flip();
-
     if (this.datePicker.isOpened) {
       this.hide();
     } else {
@@ -118,6 +122,7 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
   }
 
   show() {
+    this.flip();
     this.datePicker.toggle();
 
     this.closable = false;
