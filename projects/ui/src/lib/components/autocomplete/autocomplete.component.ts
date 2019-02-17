@@ -51,7 +51,7 @@ export interface AutocompleteItem {
           [pHighlightHide]="true"
           *ngFor="let item of items; trackBy: trackByFn"
           class="list-group-item list-group-item-action"
-          [class.active]="value === item.text"
+          [class.list-group-item-secondary]="value?.text === item.text"
           (click)="onSelect(item)"
         >
           {{ item.text }}
@@ -69,12 +69,12 @@ export interface AutocompleteItem {
     },
   ],
 })
-export class AutocompleteComponent extends AbstractInputComponent {
+export class AutocompleteComponent extends AbstractInputComponent<AutocompleteItem> {
   @Input() items: AutocompleteItem[] = [];
 
   @Input() containerClasses: string = '';
 
-  @Input() delay: number = 150;
+  @Input() delay: number = 200;
 
   @Output() select = new EventEmitter<AutocompleteItem>();
 
@@ -89,15 +89,10 @@ export class AutocompleteComponent extends AbstractInputComponent {
   placeholder: string = 'Type in here';
 
   valueFn: (value: AutocompleteItem, previousValue?: AutocompleteItem) => AutocompleteItem = value => {
+    if (!value) return value;
+
     this.inputValue = value.text;
     return value;
-  };
-
-  valueLimitFn: (value: AutocompleteItem) => boolean = value => {
-    if (typeof value !== 'string') return false;
-
-    if (this.items.find(item => item.text === value)) return true;
-    return false;
   };
 
   trackByFn: TrackByFunction<AutocompleteItem> = (_, value) => value.text;
@@ -138,6 +133,9 @@ export class AutocompleteComponent extends AbstractInputComponent {
     if (found) {
       this.value = found;
       this.inputValue = found.text;
+      return;
     }
+
+    this.value = undefined;
   }
 }

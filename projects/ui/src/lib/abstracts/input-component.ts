@@ -5,7 +5,7 @@ import { AbstractNgModelComponent } from '../../../../core/src/public_api';
 @Component({
   template: '',
 })
-export class AbstractInputComponent extends AbstractNgModelComponent {
+export class AbstractInputComponent<T = any> extends AbstractNgModelComponent<T> {
   @Input() autofocus: boolean = false;
 
   @Input() autofocusDelay: number = 0;
