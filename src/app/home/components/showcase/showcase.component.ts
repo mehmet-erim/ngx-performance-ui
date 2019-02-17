@@ -55,7 +55,7 @@ export class ShowcaseComponent implements OnInit {
 
   forFilterValue: any;
 
-  forFilterContain: boolean;
+  forFilterContain: boolean = true;
 
   trackByFn: TrackByFunction<string> = (_, item) => item;
 
