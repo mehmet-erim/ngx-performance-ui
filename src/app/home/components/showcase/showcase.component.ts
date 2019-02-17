@@ -51,7 +51,11 @@ export class ShowcaseComponent implements OnInit {
 
   secondPersons = ['Twins', 'Tigers', 'Indians', 'White Sox', 'Astros', 'Rangers', 'Angels', 'Mariners', 'Athletics'];
 
-  forFilterVal: string;
+  forFilterKey: string;
+
+  forFilterValue: any;
+
+  forFilterContain: boolean;
 
   trackByFn: TrackByFunction<string> = (_, item) => item;
 

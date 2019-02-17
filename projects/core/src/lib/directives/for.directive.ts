@@ -29,14 +29,30 @@ export class ForDirective {
   @Input('pForTrackBy')
   trackBy: TrackByFunction<any>;
 
-  @Input('pForFilter')
-  filter: { key?: string; value: any };
+  @Input('pForFilterKey')
+  filterKey: string;
+
+  @Input('pForFilterValue')
+  filterValue: any;
+
+  @Input('pForFilterContain')
+  filterContain: boolean;
 
   @Input('pForCompareBy')
   compareBy: CompareFn;
 
+  @Input('pForContainCompareBy')
+  containCompareBy: CompareFn;
+
   get compareFn(): CompareFn {
     return this.compareBy || compare;
+  }
+
+  get containCompareFn(): CompareFn {
+    return (
+      this.containCompareBy ||
+      ((value, comparision) => value.toLocaleLowerCase().indexOf(comparision.toLocaleLowerCase()) > -1)
+    );
   }
 
   get trackByFn(): TrackByFunction<any> {
@@ -89,10 +105,19 @@ export class ForDirective {
     if (!Array.isArray(this.items)) throw 'pForOf must be an array!';
 
     let items = [];
-    if (this.filter && this.filter.value !== undefined) {
-      const compareFn = this.compareFn;
+    if (this.filterValue !== undefined) {
+      let compareFn: CompareFn;
+      if (this.filterContain) {
+        if (typeof this.filterValue !== 'string') {
+          throw 'filterValue must be a string when filterContain is true';
+        }
 
-      items = this.items.filter(item => compareFn(this.filter.key ? item[this.filter.key] : item, this.filter.value));
+        compareFn = this.containCompareFn;
+      } else {
+        compareFn = this.compareFn;
+      }
+
+      items = this.items.filter(item => compareFn(this.filterKey ? item[this.filterKey] : item, this.filterValue));
     } else {
       items = this.items;
     }
