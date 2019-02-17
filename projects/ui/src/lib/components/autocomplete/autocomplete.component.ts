@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { timer } from 'rxjs';
-import { AbstractInputComponent } from '../../abstracts';
 import { takeUntilDestroy } from '../../../../../core/src/lib/utils';
+import { AbstractInputComponent } from '../../abstracts';
 
 export interface AutocompleteItem {
   text: string;
@@ -45,6 +45,7 @@ export interface AutocompleteItem {
         (blur)="onBlur($event)"
         (click)="click.emit($event)"
       ></p-input>
+      <i *ngIf="value" class="fas fa-times text-secondary" (click)="clear()"></i>
       <div *ngIf="showList" class="list-group">
         <a
           [pHighlight]="inputValue"
@@ -108,6 +109,7 @@ export class AutocompleteComponent extends AbstractInputComponent<AutocompleteIt
       .pipe(takeUntilDestroy(this))
       .subscribe(() => {
         this.showList = false;
+        this.inputValue = (this.value || { text: '' }).text;
         this.cdRef.detectChanges();
       });
     this.blur.emit(event);
@@ -136,6 +138,12 @@ export class AutocompleteComponent extends AbstractInputComponent<AutocompleteIt
       return;
     }
 
+    if (!value || value === '') this.value = undefined;
+  }
+
+  clear() {
     this.value = undefined;
+    this.inputValue = '';
+    this.showList = false;
   }
 }

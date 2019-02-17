@@ -3,6 +3,14 @@
 
   .list-group {
     position: absolute;
-    width: 100%
+    width: 100%;
+  }
+
+  .fa-times {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    font-size: 10px;
+    cursor: pointer;
   }
 }

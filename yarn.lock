@@ -3055,10 +3055,6 @@ fs-extra@^7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^4.0.0"
-    universalify "^0.1.0"
 
 fs-minipass@^1.2.5:
   version "1.2.5"
@@ -3534,6 +3530,11 @@ iconv-lite@^0.4.17, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   integrity sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
+
+idx@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/idx/-/idx-2.5.3.tgz#adb160a3b39f93cac9079c210137b03cabc2fdb3"
+  integrity sha512-1mS+/MaROFRZzQs2eMjt/AX7lnrxYDPzqMvkqgbt+XxylePcSaw0B+/ovY+aH6lsh84Ku6Zfkw562genhrM3aQ==
 
 ieee754@^1.1.4:
   version "1.1.12"
