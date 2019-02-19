@@ -149,4 +149,8 @@ export class DatePickerComponent extends AbstractNgModelComponent<Date | string 
       this.cdRef.detectChanges();
     }
   }
+
+  clear() {
+    this.value = null;
+  }
 }

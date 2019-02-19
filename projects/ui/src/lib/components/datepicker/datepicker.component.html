@@ -9,6 +9,7 @@
       [value]="date | date: displayFormat"
       (click)="onClick()"
     />
+    <i *ngIf="value" class="fas fa-times text-secondary" (click)="clear()"></i>
     <div class="input-group-prepend">
       <span class="input-group-text bg-white" (click)="toggle()"><i class="fas fa-calendar-day"></i></span>
     </div>

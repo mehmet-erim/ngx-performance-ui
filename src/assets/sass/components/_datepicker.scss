@@ -9,3 +9,18 @@
     top: 0 !important;
   }
 }
+
+.datepicker-container {
+  .fa-times {
+    position: absolute;
+    top: 14px;
+    right: 48px;
+    font-size: 10px;
+    cursor: pointer;
+    z-index: 4;
+  }
+
+  .input-group-prepend {
+    cursor: pointer;
+  }
+}
