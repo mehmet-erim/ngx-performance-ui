@@ -55,13 +55,13 @@ export class ModalComponent implements OnDestroy {
 
   @Output() visibleChange = new EventEmitter<boolean>();
 
-  @ContentChild('mnHeader') mnHeader: TemplateRef<any>;
+  @ContentChild('pHeader') pHeader: TemplateRef<any>;
 
-  @ContentChild('mnBody') mnBody: TemplateRef<any>;
+  @ContentChild('pBody') pBody: TemplateRef<any>;
 
-  @ContentChild('mnFooter') mnFooter: TemplateRef<any>;
+  @ContentChild('pFooter') pFooter: TemplateRef<any>;
 
-  @ViewChild('mnModalContent') modalContent: ElementRef;
+  @ViewChild('pModalContent') modalContent: ElementRef;
 
   @Select(EventListenerState.getOne('click'))
   click$: Observable<Event>;
