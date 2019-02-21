@@ -8,6 +8,7 @@ export * from './input/input.component';
 export * from './input/radio.component';
 export * from './input/spinner.component';
 export * from './input/textarea.component';
+export * from './listbox/listbox.component';
 export * from './modal/modal.component';
 export * from './pagination/pagination.component';
 export * from './popover/popover.component';

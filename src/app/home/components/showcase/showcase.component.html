@@ -440,10 +440,10 @@
               <div pEllipsis>
                 Cras malesuada nunc in ante scelerisque Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur
                 adipisicing elit. Optio neque sint officia explicabo tenetur voluptatum esse, doloremque repellendus
-                magni consequuntur nisi perferendis distinctio voluptatem opis voluptate voluptatibus architecto
-                dolores adipisci. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, provident ea
-                error soluta similique officia eveniet tenetur velit corporis eum harum quibusdam vel laudantium facilis
-                quas beatae, expedita maiores optio! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat
+                magni consequuntur nisi perferendis distinctio voluptatem opis voluptate voluptatibus architecto dolores
+                adipisci. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, provident ea error
+                soluta similique officia eveniet tenetur velit corporis eum harum quibusdam vel laudantium facilis quas
+                beatae, expedita maiores optio! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat
                 incidunt distinctio magni at! A enim quae voluptate doloribus obcaecati ducimus neque quis ad culpa,
                 minus nulla, laudantium sequi maxime esse!
               </div>
@@ -493,7 +493,12 @@
         <div class="card-header">
           pFor Directive
 
-          <p-input *ngIf="forFilterContain; else fullFilter" placeholder="Type to filter" class="float-right" [(ngModel)]="forFilterValue"></p-input>
+          <p-input
+            *ngIf="forFilterContain; else fullFilter"
+            placeholder="Type to filter"
+            class="float-right"
+            [(ngModel)]="forFilterValue"
+          ></p-input>
           <ng-template #fullFilter>
             <span *ngIf="forFilterValue; else info" (click)="forFilterValue = undefined" class="float-right"
               >Clear filter</span
@@ -537,8 +542,38 @@
                 ><button class="btn btn-info btn-sm ml-1" (click)="removePerson()">Remove person</button>
               </div>
               <div class="col-12 mt-1">
-                <button class="btn btn-info btn-sm" (click)="forFilterContain = !forFilterContain; forFilterValue = undefined">{{forFilterContain ? 'Switch to full filter' : 'Switch to contain filter'}}</button>
+                <button
+                  class="btn btn-info btn-sm"
+                  (click)="forFilterContain = !forFilterContain; forFilterValue = undefined"
+                >
+                  {{ forFilterContain ? 'Switch to full filter' : 'Switch to contain filter' }}
+                </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Listbox</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p-listbox
+                [title]="'Lorem Box'"
+                filterPlaceholder="type in here for search..."
+                [items]="[
+                  { text: 'Lorem ipsum dolor sit amet consectetur', value: {id: 1, code: 'az51a'} },
+                  { text: 'Expedita ipsa qui voluptates culpa.' },
+                  { text: 'Vitae quisquam dolor quia molestias magni nesciunt consectetur delectus iste.', classes: 'list-group-item-danger' , value: {id: 3, code: 'ks72n'}}
+                ]"
+                [(ngModel)]="listboxValue"
+              ></p-listbox>
+              Value:
+              <pre> {{ listboxValue | json }}</pre>
             </div>
           </div>
         </div>

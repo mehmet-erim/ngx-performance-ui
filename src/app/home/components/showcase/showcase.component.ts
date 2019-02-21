@@ -1,7 +1,7 @@
 import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { PaginationComponent, Toaster } from '../../../../../projects/ui/src/public_api';
+import { PaginationComponent, Toaster, ListboxItem } from '../../../../../projects/ui/src/public_api';
 import { LoaderSetProgress, Mask, LoaderState, transformByRegex } from '../../../../../projects/core/src/public_api';
 import { ToasterShow, LayoutScroll } from '../../../../../projects/ui/src/lib/actions';
 
@@ -56,6 +56,8 @@ export class ShowcaseComponent implements OnInit {
   forFilterValue: any;
 
   forFilterContain: boolean = true;
+
+  listboxValue: ListboxItem[];
 
   trackByFn: TrackByFunction<string> = (_, item) => item;
 
