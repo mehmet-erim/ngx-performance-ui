@@ -55,6 +55,10 @@ export class TooltipDirective implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
+  get containerRect(): ClientRect {
+    return ((this.tooltip.location.nativeElement as HTMLElement).childNodes[0] as HTMLElement).getBoundingClientRect();
+  }
+
   constructor(
     private actions: Actions,
     private appRef: ApplicationRef,
@@ -73,9 +77,17 @@ export class TooltipDirective implements OnInit, OnDestroy {
         filter(event => !!event),
       )
       .subscribe(event => {
+        let onMouseContainerOver = false;
+        if (this.tooltip) {
+          this.tooltip.hostView.detectChanges();
+          const { top, bottom, left, right } = this.containerRect;
+          const { x, y } = event;
+          onMouseContainerOver = top < y && bottom > y && left < x && right > x;
+        }
+
         if (!this.tooltip && this.elRef.nativeElement.contains(event.target)) {
           this.show();
-        } else if (this.tooltip && !this.elRef.nativeElement.contains(event.target)) {
+        } else if (this.tooltip && !this.elRef.nativeElement.contains(event.target) && !onMouseContainerOver) {
           this.hide();
         }
       });
@@ -99,7 +111,6 @@ export class TooltipDirective implements OnInit, OnDestroy {
       this.renderer.selectRootElement('p-root', true),
       (this.tooltip.hostView as EmbeddedViewRef<any>).rootNodes[0],
     );
-
     this.subscribeTo();
   }
 

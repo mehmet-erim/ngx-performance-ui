@@ -58,6 +58,10 @@ export class PopoverDirective implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
+  get containerRect(): ClientRect {
+    return ((this.popover.location.nativeElement as HTMLElement).childNodes[0] as HTMLElement).getBoundingClientRect();
+  }
+
   constructor(
     private actions: Actions,
     private appRef: ApplicationRef,
@@ -75,9 +79,17 @@ export class PopoverDirective implements OnInit, OnDestroy {
         filter(event => !!event),
       )
       .subscribe(event => {
+        let onMouseContainerOver = false;
+        if (this.popover) {
+          this.popover.hostView.detectChanges();
+          const { top, bottom, left, right } = this.containerRect;
+          const { x, y } = event;
+          onMouseContainerOver = top < y && bottom > y && left < x && right > x;
+        }
+
         if (!this.popover && this.elRef.nativeElement.contains(event.target)) {
           this.show();
-        } else if (this.popover && !this.elRef.nativeElement.contains(event.target)) {
+        } else if (this.popover && !this.elRef.nativeElement.contains(event.target) && !onMouseContainerOver) {
           this.hide();
         }
       });
