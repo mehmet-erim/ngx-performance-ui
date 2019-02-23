@@ -57,7 +57,8 @@ export class ShowcaseComponent implements OnInit {
 
   forFilterContain: boolean = true;
 
-  listboxValue: ListboxItem[];
+  listboxMultipleValue: ListboxItem[];
+  listboxValue: ListboxItem;
 
   trackByFn: TrackByFunction<string> = (_, item) => item;
 

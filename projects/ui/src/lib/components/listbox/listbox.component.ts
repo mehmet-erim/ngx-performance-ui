@@ -69,7 +69,7 @@ export interface ListboxItem {
     },
   ],
 })
-export class ListboxComponent extends AbstractNgModelComponent<ListboxItem[]> {
+export class ListboxComponent extends AbstractNgModelComponent<ListboxItem | ListboxItem[]> {
   @Input()
   items: ListboxItem[] = [];
 
@@ -83,6 +83,8 @@ export class ListboxComponent extends AbstractNgModelComponent<ListboxItem[]> {
 
   @Input() filterPlaceholder: string = '';
 
+  @Input() multiple: boolean = false;
+
   filterValue: string = '';
 
   trackByFn: TrackByFunction<ListboxItem> = (index, item) => item.text || index;
@@ -92,6 +94,11 @@ export class ListboxComponent extends AbstractNgModelComponent<ListboxItem[]> {
   }
 
   onClick(item: ListboxItem) {
+    if (!this.multiple) {
+      compare(this.value, item) ? (this.value = {} as ListboxItem) : (this.value = item);
+      return;
+    }
+
     if (!this.value || !Array.isArray(this.value) || !this.value.length) this.value = [];
 
     const index = this.value.findIndex(val => compare(val, item));
@@ -106,9 +113,13 @@ export class ListboxComponent extends AbstractNgModelComponent<ListboxItem[]> {
   }
 
   isActive(item: ListboxItem) {
-    if (!this.value || !this.value.length) return;
+    if (!this.multiple) {
+      return compare(this.value, item);
+    }
+
+    if (!this.value || !(this.value as ListboxItem[]).length) return;
     const cloneItem = { ...item };
     delete cloneItem.classes;
-    return this.value.findIndex(val => compare(val, cloneItem)) > -1;
+    return (this.value as ListboxItem[]).findIndex(val => compare(val, cloneItem)) > -1;
   }
 }

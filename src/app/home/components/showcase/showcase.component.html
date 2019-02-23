@@ -561,7 +561,7 @@
         <div class="card-header">Listbox</div>
         <div class="card-body">
           <div class="row">
-            <div class="col">
+            <div class="col-6">
               <p-listbox
                 [title]="'Lorem Box'"
                 filterPlaceholder="type in here for search..."
@@ -574,6 +574,21 @@
               ></p-listbox>
               Value:
               <pre> {{ listboxValue | json }}</pre>
+            </div>
+            <div class="col-6">
+              <p-listbox
+                [title]="'Lorem Box Multiple'"
+                filterPlaceholder="type in here for search..."
+                [items]="[
+                  { text: 'Lorem ipsum dolor sit amet consectetur', value: {id: 1, code: 'az51a'} },
+                  { text: 'Expedita ipsa qui voluptates culpa.' },
+                  { text: 'Vitae quisquam dolor quia molestias magni nesciunt consectetur delectus iste.', classes: 'list-group-item-danger' , value: {id: 3, code: 'ks72n'}}
+                ]"
+                [multiple]="true"
+                [(ngModel)]="listboxMultipleValue"
+              ></p-listbox>
+              Value:
+              <pre> {{ listboxMultipleValue | json }}</pre>
             </div>
           </div>
         </div>
