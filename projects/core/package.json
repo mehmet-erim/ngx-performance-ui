@@ -1,6 +1,11 @@
 {
   "name": "@ngx-performance-ui/core",
   "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehmet-erim/ngx-performance-ui"
+  },
   "peerDependencies": {
     "@angular/animations": "^7.1.2",
     "@angular/common": "^7.1.2",
