@@ -15,8 +15,6 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserModule,
     CoreModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule,
     UiModule,
 
     // Third party
