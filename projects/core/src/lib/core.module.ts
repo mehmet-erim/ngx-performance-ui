@@ -10,7 +10,6 @@ import * as states from './states';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CommonModule } from '@angular/common';
 import { NgxsModule } from '@ngxs/store';
-import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { TranslateModule } from '@ngx-translate/core';
     HttpClientModule,
     FormsModule,
     NgxsModule.forFeature([states.EventListenerState, states.LoaderState]),
-    NgxsFormPluginModule,
     TranslateModule.forChild(),
   ],
   declarations: [
@@ -40,7 +38,6 @@ import { TranslateModule } from '@ngx-translate/core';
     HttpClientModule,
     FormsModule,
     NgxsModule,
-    NgxsFormPluginModule,
     ReactiveFormsModule,
     TranslateModule,
     RouterModule,

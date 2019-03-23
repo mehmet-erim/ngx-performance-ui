@@ -22,7 +22,6 @@
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
     "@ngx-translate/core": "^11.0.1",
-    "@ngxs/form-plugin": "^3.3.4",
     "@ngxs/logger-plugin": "^3.3.2",
     "@ngxs/store": "^3.3.2",
     "angular2-text-mask": "^9.0.0",
