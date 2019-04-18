@@ -43,6 +43,6 @@ npm install @ngx-performance-ui/ui
 ```json
     "peerDependencies": {
     "ng2-datepicker": ">=3.1.0",
-    "@ngx-performance-ui/core": "^0.0.04"
+    "@ngx-performance-ui/core": "^0.0.4"
   }
 ```
