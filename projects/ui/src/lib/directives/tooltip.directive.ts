@@ -21,9 +21,14 @@ import { filter } from 'rxjs/operators';
 import { TooltipComponent } from '../components';
 import { Tooltip } from '../models';
 import { createProjectableNode } from '../utils';
-import { EventListenerState } from '../../../../core/src/lib/states';
-import { takeUntilDestroy, takeUntilNotNull } from '../../../../core/src/lib/utils';
-import { EventListenerRemove, EventListenerAdd, EventListenerScrollVertical } from '../../../../core/src/public_api';
+import {
+  EventListenerRemove,
+  EventListenerAdd,
+  EventListenerScrollVertical,
+  takeUntilDestroy,
+  takeUntilNotNull,
+  EventListenerState,
+} from '@ngx-performance-ui/core';
 
 @Directive({
   selector: '[pTooltip]',

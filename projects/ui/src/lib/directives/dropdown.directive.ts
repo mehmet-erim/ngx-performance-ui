@@ -2,8 +2,7 @@ import { Directive, ElementRef, Input, Renderer2, ViewContainerRef, TemplateRef,
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { createProjectableNode } from '../utils';
-import { EventListenerState } from '../../../../core/src/lib/states';
-import { takeUntilDestroy } from '../../../../core/src/lib/utils';
+import { EventListenerState, takeUntilDestroy } from '@ngx-performance-ui/core';
 import { filter } from 'rxjs/operators';
 
 @Directive({

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouterOutletComponent } from '../../projects/core/src/public_api';
+import { RouterOutletComponent } from '@ngx-performance-ui/core';
 
 const routes: Routes = [
   {

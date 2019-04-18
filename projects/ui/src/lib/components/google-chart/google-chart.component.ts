@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { GoogleChart } from '../../models';
-import { LazyLoadScriptService } from '../../../../../core/src/public_api';
+import { LazyLoadScriptService } from '@ngx-performance-ui/core';
 
 declare var google;
 

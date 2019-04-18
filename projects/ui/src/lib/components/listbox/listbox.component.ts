@@ -8,7 +8,7 @@ import {
   TrackByFunction,
   Injector,
 } from '@angular/core';
-import { AbstractNgModelComponent } from '../../../../../core/src/public_api';
+import { AbstractNgModelComponent } from '@ngx-performance-ui/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import compare from 'just-compare';
 

@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import compare from 'just-compare';
-import { AbstractNgModelComponent } from '../../../../../core/src/public_api';
+import { AbstractNgModelComponent } from '@ngx-performance-ui/core';
 
 export interface SelectOption {
   label?: string;

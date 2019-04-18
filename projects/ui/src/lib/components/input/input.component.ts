@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AbstractInputComponent } from '../../abstracts';
-import { Mask } from '../../../../../core/src/lib/models';
+import { Mask } from '@ngx-performance-ui/core';
 
 @Component({
   selector: 'p-input',

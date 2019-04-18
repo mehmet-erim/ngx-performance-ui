@@ -1,23 +1,21 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
-  ViewEncapsulation,
-  ViewChild,
   ElementRef,
-  Injector,
   forwardRef,
+  Injector,
+  Input,
+  ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractNgModelComponent, EventListenerState, uuid } from '@ngx-performance-ui/core';
+import { Select } from '@ngxs/store';
 import * as enLocale from 'date-fns/locale/en';
 import * as trLocale from 'date-fns/locale/tr';
 import { DatepickerOptions, NgDatepickerComponent } from 'ng2-datepicker';
-import { Select } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil, filter, skip } from 'rxjs/operators';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AbstractNgModelComponent } from '../../../../../core/src/public_api';
-import { EventListenerState } from '../../../../../core/src/lib/states';
-import { uuid } from '../../../../../core/src/lib/utils';
+import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'p-datepicker',

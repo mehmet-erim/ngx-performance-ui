@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input, SimpleChanges, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AbstractNgModelComponent } from '../../../../../core/src/public_api';
+import { AbstractNgModelComponent } from '@ngx-performance-ui/core';
 
 @Component({
   selector: 'p-pagination',

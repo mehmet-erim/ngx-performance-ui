@@ -1,9 +1,8 @@
 import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { PaginationComponent, Toaster, ListboxItem } from '../../../../../projects/ui/src/public_api';
-import { LoaderSetProgress, Mask, LoaderState, transformByRegex } from '../../../../../projects/core/src/public_api';
-import { ToasterShow, LayoutScroll } from '../../../../../projects/ui/src/lib/actions';
+import { PaginationComponent, Toaster, ListboxItem, ToasterShow, LayoutScroll } from '../../../../../projects/ui';
+import { LoaderSetProgress, Mask, LoaderState, transformByRegex } from '@ngx-performance-ui/core';
 
 @Component({
   selector: 'p-showcase',
