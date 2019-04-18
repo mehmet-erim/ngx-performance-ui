@@ -1,12 +1,32 @@
 import { NgModule } from '@angular/core';
-import * as _abstracts from './abstracts';
-import * as _components from './components';
-import * as _directives from './directives';
 import { NgDatepickerModule } from 'ng2-datepicker';
-import { CoreModule } from '../../../core/src/public_api';
+import { CoreModule } from '@ngx-performance-ui/core';
 import { NgxsModule } from '@ngxs/store';
 import * as states from './states';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { AbstractInputComponent } from './abstracts/input-component';
+import { AnnotationChartComponent } from './components/charts/annotation-chart.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { CheckboxComponent } from './components/input/checkbox.component';
+import { GoogleChartComponent } from './components/google-chart/google-chart.component';
+import { DatePickerComponent } from './components/datepicker/datepicker.component';
+import { InputComponent } from './components/input/input.component';
+import { ListboxComponent } from './components/listbox/listbox.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { PopoverComponent } from './components/popover/popover.component';
+import { ProgressBarComponent } from './components/progress/progress-bar.component';
+import { RadioComponent } from './components/input/radio.component';
+import { SelectComponent } from './components/select/select.component';
+import { SpinnerComponent } from './components/input/spinner.component';
+import { TextAreaComponent } from './components/input/textarea.component';
+import { ToasterComponent } from './components/toaster/toaster.component';
+import { ToasterContainerComponent } from './components/toaster/toaster-container.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
+import { DropdownDirective } from './directives/dropdown.directive';
+import { PopoverDirective } from './directives/popover.directive';
+import { TooltipDirective } from './directives/tooltip.directive';
 
 @NgModule({
   imports: [
@@ -18,69 +38,69 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
   ],
   declarations: [
     // abstracts
-    _abstracts.AbstractInputComponent,
+    AbstractInputComponent,
 
     // charts
-    _components.AnnotationChartComponent,
+    AnnotationChartComponent,
 
     // components
-    _components.AutocompleteComponent,
-    _components.CarouselComponent,
-    _components.CheckboxComponent,
-    _components.GoogleChartComponent,
-    _components.DatePickerComponent,
-    _components.InputComponent,
-    _components.ListboxComponent,
-    _components.ModalComponent,
-    _components.PaginationComponent,
-    _components.PopoverComponent,
-    _components.ProgressBarComponent,
-    _components.RadioComponent,
-    _components.SelectComponent,
-    _components.SpinnerComponent,
-    _components.TextAreaComponent,
-    _components.ToasterComponent,
-    _components.ToasterContainerComponent,
-    _components.TooltipComponent,
+    AutocompleteComponent,
+    CarouselComponent,
+    CheckboxComponent,
+    GoogleChartComponent,
+    DatePickerComponent,
+    InputComponent,
+    ListboxComponent,
+    ModalComponent,
+    PaginationComponent,
+    PopoverComponent,
+    ProgressBarComponent,
+    RadioComponent,
+    SelectComponent,
+    SpinnerComponent,
+    TextAreaComponent,
+    ToasterComponent,
+    ToasterContainerComponent,
+    TooltipComponent,
 
     // Directives
-    _directives.DropdownDirective,
-    _directives.PopoverDirective,
-    _directives.TooltipDirective,
+    DropdownDirective,
+    PopoverDirective,
+    TooltipDirective,
   ],
-  entryComponents: [_components.ToasterComponent, _components.PopoverComponent, _components.TooltipComponent],
+  entryComponents: [ToasterComponent, PopoverComponent, TooltipComponent],
   exports: [
     // modules
     NgDatepickerModule,
     PerfectScrollbarModule,
 
     // charts
-    _components.AnnotationChartComponent,
+    AnnotationChartComponent,
 
     // components
-    _components.AutocompleteComponent,
-    _components.CarouselComponent,
-    _components.CheckboxComponent,
-    _components.GoogleChartComponent,
-    _components.DatePickerComponent,
-    _components.InputComponent,
-    _components.ListboxComponent,
-    _components.ModalComponent,
-    _components.PaginationComponent,
-    _components.PopoverComponent,
-    _components.ProgressBarComponent,
-    _components.RadioComponent,
-    _components.SelectComponent,
-    _components.SpinnerComponent,
-    _components.TextAreaComponent,
-    _components.ToasterComponent,
-    _components.ToasterContainerComponent,
-    _components.TooltipComponent,
+    AutocompleteComponent,
+    CarouselComponent,
+    CheckboxComponent,
+    GoogleChartComponent,
+    DatePickerComponent,
+    InputComponent,
+    ListboxComponent,
+    ModalComponent,
+    PaginationComponent,
+    PopoverComponent,
+    ProgressBarComponent,
+    RadioComponent,
+    SelectComponent,
+    SpinnerComponent,
+    TextAreaComponent,
+    ToasterComponent,
+    ToasterContainerComponent,
+    TooltipComponent,
 
     // Directives
-    _directives.DropdownDirective,
-    _directives.PopoverDirective,
-    _directives.TooltipDirective,
+    DropdownDirective,
+    PopoverDirective,
+    TooltipDirective,
   ],
 })
 export class UiModule {}
