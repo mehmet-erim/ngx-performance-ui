@@ -2,6 +2,8 @@
 
 ## Live demo
 
+[README](https://nicedoc.io/mehmeterim/ngx-performance-ui)
+
 [Check out the demo page](https://ngx-performance-ui.firebaseapp.com)
 
 ## Installation Core
