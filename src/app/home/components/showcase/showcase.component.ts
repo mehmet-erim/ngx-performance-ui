@@ -1,7 +1,7 @@
 import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { PaginationComponent, Toaster, ListboxItem, ToasterShow, LayoutScroll } from '../../../../../projects/ui';
+import { PaginationComponent, Toaster, ListboxItem, ToasterShow, LayoutScroll } from '@ngx-performance-ui/ui';
 import { LoaderSetProgress, Mask, LoaderState, transformByRegex } from '@ngx-performance-ui/core';
 
 @Component({

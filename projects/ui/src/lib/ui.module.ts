@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { CoreModule } from '@ngx-performance-ui/core';
 import { NgxsModule } from '@ngxs/store';
-import * as states from './states';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AbstractInputComponent } from './abstracts/input-component';
 import { AnnotationChartComponent } from './components/charts/annotation-chart.component';
@@ -27,15 +26,10 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { PopoverDirective } from './directives/popover.directive';
 import { TooltipDirective } from './directives/tooltip.directive';
+import { ToasterState } from './states/toaster.state';
 
 @NgModule({
-  imports: [
-    CoreModule,
-    NgDatepickerModule,
-    CoreModule,
-    NgxsModule.forFeature([states.ToasterState]),
-    PerfectScrollbarModule,
-  ],
+  imports: [CoreModule, NgDatepickerModule, CoreModule, NgxsModule.forFeature([ToasterState]), PerfectScrollbarModule],
   declarations: [
     // abstracts
     AbstractInputComponent,

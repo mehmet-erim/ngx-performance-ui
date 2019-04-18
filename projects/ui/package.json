@@ -1,8 +1,29 @@
 {
   "name": "@ngx-performance-ui/ui",
-  "version": "0.0.1",
+  "version": "0.0.4",
+  "license": "MIT",
+  "author": "Mehmet Erim",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehmet-erim/ngx-performance-ui.git"
+  },
   "peerDependencies": {
-    "ng2-datepicker": "^3.1.1",
-    "@ngx-performance-ui/core": "^0.0.1"
-  }
+    "ng2-datepicker": ">=3.1.0",
+    "@ngx-performance-ui/core": "^0.0.3"
+  },
+  "description": "Ngx Performance UI - UI",
+  "bugs": {
+    "url": "https://github.com/mehmet-erim/ngx-performance-ui/issues"
+  },
+  "homepage": "https://github.com/mehmet-erim/ngx-performance-ui#readme",
+  "main": "index.ts",
+  "scripts": {
+    "test": "ng test"
+  },
+  "keywords": [
+    "Performance",
+    "UI",
+    "Angular",
+    "UI-KIT"
+  ]
 }

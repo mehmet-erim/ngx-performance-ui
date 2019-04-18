@@ -1,6 +1,6 @@
 {
   "name": "@ngx-performance-ui/core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "author": "Mehmet Erim",
   "repository": {
@@ -16,7 +16,7 @@
     "@ngxs/store": ">=3.3.0",
     "just-compare": ">=1.3.0"
   },
-  "description": "## Live demo",
+  "description": "Ngx Performance UI - Core",
   "bugs": {
     "url": "https://github.com/mehmet-erim/ngx-performance-ui/issues"
   },

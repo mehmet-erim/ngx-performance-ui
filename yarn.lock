@@ -328,10 +328,17 @@
     tree-kill "1.2.0"
     webpack-sources "1.2.0"
 
-"@ngx-performance-ui/core@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@ngx-performance-ui/core/-/core-0.0.3.tgz#554e8b8b7346db20c3aa842700388dd5d372a567"
-  integrity sha512-pOjKiI9KMwU/b9sFgGlKES86UtYh2pS73OlzaE5+e6tg4Hc+VTtLGfCfgo/FO3YPKt4Kvmgq74GeiEiFm4VqoA==
+"@ngx-performance-ui/core@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@ngx-performance-ui/core/-/core-0.0.4.tgz#b832f80d7e41dbfb83d1c748dfd61b55b4131689"
+  integrity sha512-JwQP/B24pjCnCKgWGarDIBFgJ/nXbrlZCbeqFAWgHabDEF2Av0ekdfvnxOyILz9k9Cd6cfr5sBx1LGFgXd7gxg==
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngx-performance-ui/ui@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@ngx-performance-ui/ui/-/ui-0.0.4.tgz#58e51274024fef9a48c0227357ea57c49b20995f"
+  integrity sha512-IuC/LRBtjiX/7hAeYLpd13in2K082MU2YClk50oMGkMycxs0IIe3q67EHAfHeN323b2DHynFV1AGI/Xb6N6Hag==
   dependencies:
     tslib "^1.9.0"
 
