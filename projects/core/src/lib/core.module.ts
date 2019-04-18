@@ -2,15 +2,21 @@ import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import * as abstracts from './abstracts';
-import * as components from './components';
-import * as directives from './directives';
-import * as handlers from './handlers';
-import * as states from './states';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CommonModule } from '@angular/common';
 import { NgxsModule } from '@ngxs/store';
 import { TranslateModule } from '@ngx-translate/core';
+import { EventListenerState } from './states/event-listener.state';
+import { LoaderState } from './states/loader.state';
+import { AbstractNgModelComponent } from './abstracts/ng-model.component';
+import { RouterOutletComponent } from './components/router-outlet.component';
+import { AutosizeDirective } from './directives/autosize.directive';
+import { AutofocusDirective } from './directives/autofocus.directive';
+import { EllipsisDirective } from './directives/ellipsis.directive';
+import { ForDirective } from './directives/for.directive';
+import { HighlightDirective } from './directives/highlight.directive';
+import { ScrollListenerDirective } from './directives/scroll-listener.directive';
+import { EventHandler } from './handlers/event.handler';
 
 @NgModule({
   imports: [
@@ -19,19 +25,18 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    NgxsModule.forFeature([states.EventListenerState, states.LoaderState]),
+    NgxsModule.forFeature([EventListenerState, LoaderState]),
     TranslateModule.forChild(),
   ],
   declarations: [
-    abstracts.AbstractNgModelComponent,
-    components.RouterOutletComponent,
-    directives.AutosizeDirective,
-    directives.AutofocusDirective,
-    directives.AutosizeDirective,
-    directives.EllipsisDirective,
-    directives.ForDirective,
-    directives.HighlightDirective,
-    directives.ScrollListenerDirective,
+    AbstractNgModelComponent,
+    RouterOutletComponent,
+    AutosizeDirective,
+    AutofocusDirective,
+    EllipsisDirective,
+    ForDirective,
+    HighlightDirective,
+    ScrollListenerDirective,
   ],
   exports: [
     CommonModule,
@@ -42,14 +47,14 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
     RouterModule,
 
-    abstracts.AbstractNgModelComponent,
-    components.RouterOutletComponent,
-    directives.AutosizeDirective,
-    directives.AutofocusDirective,
-    directives.EllipsisDirective,
-    directives.ForDirective,
-    directives.HighlightDirective,
-    directives.ScrollListenerDirective,
+    AbstractNgModelComponent,
+    RouterOutletComponent,
+    AutosizeDirective,
+    AutofocusDirective,
+    EllipsisDirective,
+    ForDirective,
+    HighlightDirective,
+    ScrollListenerDirective,
     TextMaskModule,
   ],
 })
@@ -60,7 +65,7 @@ export class CoreModule {
       providers: [
         {
           provide: APP_INITIALIZER,
-          deps: [handlers.EventHandler],
+          deps: [EventHandler],
           useFactory: noop,
           multi: true,
         },
