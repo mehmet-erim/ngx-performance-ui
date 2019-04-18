@@ -1,29 +1,34 @@
 {
   "name": "@ngx-performance-ui/core",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": "MIT",
+  "author": "Mehmet Erim",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mehmet-erim/ngx-performance-ui"
+    "url": "git+https://github.com/mehmet-erim/ngx-performance-ui.git"
   },
   "peerDependencies": {
-    "@angular/animations": "^7.1.2",
-    "@angular/common": "^7.1.2",
-    "@angular/compiler": "^7.1.2",
-    "@angular/core": "^7.1.2",
-    "@angular/elements": "^7.1.2",
-    "@angular/forms": "^7.1.2",
-    "@angular/http": "^7.1.2",
-    "@angular/platform-browser": "^7.1.2",
-    "@angular/platform-browser-dynamic": "^7.1.2",
-    "@angular/router": "^7.1.2",
-    "@ngx-translate/core": "^11.0.1",
-    "@ngx-translate/http-loader": "^4.0.0",
-    "@ngxs/router-plugin": "^3.3.2",
-    "@ngxs/store": "^3.3.2",
-    "core-js": "^2.5.7",
-    "just-compare": "^1.3.0",
-    "rxjs": "^6.3.3",
-    "zone.js": "^0.8.26"
-  }
+    "@angular/core": ">=5.0.0 <8.0.0",
+    "rxjs": ">=6.0.0 || ^5.6.0-forward-compat.4",
+    "@ngx-translate/core": ">=11.0.0",
+    "@ngx-translate/http-loader": ">=4.0.0",
+    "@ngxs/router-plugin": ">=3.3.0",
+    "@ngxs/store": ">=3.3.0",
+    "just-compare": ">=1.3.0"
+  },
+  "description": "## Live demo",
+  "bugs": {
+    "url": "https://github.com/mehmet-erim/ngx-performance-ui/issues"
+  },
+  "homepage": "https://github.com/mehmet-erim/ngx-performance-ui#readme",
+  "main": "index.ts",
+  "scripts": {
+    "test": "ng test"
+  },
+  "keywords": [
+    "Performance",
+    "UI",
+    "Angular",
+    "UI-KIT"
+  ]
 }
