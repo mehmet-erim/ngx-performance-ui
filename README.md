@@ -2,7 +2,7 @@
 
 ## Live demo
 
-[README](https://nicedoc.io/mehmeterim/ngx-performance-ui)
+[See the this readme on another page](https://nicedoc.io/mehmet-erim/ngx-performance-ui)
 
 [Check out the demo page](https://ngx-performance-ui.firebaseapp.com)
 
