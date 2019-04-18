@@ -46,3 +46,18 @@ npm install @ngx-performance-ui/ui
     "@ngx-performance-ui/core": "^0.0.4"
   }
 ```
+
+## Usage
+
+Import Core and UI module to your app.module
+
+```typescript
+import { CoreModule } from '@ngx-performance-ui/core';
+import { UiModule } from '@ngx-performance-ui/ui';
+
+@NgModule({
+  imports: [
+    CoreModule.forRoot(),
+    UiModule,
+  ]
+```
