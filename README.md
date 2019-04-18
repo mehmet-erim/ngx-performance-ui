@@ -4,7 +4,7 @@
 
 [Check out the demo page](https://ngx-performance-ui.firebaseapp.com)
 
-## Installation
+## Installation Core
 
 ```bash
 yarn add @ngx-performance-ui/core
@@ -27,6 +27,8 @@ npm install @ngx-performance-ui/core
     "just-compare": ">=1.3.0"
   }
 ```
+
+## Installation Ui
 
 ```bash
 yarn add @ngx-performance-ui/ui
