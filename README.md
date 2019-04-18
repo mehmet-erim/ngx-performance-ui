@@ -9,14 +9,16 @@
 ## Installation Core
 
 ```bash
-yarn add @ngx-performance-ui/core
+yarn add @ngx-performance-ui/core @ngx-performance-ui/ui bootstrap
 ```
 
 or
 
 ```bash
-npm install @ngx-performance-ui/core
+npm install @ngx-performance-ui/core @ngx-performance-ui/ui bootstrap
 ```
+
+Core Peer Dependencies:
 
 ```json
   "peerDependencies": {
@@ -30,23 +32,14 @@ npm install @ngx-performance-ui/core
   }
 ```
 
-## Installation Ui
-
-```bash
-yarn add @ngx-performance-ui/ui
-```
-
-or
-
-```bash
-npm install @ngx-performance-ui/ui
-```
+UI Peer Dependencies:
 
 ```json
-    "peerDependencies": {
+  "peerDependencies": {
     "ng2-datepicker": ">=3.1.0",
-    "@ngx-performance-ui/core": "^0.0.4"
-  }
+    "@ngx-performance-ui/core": "^0.0.10",
+    "bootstrap": ">=4.0.0"
+  },
 ```
 
 ## Usage
@@ -61,5 +54,16 @@ import { UiModule } from '@ngx-performance-ui/ui';
   imports: [
     CoreModule.forRoot(),
     UiModule,
+    ...
   ]
+```
+
+Update 'styles' array from angular.json
+
+```json
+"styles": [
+  "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "./node_modules/@ngx-performance-ui/ui/src/assets/main.css",
+  ...
+],
 ```

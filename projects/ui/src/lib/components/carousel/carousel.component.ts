@@ -50,12 +50,14 @@ export class CarouselComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.lazyLoadService
-      .loadScript('/assets/js/jquery.min.js')
+      .loadScript('https://code.jquery.com/jquery-3.4.0.min.js')
       .pipe(
         map(_ => 'jQuery is loaded'),
         filter(jquery => !!jquery),
         take(1),
-        switchMap(_ => this.lazyLoadService.loadScript('/assets/slick/slick.min.js')),
+        switchMap(_ =>
+          this.lazyLoadService.loadScript('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'),
+        ),
       )
       .subscribe(_ => {
         $('.slick-container').slick(this.config || SLICK_DEFAULTS);
