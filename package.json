@@ -16,8 +16,10 @@
     "link:ui": "cd projects/ui && yarn link && cd ../../node_modules/@ngx-performance-ui && mv ui ui.tmp && yarn link @ngx-performance-ui/ui",
     "unlink:core": "cd node_modules/@ngx-performance-ui && yarn unlink @ngx-performance-ui/core && mv core.tmp core && cd ../../projects/core && yarn unlink",
     "unlink:ui": "cd node_modules/@ngx-performance-ui && yarn unlink @ngx-performance-ui/ui && mv ui.tmp ui && cd ../../projects/ui && yarn unlink",
-    "test": "ng test",
-    "ci-test": "ng test --code-coverage --watch=false",
+    "test:core": "ng test core",
+    "test:ui": "ng test core",
+    "ci-test:core": "ng test core --code-coverage --watch=false",
+    "ci-test:ui": "ng test ui --code-coverage --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

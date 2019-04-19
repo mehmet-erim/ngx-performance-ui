@@ -6,5 +6,4 @@ cache: yarn
 before_script:
   - yarn
 script:
-  - yarn ci-test
   - yarn build:packages
