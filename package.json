@@ -17,6 +17,7 @@
     "unlink:core": "cd node_modules/@ngx-performance-ui && yarn unlink @ngx-performance-ui/core && mv core.tmp core && cd ../../projects/core && yarn unlink",
     "unlink:ui": "cd node_modules/@ngx-performance-ui && yarn unlink @ngx-performance-ui/ui && mv ui.tmp ui && cd ../../projects/ui && yarn unlink",
     "test": "ng test",
+    "ci-test": "ng test --code-coverage --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
