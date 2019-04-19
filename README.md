@@ -36,7 +36,7 @@ UI Peer Dependencies:
 ```json
   "peerDependencies": {
     "ng2-datepicker": ">=3.1.0",
-    "@ngx-performance-ui/core": "^0.0.10",
+    "@ngx-performance-ui/core": "^0.0.11",
     "bootstrap": ">=4.0.0"
   },
 ```
