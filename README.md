@@ -2,8 +2,6 @@
 
 ## Live demo
 
-[See the this readme on another page](https://nicedoc.io/mehmet-erim/ngx-performance-ui)
-
 [Check out the demo page](https://ngx-performance-ui.firebaseapp.com)
 
 ## Installation Core
@@ -67,3 +65,5 @@ Update 'styles' array from angular.json
   ...
 ],
 ```
+
+[See this readme on another page](https://nicedoc.io/mehmet-erim/ngx-performance-ui)
