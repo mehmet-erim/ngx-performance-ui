@@ -1,5 +1,7 @@
 # NGX PERFORMANCE UI
 
+[![Build Status](https://travis-ci.org/mehmet-erim/ngx-performance-ui.svg?branch=develop)](https://travis-ci.org/mehmet-erim/ngx-performance-ui)
+
 ## Live demo
 
 [Check out the demo page](https://ngx-performance-ui.firebaseapp.com)
