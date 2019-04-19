@@ -62,7 +62,7 @@ Update 'styles' array from angular.json
 ```json
 "styles": [
   "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-  "./node_modules/@ngx-performance-ui/ui/src/assets/main.css",
+  "./node_modules/@ngx-performance-ui/ui/assets/main.css",
   ...
 ],
 ```
