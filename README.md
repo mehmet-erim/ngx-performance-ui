@@ -22,8 +22,7 @@ Core Peer Dependencies:
   "peerDependencies": {
     "@angular/core": ">=5.0.0 <8.0.0",
     "rxjs": ">=6.0.0 || ^5.6.0-forward-compat.4",
-    "@ngx-translate/core": ">=11.0.0",
-    "@ngx-translate/http-loader": ">=4.0.0",
+    "@ngx-translate/core": ">=10.0.0",
     "@ngxs/router-plugin": ">=3.3.0",
     "@ngxs/store": ">=3.3.0",
     "just-compare": ">=1.3.0"
