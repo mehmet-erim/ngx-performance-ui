@@ -6,7 +6,7 @@
 
 [Check out the demo page](https://ngx-performance-ui.firebaseapp.com)
 
-## Installation Core
+## Installation
 
 ```bash
 yarn add @ngx-performance-ui/core @ngx-performance-ui/ui bootstrap
