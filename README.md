@@ -9,7 +9,7 @@
 ## Installation
 
 ```bash
-yarn add @ngx-performance-ui/core @ngx-performance-ui/ui bootstrap
+yarn add @ngx-performance-ui/core @ngx-performance-ui/ui @ngxs/store
 ```
 
 or
@@ -25,7 +25,6 @@ Core Peer Dependencies:
     "@angular/core": ">=5.0.0 <8.0.0",
     "rxjs": ">=6.0.0 || ^5.6.0-forward-compat.4",
     "@ngx-translate/core": ">=10.0.0",
-    "@ngxs/router-plugin": ">=3.3.0",
     "@ngxs/store": ">=3.3.0",
     "just-compare": ">=1.3.0"
   }
@@ -36,8 +35,7 @@ UI Peer Dependencies:
 ```json
   "peerDependencies": {
     "ng2-datepicker": ">=3.1.0",
-    "@ngx-performance-ui/core": "^0.0.11",
-    "bootstrap": ">=4.0.0"
+    "@ngx-performance-ui/core": "^0.0.12",
   },
 ```
 
@@ -48,9 +46,11 @@ Import Core and UI module to your app.module
 ```typescript
 import { CoreModule } from '@ngx-performance-ui/core';
 import { UiModule } from '@ngx-performance-ui/ui';
+import { NgxsModule } from '@ngxs/store';
 
 @NgModule({
   imports: [
+    NgxsModule.forRoot(),
     CoreModule.forRoot(),
     UiModule,
     ...
