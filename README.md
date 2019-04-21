@@ -47,7 +47,7 @@ UI Peer Dependencies:
 ### Installation Peer Dependencies
 
 ```bash
-yarn add @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker
+yarn add @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker ngx-perfect-scrollbar
 ```
 
 or
