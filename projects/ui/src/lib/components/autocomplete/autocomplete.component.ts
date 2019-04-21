@@ -45,7 +45,7 @@ export interface AutocompleteItem {
         (blur)="onBlur($event)"
         (click)="click.emit($event)"
       ></p-input>
-      <i *ngIf="value" class="fas fa-times text-secondary" (click)="clear()"></i>
+      <fa-icon *ngIf="value" [icon]="['fas', 'times']" class="text-secondary" (click)="clear()"></fa-icon>
       <div *ngIf="showList" class="list-group">
         <a
           [pHighlight]="inputValue"

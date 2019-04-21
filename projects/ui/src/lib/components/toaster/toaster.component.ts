@@ -14,7 +14,7 @@ import { SafeHtml } from '@angular/platform-browser';
   template: `
     <div #toast class="toaster alert alert-{{ type }} alert-dismissible show move-in-top">
       <div *ngIf="header" class="header">
-        <div class="icon"><i class="fas fa-info-circle"></i></div>
+        <div class="icon"><fa-icon [icon]="['fas', 'info-circle']"></fa-icon></div>
         <span class="alert-heading">{{ header }}</span>
       </div>
       <div class="body" [innerHtml]="body"></div>

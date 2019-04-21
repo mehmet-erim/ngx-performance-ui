@@ -9,9 +9,11 @@
       [value]="date | date: displayFormat"
       (click)="onClick()"
     />
-    <i *ngIf="value" class="fas fa-times text-secondary" (click)="clear()"></i>
+    <fa-icon *ngIf="value" [icon]="['fas', 'times']" class="text-secondary" (click)="clear()"></fa-icon>
     <div class="input-group-prepend">
-      <span class="input-group-text bg-white" (click)="toggle()"><i class="fas fa-calendar-day"></i></span>
+      <span class="input-group-text bg-white" (click)="toggle()">
+        <fa-icon *ngIf="value" [icon]="['fas', 'calendar-day']"></fa-icon>
+      </span>
     </div>
   </div>
   <ng-datepicker

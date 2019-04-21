@@ -29,7 +29,7 @@ export interface ListboxItem {
         <div *ngIf="isFilterShow" class="col-12 px-0 mt-2">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-search"></i></span>
+              <span class="input-group-text"><fa-icon [icon]="['fas', 'search']"></fa-icon></span>
             </div>
             <p-input
               [(ngModel)]="filterValue"

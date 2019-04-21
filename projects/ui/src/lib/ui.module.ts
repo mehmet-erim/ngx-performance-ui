@@ -28,8 +28,21 @@ import { PopoverDirective } from './directives/popover.directive';
 import { TooltipDirective } from './directives/tooltip.directive';
 import { ToasterState } from './states/toaster.state';
 
+// Icons
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCalendarDay, faInfoCircle, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+library.add(faCalendarDay, faInfoCircle, faSearch, faTimes);
+
 @NgModule({
-  imports: [CoreModule, NgDatepickerModule, CoreModule, NgxsModule.forFeature([ToasterState]), PerfectScrollbarModule],
+  imports: [
+    CoreModule,
+    CoreModule,
+    FontAwesomeModule,
+    NgDatepickerModule,
+    NgxsModule.forFeature([ToasterState]),
+    PerfectScrollbarModule,
+  ],
   declarations: [
     // abstracts
     AbstractInputComponent,
@@ -65,6 +78,7 @@ import { ToasterState } from './states/toaster.state';
   entryComponents: [ToasterComponent, PopoverComponent, TooltipComponent],
   exports: [
     // modules
+    FontAwesomeModule,
     NgDatepickerModule,
     PerfectScrollbarModule,
 

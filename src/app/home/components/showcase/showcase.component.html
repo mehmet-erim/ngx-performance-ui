@@ -566,9 +566,13 @@
                 [title]="'Lorem Box'"
                 filterPlaceholder="type in here for search..."
                 [items]="[
-                  { text: 'Lorem ipsum dolor sit amet consectetur', value: {id: 1, code: 'az51a'} },
+                  { text: 'Lorem ipsum dolor sit amet consectetur', value: { id: 1, code: 'az51a' } },
                   { text: 'Expedita ipsa qui voluptates culpa.' },
-                  { text: 'Vitae quisquam dolor quia molestias magni nesciunt consectetur delectus iste.', classes: 'list-group-item-danger' , value: {id: 3, code: 'ks72n'}}
+                  {
+                    text: 'Vitae quisquam dolor quia molestias magni nesciunt consectetur delectus iste.',
+                    classes: 'list-group-item-danger',
+                    value: { id: 3, code: 'ks72n' }
+                  }
                 ]"
                 [(ngModel)]="listboxValue"
               ></p-listbox>
@@ -580,9 +584,13 @@
                 [title]="'Lorem Box Multiple'"
                 filterPlaceholder="type in here for search..."
                 [items]="[
-                  { text: 'Lorem ipsum dolor sit amet consectetur', value: {id: 1, code: 'az51a'} },
+                  { text: 'Lorem ipsum dolor sit amet consectetur', value: { id: 1, code: 'az51a' } },
                   { text: 'Expedita ipsa qui voluptates culpa.' },
-                  { text: 'Vitae quisquam dolor quia molestias magni nesciunt consectetur delectus iste.', classes: 'list-group-item-danger' , value: {id: 3, code: 'ks72n'}}
+                  {
+                    text: 'Vitae quisquam dolor quia molestias magni nesciunt consectetur delectus iste.',
+                    classes: 'list-group-item-danger',
+                    value: { id: 3, code: 'ks72n' }
+                  }
                 ]"
                 [multiple]="true"
                 [(ngModel)]="listboxMultipleValue"

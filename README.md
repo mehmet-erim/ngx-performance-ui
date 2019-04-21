@@ -9,22 +9,23 @@
 ## Installation
 
 ```bash
-yarn add @ngx-performance-ui/core @ngx-performance-ui/ui @ngxs/store
+yarn add @ngx-performance-ui/core @ngx-performance-ui/ui
 ```
 
 or
 
 ```bash
-npm install @ngx-performance-ui/core @ngx-performance-ui/ui bootstrap
+npm install @ngx-performance-ui/core @ngx-performance-ui/ui
 ```
 
 Core Peer Dependencies:
 
 ```json
   "peerDependencies": {
-    "@angular/core": ">=5.0.0 <8.0.0",
-    "rxjs": ">=6.0.0 || ^5.6.0-forward-compat.4",
-    "@ngx-translate/core": ">=10.0.0",
+    "@angular/core": ">=7.0.0 <8.0.0",
+    "@angular/common": ">=7.0.0 <8.0.0",
+    "@angular/forms": ">=7.0.0 <8.0.0",
+    "rxjs": ">=6.0.0",
     "@ngxs/store": ">=3.3.0",
     "just-compare": ">=1.3.0"
   }
@@ -34,9 +35,25 @@ UI Peer Dependencies:
 
 ```json
   "peerDependencies": {
+    "@fortawesome/angular-fontawesome": ">=0.3.0",
+    "@fortawesome/fontawesome-svg-core": ">=1.2.0",
+    "@fortawesome/free-solid-svg-icons": ">=5.8.0",
+    "@ngx-performance-ui/core": "^0.0.13",
     "ng2-datepicker": ">=3.1.0",
-    "@ngx-performance-ui/core": "^0.0.12",
+    "ngx-perfect-scrollbar": ">=7.0.0"
   },
+```
+
+### Installation Peer Dependencies
+
+```bash
+yarn add @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker
+```
+
+or
+
+```bash
+npm install @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker ngx-perfect-scrollbar
 ```
 
 ## Usage
@@ -53,7 +70,7 @@ import { NgxsModule } from '@ngxs/store';
     NgxsModule.forRoot(),
     CoreModule.forRoot(),
     UiModule,
-    ...
+    //...
   ]
 ```
 
@@ -63,7 +80,7 @@ Update 'styles' array from angular.json
 "styles": [
   "./node_modules/bootstrap/dist/css/bootstrap.min.css",
   "./node_modules/@ngx-performance-ui/ui/assets/main.css",
-  ...
+  //...
 ],
 ```
 
