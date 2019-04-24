@@ -45,7 +45,7 @@ UI Peer Dependencies:
     "@fortawesome/angular-fontawesome": ">=0.3.0",
     "@fortawesome/fontawesome-svg-core": ">=1.2.0",
     "@fortawesome/free-solid-svg-icons": ">=5.8.0",
-    "@ngx-performance-ui/core": "^0.0.13",
+    "@ngx-performance-ui/core": "^0.0.14",
     "ng2-datepicker": ">=3.1.0",
     "ngx-perfect-scrollbar": ">=7.0.0"
   },
