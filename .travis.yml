@@ -18,6 +18,8 @@ script:
   - yarn ng build
   - yarn build:core
   - yarn build:ui
+before_deploy: -yarn ng build
+  -ls
 deploy:
   provider: firebase
   token:
