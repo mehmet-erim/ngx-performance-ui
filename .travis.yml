@@ -1,6 +1,6 @@
 language: node_js
 dist: trusty
-sudo: true
+sudo: required
 cache:
   yarn: true
   directories:
@@ -20,7 +20,7 @@ script:
   - yarn build:ui
 before_deploy:
   - yarn ng build
-  - ls
+  - mv dist/ngx-performance-ui ngx-performance-ui
 deploy:
   provider: firebase
   token:
