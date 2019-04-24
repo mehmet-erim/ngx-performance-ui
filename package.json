@@ -38,8 +38,6 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
-    "@ngx-performance-ui/core": "^0.0.13",
-    "@ngx-performance-ui/ui": "^0.0.13",
     "@ngx-translate/core": "^11.0.1",
     "@ngxs/logger-plugin": "^3.3.2",
     "@ngxs/store": "^3.4.3",

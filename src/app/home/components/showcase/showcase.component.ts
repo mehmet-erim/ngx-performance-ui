@@ -1,13 +1,18 @@
 import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { PaginationComponent, Toaster, ListboxItem, ToasterShow, LayoutScroll } from '@ngx-performance-ui/ui';
-import { LoaderSetProgress, Mask, LoaderState, transformByRegex } from '@ngx-performance-ui/core';
+import {
+  PaginationComponent,
+  ListboxItem,
+  ToasterShow,
+  LayoutScroll,
+  Toaster,
+} from '../../../../../projects/ui/src/public_api';
+import { Mask, LoaderState, transformByRegex, LoaderSetProgress } from '../../../../../projects/core/src/public_api';
 
 @Component({
   selector: 'p-showcase',
   templateUrl: './showcase.component.html',
-  styles: [],
 })
 export class ShowcaseComponent implements OnInit {
   toaster = { closeOnClick: false, type: 'primary' } as Toaster.State;
