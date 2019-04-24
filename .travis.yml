@@ -1,9 +1,17 @@
 language: node_js
+cache:
+  yarn: true
+  directories:
+    - /node_modules
+notifications:
+  email: false
 node_js:
-  - '11'
   - '10'
-cache: yarn
+  - '11'
+addons:
+  chrome: stable
 before_script:
   - yarn
 script:
-  - yarn build:packages
+  - yarn build:core
+  - yarn build:ui

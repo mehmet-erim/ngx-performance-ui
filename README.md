@@ -1,6 +1,12 @@
 # NGX PERFORMANCE UI
 
-[![Build Status](https://travis-ci.org/mehmet-erim/ngx-performance-ui.svg?branch=develop)](https://travis-ci.org/mehmet-erim/ngx-performance-ui)
+<p align="center">
+  <a href="https://bundlephobia.com/result?p=@ngx-performance-ui/core"><img src="https://img.shields.io/bundlephobia/minzip/@ngx-performance-ui/core.svg"/></a>
+  <a href="https://bundlephobia.com/result?p=@ngx-performance-ui/ui"><img src="https://img.shields.io/bundlephobia/minzip/@ngx-performance-ui/ui.svg"/></a>
+  <a href="https://travis-ci.org/mehmet-erim/ngx-performance-ui"><img src="https://travis-ci.org/mehmet-erim/ngx-performance-ui.svg?branch=develop"/></a>
+  <img src="https://img.shields.io/github/license/mehmet-erim/ngx-performance-ui.svg" />
+  <a href="https://twitter.com/mehmterim"><img src="https://img.shields.io/twitter/follow/mehmterim.svg?label=Follow"/></a>
+</p>
 
 ## Live demo
 
@@ -25,6 +31,7 @@ Core Peer Dependencies:
     "@angular/core": ">=7.0.0 <8.0.0",
     "@angular/common": ">=7.0.0 <8.0.0",
     "@angular/forms": ">=7.0.0 <8.0.0",
+    "angular2-text-mask": ">=9.0.0",
     "rxjs": ">=6.0.0",
     "@ngxs/store": ">=3.3.0",
     "just-compare": ">=1.3.0"
