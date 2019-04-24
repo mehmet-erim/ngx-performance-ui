@@ -21,7 +21,7 @@ import { AbstractInputComponent } from '../../abstracts';
       [rows]="rows"
       [cols]="cols"
       [id]="id"
-      [placeholder]="placeholder"
+      [attr.placeholder]="placeholder"
       [hidden]="hidden"
       [name]="name"
       [disabled]="disabled"

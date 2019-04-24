@@ -33,7 +33,7 @@ export interface ListboxItem {
             </div>
             <p-input
               [(ngModel)]="filterValue"
-              [placeholder]="filterPlaceholder"
+              [attr.placeholder]="filterPlaceholder"
               classes="bg-transparent"
               class="w-75"
             ></p-input>

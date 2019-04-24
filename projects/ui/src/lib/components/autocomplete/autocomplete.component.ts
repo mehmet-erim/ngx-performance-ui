@@ -31,8 +31,8 @@ export interface AutocompleteItem {
         (ngModelChange)="onChangeInputValue($event)"
         class="w-100 {{ classes }}"
         [id]="id"
-        [type]="type"
-        [placeholder]="placeholder"
+        [attr.type]="type"
+        [attr.placeholder]="placeholder"
         [hidden]="hidden"
         [name]="name"
         [disabled]="disabled"
@@ -79,15 +79,15 @@ export class AutocompleteComponent extends AbstractInputComponent<AutocompleteIt
 
   @Output() select = new EventEmitter<AutocompleteItem>();
 
-  @ViewChild('input') input: ElementRef;
+  @Input() placeholder: string = 'Type in here';
+
+  @ViewChild('input', { read: ElementRef }) input: ElementRef;
 
   autocomplete: string = 'nop';
 
   showList: boolean = false;
 
   inputValue: string = '';
-
-  placeholder: string = 'Type in here';
 
   valueFn: (value: AutocompleteItem, previousValue?: AutocompleteItem) => AutocompleteItem = value => {
     if (!value) return value;
