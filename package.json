@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
+    "travis": "travis",
     "start": "ng serve",
     "build": "ng build --prod=true --buildOptimizer=true --vendorChunk=true --outputHashing=all",
     "build:packages": "yarn build:core && yarn build:ui",

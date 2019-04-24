@@ -5,7 +5,7 @@
       type="text"
       class="form-control bg-white"
       [readonly]="true"
-      [placeholder]="placeholder"
+      [attr.placeholder]="placeholder"
       [value]="date | date: displayFormat"
       (click)="onClick()"
     />

@@ -14,5 +14,11 @@ addons:
 before_script:
   - yarn
 script:
+  - yarn ng build
   - yarn build:core
   - yarn build:ui
+  deploy:
+  provider: firebase
+  token:
+    secure: "1/q6gjwxFSVLN6QV7CIQ1fGXGj8Pg9hxfMYLsnkm-_aFWW3r-v2yfkA5z_UKm1slb4"
+  project: "ngx-performance-ui"
