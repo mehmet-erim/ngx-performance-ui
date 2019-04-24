@@ -1,0 +1,27 @@
+html {
+  // This defines what 1rem is
+
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 75%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 90%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 100%; //1rem = 12, 12/16
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+a {
+  cursor: pointer;
+}

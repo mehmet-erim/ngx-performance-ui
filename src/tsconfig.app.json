@@ -4,6 +4,13 @@
     "outDir": "../out-tsc/app",
     "types": []
   },
+  "include": [
+    "**/*.ts",
+    "../node_modules/@ngx-performance-ui/core/**/*.ts",
+    "../node_modules/@ngx-performance-ui/ui/**/*.ts",
+    "../projects/core/**/*.ts",
+    "../projects/ui/**/*.ts"
+  ],
   "exclude": [
     "test.ts",
     "**/*.spec.ts"

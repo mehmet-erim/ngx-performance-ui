@@ -2,12 +2,15 @@
 
 # compiled output
 /dist
+/projects/core/dist
+/projects/ui/dist
 /tmp
 /out-tsc
 
 # dependencies
 /node_modules
-
+/projects/core/node_modules
+/projects/ui/node_modules
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json
@@ -34,6 +37,8 @@ speed-measure-plugin.json
 /coverage
 /libpeerconnection.log
 npm-debug.log
+yarn.lock
+dist.tgz
 yarn-error.log
 testem.log
 /typings

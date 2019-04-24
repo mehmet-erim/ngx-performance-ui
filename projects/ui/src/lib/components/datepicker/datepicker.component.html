@@ -1,0 +1,29 @@
+<div class="datepicker-container">
+  <label class="{{ labelClass }}" [attr.for]="options.fieldId">{{ label }}</label>
+  <div #group class="input-group">
+    <input
+      type="text"
+      class="form-control bg-white"
+      [readonly]="true"
+      [attr.placeholder]="placeholder"
+      [value]="date | date: displayFormat"
+      (click)="onClick()"
+    />
+    <fa-icon *ngIf="value" [icon]="['fas', 'times']" class="text-secondary" (click)="clear()"></fa-icon>
+    <div class="input-group-prepend">
+      <span class="input-group-text bg-white" (click)="toggle()">
+        <fa-icon *ngIf="value" [icon]="['fas', 'calendar-day']"></fa-icon>
+      </span>
+    </div>
+  </div>
+  <ng-datepicker
+    id="datepicker"
+    #datePicker
+    [headless]="true"
+    [position]="position"
+    [options]="options"
+    [(ngModel)]="value"
+    (ngModelChange)="destroy$.next()"
+  >
+  </ng-datepicker>
+</div>

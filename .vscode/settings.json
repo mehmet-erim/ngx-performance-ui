@@ -2,7 +2,7 @@
   "workbench.sideBar.location": "right",
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe",
   "workbench.colorTheme": "Monokai",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "git.autofetch": true,
   "editor.minimap.enabled": false,
   "explorer.confirmDelete": false,

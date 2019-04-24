@@ -1,9 +1,8 @@
-@import "assets/sass/main.scss";
-
-a {
-  cursor: pointer;
-}
-
-.op-8 {
-  opacity: .8;
+p-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99998;
 }

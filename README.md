@@ -1,27 +1,93 @@
 # NGX PERFORMANCE UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
+<p align="center">
+  <a href="https://travis-ci.org/mehmet-erim/ngx-performance-ui"><img src="https://travis-ci.org/mehmet-erim/ngx-performance-ui.svg?branch=develop"/></a>
+  <img src="https://img.shields.io/github/license/mehmet-erim/ngx-performance-ui.svg" />
+  <a href="https://twitter.com/mehmterim"><img src="https://img.shields.io/twitter/follow/mehmterim.svg?label=Follow"/></a>
+</p>
 
-## Development server
+## Live demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[Check out the demo page](https://ngx-performance-ui.firebaseapp.com)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+yarn add @ngx-performance-ui/core @ngx-performance-ui/ui
+```
 
-## Build
+or
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+npm install @ngx-performance-ui/core @ngx-performance-ui/ui
+```
 
-## Running unit tests
+Core Peer Dependencies:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```json
+  "peerDependencies": {
+    "@angular/core": ">=7.0.0 <8.0.0",
+    "@angular/common": ">=7.0.0 <8.0.0",
+    "@angular/forms": ">=7.0.0 <8.0.0",
+    "angular2-text-mask": ">=9.0.0",
+    "rxjs": ">=6.0.0",
+    "@ngxs/store": ">=3.3.0",
+    "just-compare": ">=1.3.0"
+  }
+```
 
-## Running end-to-end tests
+UI Peer Dependencies:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```json
+  "peerDependencies": {
+    "@fortawesome/angular-fontawesome": ">=0.3.0",
+    "@fortawesome/fontawesome-svg-core": ">=1.2.0",
+    "@fortawesome/free-solid-svg-icons": ">=5.8.0",
+    "@ngx-performance-ui/core": "^0.0.14",
+    "angular2-text-mask": ">=9.0.0",
+    "ng2-datepicker": ">=3.1.0",
+    "ngx-perfect-scrollbar": ">=7.0.0"
+  },
+```
 
-## Further help
+### Installation Peer Dependencies
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```bash
+yarn add @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker ngx-perfect-scrollbar
+```
+
+or
+
+```bash
+npm install @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker ngx-perfect-scrollbar
+```
+
+## Usage
+
+Import Core and UI module to your app.module
+
+```typescript
+import { CoreModule } from '@ngx-performance-ui/core';
+import { UiModule } from '@ngx-performance-ui/ui';
+import { NgxsModule } from '@ngxs/store';
+
+@NgModule({
+  imports: [
+    NgxsModule.forRoot(),
+    CoreModule.forRoot(),
+    UiModule,
+    //...
+  ]
+```
+
+Update 'styles' array from angular.json
+
+```json
+"styles": [
+  "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "./node_modules/@ngx-performance-ui/ui/assets/main.css",
+  //...
+],
+```
+
+[See this readme on another page](https://nicedoc.io/mehmet-erim/ngx-performance-ui)

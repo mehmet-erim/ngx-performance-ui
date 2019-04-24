@@ -1,0 +1,24 @@
+language: node_js
+dist: trusty
+sudo: true
+cache:
+  yarn: true
+  directories:
+    - /node_modules
+notifications:
+  email: false
+node_js:
+  - '10'
+  - '11'
+addons:
+  chrome: stable
+before_script:
+  - yarn
+script:
+  - yarn ng build
+  - yarn build:core
+  - yarn build:ui
+deploy:
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouterOutletComponent } from './@core/components';
+import { RouterOutletComponent } from '@ngx-performance-ui/core';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: RouterOutletComponent,
     children: [
       {
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/home',
+    redirectTo: '/',
   },
 ];
 

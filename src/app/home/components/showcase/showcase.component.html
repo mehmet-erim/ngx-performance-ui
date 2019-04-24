@@ -11,32 +11,17 @@
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  [(ngModel)]="toaster.header"
-                  placeholder="Header"
-                />
+                <input class="form-control" type="text" [(ngModel)]="toaster.header" placeholder="Header" />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  [(ngModel)]="toaster.body"
-                  placeholder="Body"
-                />
+                <input class="form-control" type="text" [(ngModel)]="toaster.body" placeholder="Body" />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="number"
-                  [(ngModel)]="toaster.timeout"
-                  placeholder="Timeout"
-                />
+                <input class="form-control" type="number" [(ngModel)]="toaster.timeout" placeholder="Timeout" />
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -56,19 +41,12 @@
                   [(ngModel)]="toaster.closeOnClick"
                   id="close-on-click"
                 />
-                <label
-                  class="form-check-label"
-                  for="close-on-click"
-                >Close On Click</label>
+                <label class="form-check-label" for="close-on-click">Close On Click</label>
               </div>
             </div>
           </div>
         </div>
-        <button
-          type="button"
-          class="mt-1 ml-1 btn btn-info"
-          (click)="showToaster()"
-        >Dispatch toaster</button>
+        <button type="button" class="mt-1 ml-1 btn btn-info" (click)="showToaster()">Dispatch toaster</button>
       </div>
     </div>
 
@@ -103,15 +81,15 @@
               <div class="form-group">
                 <p-input
                   [(ngModel)]="inputValue"
-                  [textMask]="textMask"
                   [autofocus]="true"
-                  [autofocusDelay]="10000"
+                  [autofocusDelay]="1000"
                   placeholder="Enter phone number"
                   type="text"
                   labelText="Phone Number"
                   helpText="Please enter Turkey phone format"
                   id="phone-number"
                 ></p-input>
+                {{ inputValue }}
               </div>
             </div>
           </div>
@@ -125,22 +103,59 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <p-radio
-                [radioValue]="'one'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >One</p-radio>
-              <p-radio
-                [radioValue]="'two'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >Two</p-radio>
-              <p-radio
-                [radioValue]="'three'"
-                [(ngModel)]="radio"
-                (ngModelChange)="onChangeRadio($event)"
-              >Three</p-radio>
+              <p-radio [radioValue]="'one'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)">One</p-radio>
+              <p-radio [radioValue]="'two'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)">Two</p-radio>
+              <p-radio [radioValue]="'three'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)"
+                >Three</p-radio
+              >
               {{ 'Value: ' + radio }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Checkbox</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col pl-5">
+              <p-checkbox [(ngModel)]="checkbox" labelText="Check me out" id="check-one">Check me out</p-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Textarea</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p-textarea
+                [labelText]="'Description'"
+                [helpText]="'Allowed Turkish characters'"
+                [(ngModel)]="textarea"
+              ></p-textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Input Spinner</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p-spinner [(ngModel)]="spinner" [step]="0.5"></p-spinner>
             </div>
           </div>
         </div>
@@ -153,43 +168,24 @@
       <div class="card">
         <div class="card-header">
           Tooltip
-          <small
-            class="float-right"
-            (mouseover)="tooltipButton.hide()"
-          >Mouse over and hide click to trigger tooltip</small>
+          <small class="float-right" (mouseover)="tooltipButton.hide()"
+            >Mouse over and hide click to trigger tooltip</small
+          >
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <button
-                class="btn btn-sm btn-secondary"
-                pTooltip="tooltip on top"
-              >Top</button>
-              <button
-                class="btn btn-sm btn-secondary ml-1"
-                pTooltip="tooltip on bottom"
-                pTooltipPlacement="bottom"
-              >
+              <button class="btn btn-sm btn-secondary" pTooltip="tooltip on top">Top</button>
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on bottom" pTooltipPlacement="bottom">
                 Bottom
               </button>
-              <button
-                class="btn btn-sm btn-secondary ml-1"
-                pTooltip="tooltip on left"
-                pTooltipPlacement="left"
-              >
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on left" pTooltipPlacement="left">
                 Left
               </button>
-              <button
-                class="btn btn-sm btn-secondary ml-1"
-                pTooltip="tooltip on right"
-                pTooltipPlacement="right"
-              >
+              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on right" pTooltipPlacement="right">
                 Right
               </button>
-              <button
-                class="btn btn-sm btn-secondary ml-1"
-                [pTooltip]="tooltipTemplate"
-              >Template</button>
+              <button class="btn btn-sm btn-secondary ml-1" [pTooltip]="tooltipTemplate">Template</button>
               <button
                 class="btn btn-sm btn-secondary ml-1"
                 [pTooltip]="tooltipTemplate"
@@ -217,7 +213,9 @@
                 pPopover="Popover on top"
                 pPopoverHeader="Popover title"
                 pPopoverPlacement="top"
-              >Top</button>
+              >
+                Top
+              </button>
               <button
                 class="btn btn-sm btn-secondary ml-1"
                 pPopover="Popover on bottom"
@@ -246,7 +244,9 @@
                 class="btn btn-sm btn-secondary ml-1"
                 [pPopover]="popoverTemplate"
                 [pPopoverHeader]="popoverHeaderTemplate"
-              >Template</button>
+              >
+                Template
+              </button>
               <button
                 class="btn btn-sm btn-secondary ml-1"
                 pPopover="Popover on right"
@@ -267,16 +267,8 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="scrollTo('top')"
-              >Scroll to top</button>
-              <button
-                type="button"
-                class="btn btn-secondary ml-1"
-                (click)="scrollTo('bottom')"
-              >
+              <button type="button" class="btn btn-primary" (click)="scrollTo('top')">Scroll to top</button>
+              <button type="button" class="btn btn-secondary ml-1" (click)="scrollTo('bottom')">
                 Scroll to bottom
               </button>
             </div>
@@ -302,32 +294,17 @@
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="number"
-                  [(ngModel)]="page.totalPages"
-                  placeholder="Total Pages"
-                />
+                <input class="form-control" type="number" [(ngModel)]="page.totalPages" placeholder="Total Pages" />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  [(ngModel)]="page.previousLabel"
-                  placeholder="Previous Label"
-                />
+                <input class="form-control" type="text" [(ngModel)]="page.previousLabel" placeholder="Previous Label" />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  [(ngModel)]="page.nextLabel"
-                  placeholder="Next Label"
-                />
+                <input class="form-control" type="text" [(ngModel)]="page.nextLabel" placeholder="Next Label" />
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -376,11 +353,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="isModalShow = true"
-              >Launch demo modal</button>
+              <button type="button" class="btn btn-primary" (click)="isModalShow = true">Launch demo modal</button>
             </div>
           </div>
         </div>
@@ -394,27 +367,236 @@
           <div class="row">
             <div class="col">
               <p-carousel>
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x201/"
-                  class="img-thumbnail"
-                />
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x202/"
-                  class="img-thumbnail"
-                />
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x203/"
-                  class="img-thumbnail"
-                />
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x204/"
-                  class="img-thumbnail"
-                />
-                <img
-                  src="https://source.unsplash.com/collection/1065412/200x200/"
-                  class="img-thumbnail"
-                />
+                <img src="https://source.unsplash.com/collection/1065412/200x201/" class="img-thumbnail" />
+                <img src="https://source.unsplash.com/collection/1065412/200x202/" class="img-thumbnail" />
+                <img src="https://source.unsplash.com/collection/1065412/200x203/" class="img-thumbnail" />
+                <img src="https://source.unsplash.com/collection/1065412/200x204/" class="img-thumbnail" />
+                <img src="https://source.unsplash.com/collection/1065412/200x200/" class="img-thumbnail" />
               </p-carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Datepicker</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p-datepicker [(ngModel)]="date"></p-datepicker>
+              <pre>{{ date }}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Autocomplete</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p-autocomplete
+                [(ngModel)]="autocompleteValue"
+                [items]="[{ text: 'text', value: 5 }, { text: 'lorem', value: 6 }]"
+              ></p-autocomplete>
+              {{ autocompleteValue | json }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Progress</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <button *ngIf="!(progress$ | async)" class="btn btn-success" (click)="setProgress(true)">
+                Show Progress
+              </button>
+              <button *ngIf="(progress$ | async)" class="btn btn-danger" (click)="setProgress(false)">
+                Hide Progress
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Ellipsis</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div pEllipsis>
+                Cras malesuada nunc in ante scelerisque Lorem, ipsum dolor. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Optio neque sint officia explicabo tenetur voluptatum esse, doloremque repellendus
+                magni consequuntur nisi perferendis distinctio voluptatem opis voluptate voluptatibus architecto dolores
+                adipisci. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, provident ea error
+                soluta similique officia eveniet tenetur velit corporis eum harum quibusdam vel laudantium facilis quas
+                beatae, expedita maiores optio! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat
+                incidunt distinctio magni at! A enim quae voluptate doloribus obcaecati ducimus neque quis ad culpa,
+                minus nulla, laudantium sequi maxime esse!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Dropdown</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <button
+                #dropdown="pDropdown"
+                [pDropdown]="secondaryContent ? content2 : content"
+                class="btn btn-warning ml-1"
+              >
+                Click me and show dropdown!
+                <i class="fas" [ngClass]="{ 'fa-angle-down': !dropdown.show, 'fa-angle-up': dropdown.show }"></i>
+              </button>
+              <ng-template #content>
+                <div>Cras malesuada nunc in ante scelerisque</div>
+                <div>Cras malesuada nunc in ante scelerisque</div>
+                <div>Cras malesuada nunc in ante scelerisque</div>
+                <div>Cras malesuada nunc in ante scelerisque</div>
+              </ng-template>
+              <ng-template #content2>
+                <div>Lorem ipsum dolor</div>
+                <div>Lorem ipsum dolor</div>
+                <div>Lorem ipsum dolor</div>
+              </ng-template>
+
+              <button class="btn btn-info ml-1" (click)="secondaryContent = !secondaryContent">Switch content</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">
+          pFor Directive
+
+          <p-input
+            *ngIf="forFilterContain; else fullFilter"
+            placeholder="Type to filter"
+            class="float-right"
+            [(ngModel)]="forFilterValue"
+          ></p-input>
+          <ng-template #fullFilter>
+            <span *ngIf="forFilterValue; else info" (click)="forFilterValue = undefined" class="float-right"
+              >Clear filter</span
+            >
+            <ng-template #info>
+              <span class="float-right"> Click <code>li</code> item for filter </span>
+            </ng-template>
+          </ng-template>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <ul>
+                <li
+                  *pFor="
+                    let person of persons;
+                    let index = index;
+                    let first = first;
+                    let last = last;
+                    let odd = odd;
+                    let even = even;
+                    trackBy: trackByFn;
+                    filterValue: forFilterValue;
+                    filterContain: forFilterContain;
+                    filterKey: forFilterKey
+                  "
+                  (click)="!forFilterContain ? (forFilterValue = person) : null"
+                  style="cursor: pointer"
+                >
+                  {{ person }}
+                  <pre
+                    >{{ { fist: first, last: last, odd: odd, even: even, index: index } | json }}
+                  </pre>
+                </li>
+              </ul>
+
+              <div class="col-12">
+                <button class="btn btn-info btn-sm" (click)="addPerson()">Add person</button>
+                <button class="btn btn-info btn-sm ml-1" (click)="updatePerson()">Update person</button
+                ><button class="btn btn-info btn-sm ml-1" (click)="sortPerson()">Sort person</button
+                ><button class="btn btn-info btn-sm ml-1" (click)="removePerson()">Remove person</button>
+              </div>
+              <div class="col-12 mt-1">
+                <button
+                  class="btn btn-info btn-sm"
+                  (click)="forFilterContain = !forFilterContain; forFilterValue = undefined"
+                >
+                  {{ forFilterContain ? 'Switch to full filter' : 'Switch to contain filter' }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      <div class="card">
+        <div class="card-header">Listbox</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <p-listbox
+                [title]="'Lorem Box'"
+                filterPlaceholder="type in here for search..."
+                [items]="[
+                  { text: 'Lorem ipsum dolor sit amet consectetur', value: { id: 1, code: 'az51a' } },
+                  { text: 'Expedita ipsa qui voluptates culpa.' },
+                  {
+                    text: 'Vitae quisquam dolor quia molestias magni nesciunt consectetur delectus iste.',
+                    classes: 'list-group-item-danger',
+                    value: { id: 3, code: 'ks72n' }
+                  }
+                ]"
+                [(ngModel)]="listboxValue"
+              ></p-listbox>
+              Value:
+              <pre> {{ listboxValue | json }}</pre>
+            </div>
+            <div class="col-6">
+              <p-listbox
+                [title]="'Lorem Box Multiple'"
+                filterPlaceholder="type in here for search..."
+                [items]="[
+                  { text: 'Lorem ipsum dolor sit amet consectetur', value: { id: 1, code: 'az51a' } },
+                  { text: 'Expedita ipsa qui voluptates culpa.' },
+                  {
+                    text: 'Vitae quisquam dolor quia molestias magni nesciunt consectetur delectus iste.',
+                    classes: 'list-group-item-danger',
+                    value: { id: 3, code: 'ks72n' }
+                  }
+                ]"
+                [multiple]="true"
+                [(ngModel)]="listboxMultipleValue"
+              ></p-listbox>
+              Value:
+              <pre> {{ listboxMultipleValue | json }}</pre>
             </div>
           </div>
         </div>
@@ -424,16 +606,17 @@
 </div>
 
 <p-modal
-  modalClass="w-100"
+  modalClass="
+                w-100"
   size="lg"
   [(visible)]="isModalShow"
   [centered]="true"
 >
-  <ng-template #mnHeader>
+  <ng-template #pHeader>
     <h3>Modal Title</h3>
   </ng-template>
 
-  <ng-template #mnBody>
+  <ng-template #pBody>
     <p>
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet esse deserunt quasi perspiciatis, expedita
       dolores sapiente vitae a delectus dolor est. Ullam quod veritatis delectus error deserunt voluptatum ipsam minima.
@@ -484,16 +667,9 @@
     </p>
   </ng-template>
 
-  <ng-template #mnFooter>
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="isModalShow = false"
-    >Close</button>
-    <button
-      type="button"
-      class="btn btn-primary"
-    >Save changes</button>
+  <ng-template #pFooter>
+    <button type="button" class="btn btn-secondary" (click)="isModalShow = false">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
   </ng-template>
 </p-modal>
 

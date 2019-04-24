@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
 import { Actions, ofActionDispatched } from '@ngxs/store';
-import { takeUntilDestroy } from '@core/utils';
-import { LayoutScroll } from 'store/actions';
+import { takeUntilDestroy } from '../../../../projects/core/src/lib/utils';
+import { LayoutScroll } from '../../../../projects/ui/src/lib/actions';
 
 @Component({
   selector: 'p-layout-primary',

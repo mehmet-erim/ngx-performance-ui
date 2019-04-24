@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { CoreModule } from '@core/core.module';
-import { ngxsLogExcept } from '@core/utils';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
-import { UiModule } from '@ui/ui.module';
+import { CoreModule, ngxsLogExcept } from '@ngx-performance-ui/core';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import * as _states from './store/states';
+import { UiModule } from '../../projects/ui/src/public_api';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,13 +14,10 @@ import * as _states from './store/states';
     AppRoutingModule,
     BrowserModule,
     CoreModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule.forRoot(),
     UiModule,
 
     // Third party
-    NgxsModule.forRoot([_states.ToasterState, _states.EventListenerState]),
+    NgxsModule.forRoot([]),
     NgxsLoggerPluginModule.forRoot({
       disabled: environment.production,
       logger: environment.production ? null : ngxsLogExcept(['EventListener']),
