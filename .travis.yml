@@ -1,5 +1,6 @@
 language: node_js
-sudo: required
+dist: trusty
+sudo: true
 cache:
   yarn: true
   directories:
@@ -20,4 +21,4 @@ script:
 deploy:
   provider: firebase
   token:
-    secure: '1/q6gjwxFSVLN6QV7CIQ1fGXGj8Pg9hxfMYLsnkm-_aFWW3r-v2yfkA5z_UKm1slb4'
+    secure: $FIREBASE_TOKEN
