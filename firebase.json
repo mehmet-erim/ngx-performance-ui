@@ -1,12 +1,10 @@
 {
   "hosting": {
-    "public": "ngx-performance-ui",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+    "public": "./dist/ngx-performance-ui",
+    "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+    "rewrites": [ {
+      "source": "**",
+      "destination": "/index.html"
+    } ]
   }
 }

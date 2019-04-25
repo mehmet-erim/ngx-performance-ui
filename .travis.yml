@@ -20,7 +20,6 @@ script:
   - yarn build:ui
 before_deploy:
   - yarn ng build
-  - mv dist/ngx-performance-ui ngx-performance-ui
 deploy:
   provider: firebase
   token:
