@@ -44,7 +44,7 @@ UI Peer Dependencies:
     "@fortawesome/angular-fontawesome": ">=0.3.0",
     "@fortawesome/fontawesome-svg-core": ">=1.2.0",
     "@fortawesome/free-solid-svg-icons": ">=5.8.0",
-    "@ngx-performance-ui/core": "^0.0.15",
+    "@ngx-performance-ui/core": "^0.0.16",
     "angular2-text-mask": ">=9.0.0",
     "ng2-datepicker": ">=3.1.0",
     "ngx-perfect-scrollbar": ">=7.0.0",
@@ -89,7 +89,7 @@ Update 'styles' array from angular.json
 
 ```json
 "styles": [
-  "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "./node_modules/@ngx-performance-ui/ui/assets/bootstrap.min.css",
   "./node_modules/@ngx-performance-ui/ui/assets/main.css",
   //...
 ],
