@@ -11,17 +11,32 @@
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <input class="form-control" type="text" [(ngModel)]="toaster.header" placeholder="Header" />
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="toaster.header"
+                  placeholder="Header"
+                />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input class="form-control" type="text" [(ngModel)]="toaster.body" placeholder="Body" />
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="toaster.body"
+                  placeholder="Body"
+                />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input class="form-control" type="number" [(ngModel)]="toaster.timeout" placeholder="Timeout" />
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="toaster.timeout"
+                  placeholder="Timeout"
+                />
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -41,12 +56,19 @@
                   [(ngModel)]="toaster.closeOnClick"
                   id="close-on-click"
                 />
-                <label class="form-check-label" for="close-on-click">Close On Click</label>
+                <label
+                  class="form-check-label"
+                  for="close-on-click"
+                >Close On Click</label>
               </div>
             </div>
           </div>
         </div>
-        <button type="button" class="mt-1 ml-1 btn btn-info" (click)="showToaster()">Dispatch toaster</button>
+        <button
+          type="button"
+          class="mt-1 ml-1 btn btn-info"
+          (click)="showToaster()"
+        >Dispatch toaster</button>
       </div>
     </div>
 
@@ -103,11 +125,21 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <p-radio [radioValue]="'one'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)">One</p-radio>
-              <p-radio [radioValue]="'two'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)">Two</p-radio>
-              <p-radio [radioValue]="'three'" [(ngModel)]="radio" (ngModelChange)="onChangeRadio($event)"
-                >Three</p-radio
-              >
+              <p-radio
+                [radioValue]="'one'"
+                [(ngModel)]="radio"
+                (ngModelChange)="onChangeRadio($event)"
+              >One</p-radio>
+              <p-radio
+                [radioValue]="'two'"
+                [(ngModel)]="radio"
+                (ngModelChange)="onChangeRadio($event)"
+              >Two</p-radio>
+              <p-radio
+                [radioValue]="'three'"
+                [(ngModel)]="radio"
+                (ngModelChange)="onChangeRadio($event)"
+              >Three</p-radio>
               {{ 'Value: ' + radio }}
             </div>
           </div>
@@ -123,7 +155,11 @@
         <div class="card-body">
           <div class="row">
             <div class="col pl-5">
-              <p-checkbox [(ngModel)]="checkbox" labelText="Check me out" id="check-one">Check me out</p-checkbox>
+              <p-checkbox
+                [(ngModel)]="checkbox"
+                labelText="Check me out"
+                id="check-one"
+              >Check me out</p-checkbox>
             </div>
           </div>
         </div>
@@ -155,7 +191,10 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <p-spinner [(ngModel)]="spinner" [step]="0.5"></p-spinner>
+              <p-spinner
+                [(ngModel)]="spinner"
+                [step]="0.5"
+              ></p-spinner>
             </div>
           </div>
         </div>
@@ -168,24 +207,43 @@
       <div class="card">
         <div class="card-header">
           Tooltip
-          <small class="float-right" (mouseover)="tooltipButton.hide()"
-            >Mouse over and hide click to trigger tooltip</small
-          >
+          <small
+            class="float-right"
+            (mouseover)="tooltipButton.hide()"
+          >Mouse over and hide click to trigger tooltip</small>
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <button class="btn btn-sm btn-secondary" pTooltip="tooltip on top">Top</button>
-              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on bottom" pTooltipPlacement="bottom">
+              <button
+                class="btn btn-sm btn-secondary"
+                pTooltip="tooltip on top"
+              >Top</button>
+              <button
+                class="btn btn-sm btn-secondary ml-1"
+                pTooltip="tooltip on bottom"
+                pTooltipPlacement="bottom"
+              >
                 Bottom
               </button>
-              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on left" pTooltipPlacement="left">
+              <button
+                class="btn btn-sm btn-secondary ml-1"
+                pTooltip="tooltip on left"
+                pTooltipPlacement="left"
+              >
                 Left
               </button>
-              <button class="btn btn-sm btn-secondary ml-1" pTooltip="tooltip on right" pTooltipPlacement="right">
+              <button
+                class="btn btn-sm btn-secondary ml-1"
+                pTooltip="tooltip on right"
+                pTooltipPlacement="right"
+              >
                 Right
               </button>
-              <button class="btn btn-sm btn-secondary ml-1" [pTooltip]="tooltipTemplate">Template</button>
+              <button
+                class="btn btn-sm btn-secondary ml-1"
+                [pTooltip]="tooltipTemplate"
+              >Template</button>
               <button
                 class="btn btn-sm btn-secondary ml-1"
                 [pTooltip]="tooltipTemplate"
@@ -267,8 +325,16 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <button type="button" class="btn btn-primary" (click)="scrollTo('top')">Scroll to top</button>
-              <button type="button" class="btn btn-secondary ml-1" (click)="scrollTo('bottom')">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="scrollTo('top')"
+              >Scroll to top</button>
+              <button
+                type="button"
+                class="btn btn-secondary ml-1"
+                (click)="scrollTo('bottom')"
+              >
                 Scroll to bottom
               </button>
             </div>
@@ -294,17 +360,32 @@
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input class="form-control" type="number" [(ngModel)]="page.totalPages" placeholder="Total Pages" />
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="page.totalPages"
+                  placeholder="Total Pages"
+                />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input class="form-control" type="text" [(ngModel)]="page.previousLabel" placeholder="Previous Label" />
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="page.previousLabel"
+                  placeholder="Previous Label"
+                />
               </div>
             </div>
             <div class="col-12 col-md-6">
               <div class="form-group">
-                <input class="form-control" type="text" [(ngModel)]="page.nextLabel" placeholder="Next Label" />
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="page.nextLabel"
+                  placeholder="Next Label"
+                />
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -353,7 +434,11 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <button type="button" class="btn btn-primary" (click)="isModalShow = true">Launch demo modal</button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="isModalShow = true"
+              >Launch demo modal</button>
             </div>
           </div>
         </div>
@@ -362,17 +447,40 @@
 
     <div class="col-12 col-md-6  my-3">
       <div class="card">
-        <div class="card-header">Carousel</div>
+        <div class="card-header">ngx-slickjs</div>
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <p-carousel>
-                <img src="https://source.unsplash.com/collection/1065412/200x201/" class="img-thumbnail" />
-                <img src="https://source.unsplash.com/collection/1065412/200x202/" class="img-thumbnail" />
-                <img src="https://source.unsplash.com/collection/1065412/200x203/" class="img-thumbnail" />
-                <img src="https://source.unsplash.com/collection/1065412/200x204/" class="img-thumbnail" />
-                <img src="https://source.unsplash.com/collection/1065412/200x200/" class="img-thumbnail" />
-              </p-carousel>
+              <div
+                slickContainer
+                [slickConfig]="{slidesToShow: 3, dots: true}"
+              >
+                <img
+                  slickItem
+                  src="https://source.unsplash.com/collection/1065412/200x201/"
+                  class="img-thumbnail"
+                />
+                <img
+                  slickItem
+                  src="https://source.unsplash.com/collection/1065412/200x202/"
+                  class="img-thumbnail"
+                />
+                <img
+                  slickItem
+                  src="https://source.unsplash.com/collection/1065412/200x203/"
+                  class="img-thumbnail"
+                />
+                <img
+                  slickItem
+                  src="https://source.unsplash.com/collection/1065412/200x204/"
+                  class="img-thumbnail"
+                />
+                <img
+                  slickItem
+                  src="https://source.unsplash.com/collection/1065412/200x200/"
+                  class="img-thumbnail"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -419,10 +527,18 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <button *ngIf="!(progress$ | async)" class="btn btn-success" (click)="setProgress(true)">
+              <button
+                *ngIf="!(progress$ | async)"
+                class="btn btn-success"
+                (click)="setProgress(true)"
+              >
                 Show Progress
               </button>
-              <button *ngIf="(progress$ | async)" class="btn btn-danger" (click)="setProgress(false)">
+              <button
+                *ngIf="(progress$ | async)"
+                class="btn btn-danger"
+                (click)="setProgress(false)"
+              >
                 Hide Progress
               </button>
             </div>
@@ -467,7 +583,10 @@
                 class="btn btn-warning ml-1"
               >
                 Click me and show dropdown!
-                <i class="fas" [ngClass]="{ 'fa-angle-down': !dropdown.show, 'fa-angle-up': dropdown.show }"></i>
+                <i
+                  class="fas"
+                  [ngClass]="{ 'fa-angle-down': !dropdown.show, 'fa-angle-up': dropdown.show }"
+                ></i>
               </button>
               <ng-template #content>
                 <div>Cras malesuada nunc in ante scelerisque</div>
@@ -481,7 +600,10 @@
                 <div>Lorem ipsum dolor</div>
               </ng-template>
 
-              <button class="btn btn-info ml-1" (click)="secondaryContent = !secondaryContent">Switch content</button>
+              <button
+                class="btn btn-info ml-1"
+                (click)="secondaryContent = !secondaryContent"
+              >Switch content</button>
             </div>
           </div>
         </div>
@@ -500,9 +622,11 @@
             [(ngModel)]="forFilterValue"
           ></p-input>
           <ng-template #fullFilter>
-            <span *ngIf="forFilterValue; else info" (click)="forFilterValue = undefined" class="float-right"
-              >Clear filter</span
-            >
+            <span
+              *ngIf="forFilterValue; else info"
+              (click)="forFilterValue = undefined"
+              class="float-right"
+            >Clear filter</span>
             <ng-template #info>
               <span class="float-right"> Click <code>li</code> item for filter </span>
             </ng-template>
@@ -529,17 +653,26 @@
                   style="cursor: pointer"
                 >
                   {{ person }}
-                  <pre
-                    >{{ { fist: first, last: last, odd: odd, even: even, index: index } | json }}
+                  <pre>{{ { fist: first, last: last, odd: odd, even: even, index: index } | json }}
                   </pre>
                 </li>
               </ul>
 
               <div class="col-12">
-                <button class="btn btn-info btn-sm" (click)="addPerson()">Add person</button>
-                <button class="btn btn-info btn-sm ml-1" (click)="updatePerson()">Update person</button
-                ><button class="btn btn-info btn-sm ml-1" (click)="sortPerson()">Sort person</button
-                ><button class="btn btn-info btn-sm ml-1" (click)="removePerson()">Remove person</button>
+                <button
+                  class="btn btn-info btn-sm"
+                  (click)="addPerson()"
+                >Add person</button>
+                <button
+                  class="btn btn-info btn-sm ml-1"
+                  (click)="updatePerson()"
+                >Update person</button><button
+                  class="btn btn-info btn-sm ml-1"
+                  (click)="sortPerson()"
+                >Sort person</button><button
+                  class="btn btn-info btn-sm ml-1"
+                  (click)="removePerson()"
+                >Remove person</button>
               </div>
               <div class="col-12 mt-1">
                 <button
@@ -668,8 +801,15 @@
   </ng-template>
 
   <ng-template #pFooter>
-    <button type="button" class="btn btn-secondary" (click)="isModalShow = false">Close</button>
-    <button type="button" class="btn btn-primary">Save changes</button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="isModalShow = false"
+    >Close</button>
+    <button
+      type="button"
+      class="btn btn-primary"
+    >Save changes</button>
   </ng-template>
 </p-modal>
 

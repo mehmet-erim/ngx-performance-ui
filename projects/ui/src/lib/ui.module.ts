@@ -6,7 +6,6 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AbstractInputComponent } from './abstracts/input-component';
 import { AnnotationChartComponent } from './components/charts/annotation-chart.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { CheckboxComponent } from './components/input/checkbox.component';
 import { GoogleChartComponent } from './components/google-chart/google-chart.component';
 import { DatePickerComponent } from './components/datepicker/datepicker.component';
@@ -32,6 +31,7 @@ import { ToasterState } from './states/toaster.state';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCalendarDay, faInfoCircle, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { NgxSlickJsModule } from 'ngx-slickjs';
 library.add(faCalendarDay, faInfoCircle, faSearch, faTimes);
 
 @NgModule({
@@ -52,7 +52,6 @@ library.add(faCalendarDay, faInfoCircle, faSearch, faTimes);
 
     // components
     AutocompleteComponent,
-    CarouselComponent,
     CheckboxComponent,
     GoogleChartComponent,
     DatePickerComponent,
@@ -80,6 +79,7 @@ library.add(faCalendarDay, faInfoCircle, faSearch, faTimes);
     // modules
     FontAwesomeModule,
     NgDatepickerModule,
+    NgxSlickJsModule,
     PerfectScrollbarModule,
 
     // charts
@@ -87,7 +87,6 @@ library.add(faCalendarDay, faInfoCircle, faSearch, faTimes);
 
     // components
     AutocompleteComponent,
-    CarouselComponent,
     CheckboxComponent,
     GoogleChartComponent,
     DatePickerComponent,

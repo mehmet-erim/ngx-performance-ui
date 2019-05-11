@@ -44,23 +44,24 @@ UI Peer Dependencies:
     "@fortawesome/angular-fontawesome": ">=0.3.0",
     "@fortawesome/fontawesome-svg-core": ">=1.2.0",
     "@fortawesome/free-solid-svg-icons": ">=5.8.0",
-    "@ngx-performance-ui/core": "^0.0.14",
+    "@ngx-performance-ui/core": "^0.0.15",
     "angular2-text-mask": ">=9.0.0",
     "ng2-datepicker": ">=3.1.0",
-    "ngx-perfect-scrollbar": ">=7.0.0"
+    "ngx-perfect-scrollbar": ">=7.0.0",
+    "ngx-slickjs": ">=1.3.0"
   },
 ```
 
 ### Installation Peer Dependencies
 
 ```bash
-yarn add @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker ngx-perfect-scrollbar
+yarn add @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker ngx-perfect-scrollbar ngx-slickjs
 ```
 
 or
 
 ```bash
-npm install @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker ngx-perfect-scrollbar
+npm install @ngxs/store just-compare @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ng2-datepicker ngx-perfect-scrollbar ngx-slickjs
 ```
 
 ## Usage
@@ -71,12 +72,15 @@ Import Core and UI module to your app.module
 import { CoreModule } from '@ngx-performance-ui/core';
 import { UiModule } from '@ngx-performance-ui/ui';
 import { NgxsModule } from '@ngxs/store';
+import { NgxSlickJsModule } from 'ngx-slickjs';
 
 @NgModule({
   imports: [
+    NgxSlickJsModule.forRoot(),
     NgxsModule.forRoot(),
     CoreModule.forRoot(),
     UiModule,
+
     //...
   ]
 ```

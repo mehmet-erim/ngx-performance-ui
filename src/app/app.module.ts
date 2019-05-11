@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UiModule } from '../../projects/ui/src/public_api';
+import { NgxSlickJsModule } from 'ngx-slickjs';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { UiModule } from '../../projects/ui/src/public_api';
     BrowserModule,
     CoreModule.forRoot(),
     UiModule,
+    NgxSlickJsModule.forRoot(),
 
     // Third party
     NgxsModule.forRoot([]),
